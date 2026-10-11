@@ -40,6 +40,7 @@ jobs:
         id: prepare
         shell: bash
         run: |
+          #!/usr/bin/env bash
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -118,7 +119,7 @@ jobs:
           Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
           Changed files:
-          $(printf '%s\\n' "$changed_files" | sed 's/^/- /')
+          $(printf '%s\n' "$changed_files" | sed 's/^/- /')
 
           This is a proposal only. No product branch is merged or deployed automatically. Full project builds/tests are not run by this lightweight Git-infrastructure workflow.
           EOF
