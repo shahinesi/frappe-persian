@@ -1,4 +1,4 @@
-language_code,language_name,enabled
+language_code,language_name,enabled,first_day_of_the_week
 af,Afrikaans,0
 am,አማርኛ,0
 ar,العربية,1
@@ -27,7 +27,7 @@ es-MX,Español (México),0
 es-NI,Español (Nicaragua),0
 es-PE,Español (Perú),0
 et,Eesti,0
-fa,فارسی,1
+fa,فارسی,1,Saturday
 fi,Suomi,0
 fil,Filipino,0
 fr,Français,1
