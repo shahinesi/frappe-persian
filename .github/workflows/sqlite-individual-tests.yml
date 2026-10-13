@@ -146,12 +146,13 @@ jobs:
           disable-socketio: true
           disable-workers: true
           enable-server-scripts: true
+          site-host: test-site
       - name: Wait for web server
         shell: bash
         run: |
           if ! curl --fail --silent --show-error \
             --retry 30 --retry-delay 1 --retry-connrefused \
-            http://test_site:8000/api/method/ping > /dev/null; then
+            http://test-site:8000/api/method/ping > /dev/null; then
             echo "Frappe web server did not become ready"
             cat "$GITHUB_WORKSPACE/bench_start.log"
             exit 1

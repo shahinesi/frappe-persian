@@ -84,13 +84,16 @@ jobs:
       - name: Site Setup
         run: |
           # a second site, so the shard can run two workers without sharing data
-          echo "127.0.0.1 test_site_2" | sudo tee -a /etc/hosts
+          echo "127.0.0.1 test-site test-site-2" | sudo tee -a /etc/hosts
+          ln -s test_site sites/test-site
           bench new-site test_site_2 \
             --db-type ${{ matrix.db }} \
             --db-host 127.0.0.1 \
             --db-name test_frappe_2 \
             --db-password test_frappe
-          jq -s '.[1] + .[0] + {host_name: "http://test_site_2:8000"}' \
+          ln -s test_site_2 sites/test-site-2
+          bench --site test_site set-config host_name "http://test-site:8000"
+          jq -s '.[1] + .[0] + {host_name: "http://test-site-2:8000"}' \
             sites/test_site_2/site_config.json sites/test_site/site_config.json > site_config.json
           mv site_config.json sites/test_site_2/site_config.json
 
