@@ -1,6 +1,9 @@
 import { test, expect } from "../support";
 
-test("Desk loads Vazirmatn for Persian and keeps the default stack for English", async ({ page, desk }) => {
+test("Desk loads Vazirmatn for Persian and keeps the default stack for English", async ({
+	page,
+	desk,
+}) => {
 	await page.goto("/desk/website");
 	await desk.ready();
 
