@@ -222,7 +222,7 @@ export default class PersianDatePicker {
 		const current = event.target.closest("[data-iso]")?.dataset.iso;
 		const offset = { ArrowRight: -1, ArrowLeft: 1, ArrowDown: 7, ArrowUp: -7 }[event.key];
 		if (!current || !offset) return;
-		e.preventDefault();
+		event.preventDefault();
 		const [year, month, day] = current.split("-").map(Number);
 		const date = new Date(Date.UTC(year, month - 1, day) + offset * DAY_IN_MS);
 		const isoDate = date.toISOString().slice(0, 10);
