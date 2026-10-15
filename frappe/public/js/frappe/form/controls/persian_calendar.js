@@ -96,7 +96,7 @@ function getPersianCalendarMonth(year, month, locale) {
 				weekday: (date.getUTCDay() + 1) % 7,
 				isCurrentMonth: persianDate.year === year && persianDate.month === month,
 			};
-		}),
+		})
 	);
 
 	return { year, month, monthName, yearLabel, weekdayLabels, weekdayAriaLabels, weeks };
@@ -124,7 +124,9 @@ function parsePersianDate(value) {
 			day: Number(match[3]),
 		});
 		const roundTrip = getPersianDateFromISO(isoDate);
-		return roundTrip.year === Number(match[1]) && roundTrip.month === Number(match[2]) && roundTrip.day === Number(match[3])
+		return roundTrip.year === Number(match[1]) &&
+			roundTrip.month === Number(match[2]) &&
+			roundTrip.day === Number(match[3])
 			? isoDate
 			: null;
 	} catch {

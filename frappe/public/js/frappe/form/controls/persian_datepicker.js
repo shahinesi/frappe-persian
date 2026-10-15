@@ -38,7 +38,13 @@ export default class PersianDatePicker {
 				this.hide();
 			}
 		};
-		this.onFocus = () => this.show(this.value);
+		this.onFocus = () => {
+			if (this.skipOpenOnFocus) {
+				this.skipOpenOnFocus = false;
+				return;
+			}
+			this.show(this.value);
+		};
 		this.input.addEventListener("focus", this.onFocus);
 	}
 
@@ -70,6 +76,12 @@ export default class PersianDatePicker {
 		this.wrapper.hidden = true;
 		document.removeEventListener("mousedown", this.onOutsideClick);
 		document.removeEventListener("focusin", this.onFocusOutside);
+	}
+
+	focusInput() {
+		this.skipOpenOnFocus = true;
+		this.input.focus({ preventScroll: true });
+		if (document.activeElement === this.input) this.skipOpenOnFocus = false;
 	}
 
 	position() {
@@ -131,7 +143,12 @@ export default class PersianDatePicker {
 			button.className = "datepicker--cell -day-";
 			button.dataset.iso = cell.isoDate;
 			button.textContent = cell.dayLabel || digits.format(cell.persianDate.day);
-			button.setAttribute("aria-label", `${month.weekdayAriaLabels[cell.weekday]} ${button.textContent} ${month.monthName} ${month.yearLabel}`);
+			button.setAttribute(
+				"aria-label",
+				`${month.weekdayAriaLabels[cell.weekday]} ${button.textContent} ${
+					month.monthName
+				} ${month.yearLabel}`
+			);
 			button.setAttribute("aria-pressed", String(this.isSelected(cell.isoDate)));
 			if (!cell.isCurrentMonth) button.classList.add("-other-month-");
 			if (cell.isoDate === frappe.datetime.get_today()) button.classList.add("-current-");
@@ -197,9 +214,9 @@ export default class PersianDatePicker {
 
 	handleKeydown(event) {
 		if (event.key === "Escape") {
-			e.preventDefault();
+			event.preventDefault();
 			this.hide();
-			this.input.focus();
+			this.focusInput();
 			return;
 		}
 		const current = event.target.closest("[data-iso]")?.dataset.iso;
@@ -209,7 +226,9 @@ export default class PersianDatePicker {
 		const [year, month, day] = current.split("-").map(Number);
 		const date = new Date(Date.UTC(year, month - 1, day) + offset * DAY_IN_MS);
 		const isoDate = date.toISOString().slice(0, 10);
-		if (getPersianDateFromISO(isoDate).month !== getPersianDateFromISO(this.visibleDate).month) {
+		if (
+			getPersianDateFromISO(isoDate).month !== getPersianDateFromISO(this.visibleDate).month
+		) {
 			this.visibleDate = isoDate;
 			this.render();
 		}
@@ -229,11 +248,13 @@ export default class PersianDatePicker {
 			this.rangeStart = null;
 			this.onSelect(values);
 			this.hide();
+			this.focusInput();
 			return;
 		}
 		this.value = isoDate;
 		this.onSelect(isoDate);
 		this.hide();
+		this.focusInput();
 	}
 
 	destroy() {

@@ -113,6 +113,12 @@ test.describe("Date Control", () => {
 		await page.keyboard.press("Enter");
 
 		await expect.poll(() => get_date_value(page)).toBe("2026-10-02");
+		await expect(page.locator(".persian-datepicker")).toBeHidden();
+		await expect(input).toBeFocused();
+		await input.click();
+		await page.keyboard.press("Escape");
+		await expect(page.locator(".persian-datepicker")).toBeHidden();
+		await expect(input).toBeFocused();
 		await input.fill("۱۴۰۵/۰۷/۰۹");
 		await input.dispatchEvent("change");
 		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");

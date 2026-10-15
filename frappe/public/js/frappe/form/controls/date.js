@@ -1,8 +1,4 @@
-import {
-	formatPersianDate,
-	isPersianLocale,
-	parsePersianDate,
-} from "./persian_calendar.js";
+import { formatPersianDate, isPersianLocale, parsePersianDate } from "./persian_calendar.js";
 import PersianDatePicker from "./persian_datepicker.js";
 
 frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlData {
