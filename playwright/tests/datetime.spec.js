@@ -188,12 +188,9 @@ test.describe("Control Date, Time and DateTime", () => {
 				expect(state.inputValue).toMatch(/2026/);
 				expect(state.parsedValue).toBe(state.storedValue);
 			} finally {
-				await page.evaluate(
-					(language) => {
-						frappe.boot.user.language = language;
-					},
-					originalLanguage
-				);
+				await page.evaluate((language) => {
+					frappe.boot.user.language = language;
+				}, originalLanguage);
 			}
 		});
 
