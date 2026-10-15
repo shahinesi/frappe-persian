@@ -155,4 +155,39 @@ test.describe("Date Control", () => {
 		await page.locator('.datepicker--days .datepicker--cell[data-date="2"]').click();
 		await expect.poll(() => get_date_value(page)).toBe("2026-10-02");
 	});
+
+	test("Persian date filters use the Jalali control and retain ISO values", async ({
+		page,
+	}) => {
+		await page.goto("/desk/website");
+		await page.evaluate(async () => {
+			frappe.boot.user.language = "fa";
+			await frappe.model.with_doctype("ToDo");
+			const parent = $("<div>").appendTo("body");
+			window.persian_date_filter_group = new frappe.ui.FilterGroup({
+				parent,
+				doctype: "ToDo",
+				on_change: () => {},
+			});
+			await window.persian_date_filter_group.add_filter(
+				"ToDo",
+				"date",
+				"=",
+				"2026-10-01"
+			);
+		});
+
+		const input = page.locator(".filter-field input").first();
+		await expect(input).toHaveValue("۱۴۰۵/۰۷/۰۹");
+		await input.click();
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"مهر ۱۴۰۵"
+		);
+		await page.locator('.persian-datepicker [data-iso="2026-10-02"]').click();
+
+		const filters = await page.evaluate(() =>
+			window.persian_date_filter_group.get_filters()
+		);
+		expect(filters).toEqual([["ToDo", "date", "=", "2026-10-02"]]);
+	});
 });
