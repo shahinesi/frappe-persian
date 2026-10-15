@@ -156,6 +156,21 @@ test.describe("Date Control", () => {
 		await expect.poll(() => get_date_value(page)).toBe("2026-10-02");
 	});
 
+	test("removes the Persian datepicker when its form control is detached", async ({
+		page,
+		desk,
+	}) => {
+		await page.evaluate(() => {
+			frappe.boot.user.language = "fa";
+		});
+		await get_dialog(desk);
+		await desk.get_field("date", "Date").click();
+		await expect(page.locator(".persian-datepicker")).toHaveCount(1);
+
+		await page.evaluate(() => cur_dialog.$wrapper.remove());
+		await expect(page.locator(".persian-datepicker")).toHaveCount(0);
+	});
+
 	test("Persian date filters use the Jalali control and retain ISO values", async ({ page }) => {
 		await page.goto("/desk/website");
 		await page.evaluate(async () => {

@@ -5,6 +5,19 @@ import {
 } from "./persian_calendar.js";
 
 const DAY_IN_MS = 24 * 60 * 60 * 1000;
+const instances = new Set();
+let detachedInputObserver;
+
+function observeDetachedInputs() {
+	if (detachedInputObserver || !document.body) return;
+
+	detachedInputObserver = new MutationObserver(() => {
+		for (const instance of instances) {
+			if (!instance.input.isConnected) instance.destroy();
+		}
+	});
+	detachedInputObserver.observe(document.body, { childList: true, subtree: true });
+}
 
 /** Native Desk calendar UI backed by browser calendar data and ISO dates. */
 export default class PersianDatePicker {
@@ -26,6 +39,8 @@ export default class PersianDatePicker {
 		this.wrapper.dir = "rtl";
 		this.wrapper.hidden = true;
 		document.body.appendChild(this.wrapper);
+		instances.add(this);
+		observeDetachedInputs();
 		this.wrapper.addEventListener("click", (event) => this.handleClick(event));
 		this.wrapper.addEventListener("keydown", (event) => this.handleKeydown(event));
 		this.onOutsideClick = (event) => {
@@ -270,5 +285,10 @@ export default class PersianDatePicker {
 		this.input.removeEventListener("focus", this.onFocus);
 		this.input.removeEventListener("click", this.onClick);
 		this.wrapper.remove();
+		instances.delete(this);
+		if (!instances.size && detachedInputObserver) {
+			detachedInputObserver.disconnect();
+			detachedInputObserver = null;
+		}
 	}
 }
