@@ -173,9 +173,12 @@ test.describe("Date Control", () => {
 		const input = page.locator(".filter-field input").first();
 		await expect(input).toHaveValue("۱۴۰۵/۰۷/۰۹");
 		await input.click();
-		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
-			"مهر ۱۴۰۵"
-		);
+		const picker = page.locator(".persian-datepicker");
+		await expect(picker.locator(".datepicker--nav-title")).toHaveText("مهر ۱۴۰۵");
+		const pickerBounds = await picker.boundingBox();
+		const viewport = page.viewportSize();
+		expect(pickerBounds.x).toBeGreaterThanOrEqual(0);
+		expect(pickerBounds.x + pickerBounds.width).toBeLessThanOrEqual(viewport.width);
 		await page.locator('.persian-datepicker [data-iso="2026-10-02"]').click();
 
 		const filters = await page.evaluate(() => window.persian_date_filter_group.get_filters());

@@ -90,8 +90,11 @@ export default class PersianDatePicker {
 
 	position() {
 		const rect = this.input.getBoundingClientRect();
+		const pickerWidth = this.wrapper.getBoundingClientRect().width;
+		const maxLeft = Math.max(8, window.innerWidth - pickerWidth - 8);
+		const left = Math.min(Math.max(8, rect.left), maxLeft);
 		this.wrapper.style.top = `${rect.bottom + 4}px`;
-		this.wrapper.style.left = `${Math.max(8, rect.left)}px`;
+		this.wrapper.style.left = `${left}px`;
 	}
 
 	changeMonth(offset) {

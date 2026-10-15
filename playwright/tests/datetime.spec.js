@@ -131,6 +131,72 @@ test.describe("Control Date, Time and DateTime", () => {
 	});
 
 	test.describe("DateTime formats", () => {
+		test("Persian DateTime keeps Gregorian formatting and its timezone-aware ISO value", async ({
+			page,
+			desk,
+		}) => {
+			await page.goto("/desk/website");
+			await desk.ready();
+
+			const originalLanguage = await page.evaluate(() => frappe.boot.user.language);
+			try {
+				const state = await page.evaluate(() => {
+					frappe.boot.user.language = "fa";
+
+					const dialog = new frappe.ui.Dialog({
+						fields: [
+							{
+								fieldname: "datetime",
+								fieldtype: "Datetime",
+								label: "Datetime",
+							},
+						],
+					});
+					dialog.show();
+
+					const control = dialog.get_field("datetime");
+					const storedValue = "2026-10-01 00:15:30";
+					control.value = storedValue;
+					control.set_input(storedValue);
+
+					const inputValue = control.input.value;
+					control.$input.trigger("focus");
+					const result = {
+						language: frappe.boot.user.language,
+						usePersianCalendar: control.usePersianCalendar,
+						fieldtype: control.df.fieldtype,
+						usesPersianPicker: Boolean(control.persianDatePicker),
+						usesTimepicker: Boolean(control.datepicker.timepicker),
+						pickerClass: control.datepicker.$datepicker[0].className,
+						storedValue,
+						inputValue,
+						formattedValue: control.format_for_input(storedValue),
+						parsedValue: control.parse(inputValue),
+					};
+
+					dialog.hide();
+					return result;
+				});
+
+				expect(state.language).toBe("fa");
+				expect(state.usePersianCalendar).toBe(true);
+				expect(state.fieldtype).toBe("Datetime");
+				expect(state.usesPersianPicker).toBe(false);
+				expect(state.usesTimepicker).toBe(true);
+				expect(state.pickerClass).not.toContain("persian-datepicker");
+				expect(state.inputValue).toBe(state.formattedValue);
+				expect(state.inputValue).toMatch(/2026/);
+				expect(state.parsedValue).toBe(state.storedValue);
+			} finally {
+				await page.evaluate(
+					(language) => {
+						frappe.boot.user.language = language;
+					},
+					originalLanguage
+				);
+			}
+		});
+
 		const datetime_formats = [
 			{
 				date_format: "dd.mm.yyyy",
