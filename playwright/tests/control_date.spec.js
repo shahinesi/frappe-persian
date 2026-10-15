@@ -156,9 +156,7 @@ test.describe("Date Control", () => {
 		await expect.poll(() => get_date_value(page)).toBe("2026-10-02");
 	});
 
-	test("Persian date filters use the Jalali control and retain ISO values", async ({
-		page,
-	}) => {
+	test("Persian date filters use the Jalali control and retain ISO values", async ({ page }) => {
 		await page.goto("/desk/website");
 		await page.evaluate(async () => {
 			frappe.boot.user.language = "fa";
@@ -169,12 +167,7 @@ test.describe("Date Control", () => {
 				doctype: "ToDo",
 				on_change: () => {},
 			});
-			await window.persian_date_filter_group.add_filter(
-				"ToDo",
-				"date",
-				"=",
-				"2026-10-01"
-			);
+			await window.persian_date_filter_group.add_filter("ToDo", "date", "=", "2026-10-01");
 		});
 
 		const input = page.locator(".filter-field input").first();
@@ -185,9 +178,7 @@ test.describe("Date Control", () => {
 		);
 		await page.locator('.persian-datepicker [data-iso="2026-10-02"]').click();
 
-		const filters = await page.evaluate(() =>
-			window.persian_date_filter_group.get_filters()
-		);
+		const filters = await page.evaluate(() => window.persian_date_filter_group.get_filters());
 		expect(filters).toEqual([["ToDo", "date", "=", "2026-10-02"]]);
 	});
 });
