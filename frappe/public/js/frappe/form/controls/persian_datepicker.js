@@ -45,7 +45,11 @@ export default class PersianDatePicker {
 			}
 			this.show(this.value);
 		};
+		this.onClick = () => {
+			if (this.wrapper.hidden) this.show(this.value);
+		};
 		this.input.addEventListener("focus", this.onFocus);
+		this.input.addEventListener("click", this.onClick);
 	}
 
 	setValue(value) {
@@ -261,6 +265,7 @@ export default class PersianDatePicker {
 	destroy() {
 		this.hide();
 		this.input.removeEventListener("focus", this.onFocus);
+		this.input.removeEventListener("click", this.onClick);
 		this.wrapper.remove();
 	}
 }

@@ -116,6 +116,7 @@ test.describe("Date Control", () => {
 		await expect(page.locator(".persian-datepicker")).toBeHidden();
 		await expect(input).toBeFocused();
 		await input.click();
+		await expect(page.locator(".persian-datepicker")).toBeVisible();
 		await page.keyboard.press("Escape");
 		await expect(page.locator(".persian-datepicker")).toBeHidden();
 		await expect(input).toBeFocused();
