@@ -1,4 +1,4 @@
-import { test, expect } from "../support";
+import { test, expect, TEST_USER } from "../support";
 
 test.describe("Date Control", () => {
 	test.beforeEach(async ({ page, desk }) => {
@@ -198,5 +198,33 @@ test.describe("Date Control", () => {
 
 		const filters = await page.evaluate(() => window.persian_date_filter_group.get_filters());
 		expect(filters).toEqual([["ToDo", "date", "=", "2026-10-02"]]);
+	});
+
+	test("Persian calendar works in the standard ToDo Desk form", async ({
+		page,
+		desk,
+		admin,
+	}) => {
+		const user = await admin.get_doc("User", TEST_USER);
+		const originalLanguage = user.data.language;
+
+		try {
+			await admin.set_value("User", TEST_USER, { language: "fa" });
+			await desk.new_form("ToDo");
+
+			const input = desk.get_field("date", "Date");
+			await page.evaluate(() => cur_frm.set_value("date", "2026-10-01"));
+			await expect.poll(() => page.evaluate(() => cur_frm.doc.date)).toBe("2026-10-01");
+			await expect(input).toHaveValue("۱۴۰۵/۰۷/۰۹");
+
+			await input.click();
+			const picker = page.locator(".persian-datepicker:visible");
+			await expect(picker.locator(".datepicker--nav-title")).toHaveText("مهر ۱۴۰۵");
+			await picker.locator('[data-iso="2026-10-02"]').click();
+			await expect.poll(() => page.evaluate(() => cur_frm.doc.date)).toBe("2026-10-02");
+			await expect(input).toHaveValue("۱۴۰۵/۰۷/۱۰");
+		} finally {
+			await admin.set_value("User", TEST_USER, { language: originalLanguage });
+		}
 	});
 });
