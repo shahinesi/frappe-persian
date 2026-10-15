@@ -25,7 +25,7 @@ export default class PersianDatePicker {
 		this.wrapper.setAttribute("aria-label", __("Persian calendar"));
 		this.wrapper.dir = "rtl";
 		this.wrapper.hidden = true;
-		this.input.parentElement.appendChild(this.wrapper);
+		document.body.appendChild(this.wrapper);
 		this.wrapper.addEventListener("click", (event) => this.handleClick(event));
 		this.wrapper.addEventListener("keydown", (event) => this.handleKeydown(event));
 		this.onOutsideClick = (event) => {
