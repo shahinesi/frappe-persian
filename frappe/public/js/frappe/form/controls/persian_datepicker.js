@@ -138,6 +138,11 @@ export default class PersianDatePicker {
 		nav.className = "datepicker--nav";
 		const previous = this.createNavButton("prev", "‹", "Previous month");
 		const next = this.createNavButton("next", "›", "Next month");
+		const cellMonthFormatter = new Intl.DateTimeFormat(this.locale, {
+			calendar: "persian",
+			month: "long",
+			timeZone: "UTC",
+		});
 		const titleElement = document.createElement("div");
 		titleElement.className = "datepicker--nav-title";
 		titleElement.tabIndex = -1;
@@ -168,8 +173,10 @@ export default class PersianDatePicker {
 			button.setAttribute(
 				"aria-label",
 				`${month.weekdayAriaLabels[cell.weekday]} ${button.textContent} ${
-					month.monthName
-				} ${month.yearLabel}`
+					cell.isCurrentMonth
+						? month.monthName
+						: cellMonthFormatter.format(new Date(`${cell.isoDate}T00:00:00Z`))
+				} ${digits.format(cell.persianDate.year)}`
 			);
 			button.setAttribute("aria-pressed", String(this.isSelected(cell.isoDate)));
 			if (!cell.isCurrentMonth) button.classList.add("-other-month-");

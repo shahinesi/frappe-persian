@@ -1,8 +1,4 @@
-import {
-	formatPersianDate,
-	isPersianLocale,
-	parsePersianDate,
-} from "./persian_calendar.js";
+import { formatPersianDate, isPersianLocale, parsePersianDate } from "./persian_calendar.js";
 import PersianDatePicker from "./persian_datepicker.js";
 
 frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.ControlData {
@@ -62,14 +58,9 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 		} else {
 			this.value = value;
 		}
-		if (this.value) {
-			let formatted = this.format_for_input(this.value[0], this.value[1]);
-			this.$input && this.$input.val(formatted);
-			this.persianDatePicker?.setValue(this.value);
-		} else {
-			this.$input && this.$input.val("");
-			this.persianDatePicker?.setValue(null);
-		}
+		const range = Array.isArray(this.value) ? this.value : null;
+		this.$input?.val(range ? this.format_for_input(...range) : "");
+		this.persianDatePicker?.setValue(range);
 		this.set_disp_area(value || "");
 		this.set_mandatory && this.set_mandatory(value);
 	}
@@ -95,16 +86,13 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 		}
 	}
 	format_for_input(value1, value2) {
-		if (value1 && value2) {
-			if (this.usePersianCalendar) {
-				value1 = formatPersianDate(value1, this.locale);
-				value2 = formatPersianDate(value2, this.locale);
-				return __("{0} to {1}", [value1, value2]);
-			}
-			value1 = frappe.datetime.str_to_user(value1, false, true);
-			value2 = frappe.datetime.str_to_user(value2, false, true);
-			return __("{0} to {1}", [value1, value2]);
-		}
-		return "";
+		if (!value1 || !value2) return "";
+		const formatted = this.usePersianCalendar
+			? [formatPersianDate(value1, this.locale), formatPersianDate(value2, this.locale)]
+			: [
+					frappe.datetime.str_to_user(value1, false, true),
+					frappe.datetime.str_to_user(value2, false, true),
+				];
+		return __("{0} to {1}", formatted);
 	}
 };
