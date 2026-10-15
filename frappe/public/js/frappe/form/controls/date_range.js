@@ -92,7 +92,7 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 			: [
 					frappe.datetime.str_to_user(value1, false, true),
 					frappe.datetime.str_to_user(value2, false, true),
-				];
+			  ];
 		return __("{0} to {1}", formatted);
 	}
 };

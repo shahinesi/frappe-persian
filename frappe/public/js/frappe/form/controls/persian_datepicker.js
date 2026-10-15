@@ -13,7 +13,11 @@ function observeDetachedInputs() {
 
 	detachedInputObserver = new MutationObserver(() => {
 		for (const instance of instances) {
-			if (!instance.input.isConnected) instance.destroy();
+			if (instance.input.isConnected) {
+				instance.wasConnected = true;
+			} else if (instance.wasConnected) {
+				instance.destroy();
+			}
 		}
 	});
 	detachedInputObserver.observe(document.body, { childList: true, subtree: true });
