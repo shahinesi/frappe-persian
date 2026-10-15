@@ -1,3 +1,10 @@
+import {
+	formatPersianDate,
+	isPersianLocale,
+	parsePersianDate,
+} from "./persian_calendar.js";
+import PersianDatePicker from "./persian_datepicker.js";
+
 frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.ControlData {
 	make_input() {
 		super.make_input();
@@ -14,6 +21,9 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 		var me = this;
 
 		let lang = frappe.boot?.user?.language;
+		this.locale = (lang || "en").replace("_", "-");
+		if (this.locale.toLowerCase() === "fa") this.locale = "fa-IR";
+		this.usePersianCalendar = isPersianLocale(this.locale);
 		this.datepicker_options = {
 			language: $.fn.datepicker.language[lang] ? lang : "en",
 			range: true,
@@ -29,6 +39,19 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 		};
 	}
 	set_datepicker() {
+		if (this.usePersianCalendar) {
+			this.persianDatePicker = new PersianDatePicker({
+				input: this.input,
+				locale: this.locale,
+				range: true,
+				minDate: this.df.min_date,
+				maxDate: this.df.max_date,
+				onSelect: ([fromDate, toDate]) => {
+					this.$input.val(this.format_for_input(fromDate, toDate)).trigger("change");
+				},
+			});
+			return;
+		}
 		this.$input.datepicker(this.datepicker_options);
 		this.datepicker = this.$input.data("datepicker");
 	}
@@ -42,8 +65,10 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 		if (this.value) {
 			let formatted = this.format_for_input(this.value[0], this.value[1]);
 			this.$input && this.$input.val(formatted);
+			this.persianDatePicker?.setValue(this.value);
 		} else {
 			this.$input && this.$input.val("");
+			this.persianDatePicker?.setValue(null);
 		}
 		this.set_disp_area(value || "");
 		this.set_mandatory && this.set_mandatory(value);
@@ -57,6 +82,11 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 
 		if (value && value.includes(",")) {
 			var vals = value.split(",");
+			if (this.usePersianCalendar) {
+				const fromDate = parsePersianDate(vals[0].trim());
+				const toDate = parsePersianDate(vals[vals.length - 1].trim());
+				return fromDate && toDate ? [fromDate, toDate] : undefined;
+			}
 			var from_date = moment(frappe.datetime.user_to_obj(vals[0])).format("YYYY-MM-DD");
 			var to_date = moment(frappe.datetime.user_to_obj(vals[vals.length - 1])).format(
 				"YYYY-MM-DD"
@@ -66,6 +96,11 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 	}
 	format_for_input(value1, value2) {
 		if (value1 && value2) {
+			if (this.usePersianCalendar) {
+				value1 = formatPersianDate(value1, this.locale);
+				value2 = formatPersianDate(value2, this.locale);
+				return __("{0} to {1}", [value1, value2]);
+			}
 			value1 = frappe.datetime.str_to_user(value1, false, true);
 			value2 = frappe.datetime.str_to_user(value2, false, true);
 			return __("{0} to {1}", [value1, value2]);
