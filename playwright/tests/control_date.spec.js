@@ -74,4 +74,78 @@ test.describe("Date Control", () => {
 		const today = await page.evaluate(() => frappe.datetime.get_today());
 		await expect.poll(() => get_date_value(page)).toBe(today);
 	});
+
+	test("Persian Desk datepicker presents Jalali dates and keeps ISO values", async ({
+		page,
+		desk,
+	}) => {
+		await page.evaluate(() => {
+			frappe.boot.user.language = "fa";
+		});
+		await get_dialog(desk);
+		await page.evaluate(() => {
+			cur_dialog.fields_dict.date.set_value("2026-10-01");
+		});
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");
+
+		const input = desk.get_field("date", "Date");
+		await expect(input).toHaveValue("۱۴۰۵/۰۷/۰۹");
+		await input.click();
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"مهر ۱۴۰۵"
+		);
+		await expect(page.locator(".persian-datepicker .datepicker--day-name")).toHaveText([
+			"ش",
+			"ی",
+			"د",
+			"س",
+			"چ",
+			"پ",
+			"ج",
+		]);
+		const selectedDay = page.locator('.persian-datepicker [data-iso="2026-10-01"]');
+		await selectedDay.focus();
+		await selectedDay.press("ArrowLeft");
+		await expect(page.locator(".persian-datepicker :focus")).toHaveAttribute(
+			"data-iso",
+			"2026-10-02"
+		);
+		await page.keyboard.press("Enter");
+
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-02");
+		await input.fill("۱۴۰۵/۰۷/۰۹");
+		await input.dispatchEvent("change");
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");
+		await page.evaluate(() => {
+			cur_dialog.fields_dict.date.set_value("2025-03-20");
+		});
+		await expect.poll(() => get_date_value(page)).toBe("2025-03-20");
+		await expect(input).toHaveValue("۱۴۰۳/۱۲/۳۰");
+		await input.click();
+		await page.locator('.persian-datepicker [data-action="next"]').click();
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"فروردین ۱۴۰۴"
+		);
+		await page.locator('.persian-datepicker [data-action="prev"]').click();
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"اسفند ۱۴۰۳"
+		);
+	});
+
+	test("English Desk datepicker stays Gregorian", async ({ page, desk }) => {
+		await page.evaluate(() => {
+			frappe.boot.user.language = "en";
+		});
+		await get_dialog(desk);
+		await page.evaluate(() => {
+			cur_dialog.fields_dict.date.set_value("2026-10-01");
+		});
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");
+		await desk.get_field("date", "Date").click();
+
+		await expect(page.locator(".persian-datepicker")).toHaveCount(0);
+		await expect(page.locator(".datepicker--nav-title")).toContainText("October");
+		await page.locator('.datepicker--days .datepicker--cell[data-date="2"]').click();
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-02");
+	});
 });

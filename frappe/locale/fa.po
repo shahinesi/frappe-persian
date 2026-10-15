@@ -35595,6 +35595,15 @@ msgstr "به نسخه"
 msgid "ToDo"
 msgstr "لیست انجام کار"
 
+msgid "Next month"
+msgstr "ماه بعد"
+
+msgid "Persian calendar"
+msgstr "تقویم شمسی"
+
+msgid "Previous month"
+msgstr "ماه قبل"
+
 #: frappe/public/js/frappe/form/controls/date.js:61
 #: frappe/public/js/frappe/ui/filters/filter.js:856
 #: frappe/public/js/frappe/views/calendar/calendar.js:252

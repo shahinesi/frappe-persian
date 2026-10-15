@@ -121,4 +121,39 @@
 	}
 }
 
+.persian-datepicker {
+	display: block;
+	position: fixed;
+	direction: rtl;
+	max-width: calc(100vw - 16px);
+
+	&[hidden] {
+		display: none;
+	}
+
+	.datepicker--nav-action,
+	.datepicker--cell,
+	.datepicker--button {
+		border: 0;
+		font: inherit;
+	}
+
+	.datepicker--cell {
+		background: transparent;
+		cursor: pointer;
+
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.4;
+		}
+	}
+
+	.datepicker--cell:focus-visible,
+	.datepicker--nav-action:focus-visible,
+	.datepicker--button:focus-visible {
+		outline: 2px solid var(--primary-color);
+		outline-offset: 1px;
+	}
+}
+
 /*!rtl:end:ignore:datepicker*/
