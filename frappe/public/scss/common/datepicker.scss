@@ -126,6 +126,9 @@
 	position: fixed;
 	direction: rtl;
 	max-width: calc(100vw - 16px);
+	opacity: 1;
+	transform: none;
+	transition: none;
 
 	&[hidden] {
 		display: none;
