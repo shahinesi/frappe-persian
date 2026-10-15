@@ -215,6 +215,7 @@ export default class PersianDatePicker {
 	handleKeydown(event) {
 		if (event.key === "Escape") {
 			event.preventDefault();
+			event.stopPropagation();
 			this.hide();
 			this.focusInput();
 			return;
