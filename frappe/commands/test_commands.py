@@ -1080,13 +1080,13 @@ class TestTrimDatabase(IntegrationTestCase):
 		with tempfile.TemporaryDirectory() as cwd:
 			try:
 				os.chdir(cwd)
-				with patch.object(frappe.conf, "db_type", "mariadb", create=True):
+				with patch.dict(frappe.conf, {"db_type": "mariadb"}):
 					self.assertIn("tabDocType", frappe.commands.site.get_standard_tables())
 			finally:
 				os.chdir(original_cwd)
 
 	def test_sqlite_standard_tables_come_from_read_only_template_database(self):
-		with patch.object(frappe.conf, "db_type", "sqlite", create=True):
+		with patch.dict(frappe.conf, {"db_type": "sqlite"}):
 			tables = frappe.commands.site.get_standard_tables()
 
 		self.assertIn("tabDocType", tables)
