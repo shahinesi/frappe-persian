@@ -266,6 +266,10 @@ export default class PersianDatePicker {
 		const [year, month, day] = current.split("-").map(Number);
 		const date = new Date(Date.UTC(year, month - 1, day) + offset * DAY_IN_MS);
 		const isoDate = date.toISOString().slice(0, 10);
+		if (this.isDisabled(isoDate)) {
+			event.preventDefault();
+			return;
+		}
 		if (
 			getPersianDateFromISO(isoDate).month !== getPersianDateFromISO(this.visibleDate).month
 		) {

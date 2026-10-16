@@ -139,6 +139,34 @@ test.describe("Date Control", () => {
 		);
 	});
 
+	test("keyboard navigation keeps focus when crossing into a disabled month", async ({
+		page,
+		desk,
+	}) => {
+		await page.evaluate(() => {
+			frappe.boot.user.language = "fa";
+		});
+		await get_dialog(desk, { min_date: "2026-10-01" });
+		await page.evaluate(() => {
+			cur_dialog.fields_dict.date.set_value("2026-10-01");
+		});
+
+		const input = desk.get_field("date", "Date");
+		await input.click();
+		const firstAllowedDay = page.locator('.persian-datepicker [data-iso="2026-10-01"]');
+		await firstAllowedDay.focus();
+		await firstAllowedDay.press("ArrowRight");
+
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"مهر ۱۴۰۵"
+		);
+		await expect(page.locator(".persian-datepicker :focus")).toHaveAttribute(
+			"data-iso",
+			"2026-10-01"
+		);
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");
+	});
+
 	test("English Desk datepicker stays Gregorian", async ({ page, desk }) => {
 		await page.evaluate(() => {
 			frappe.boot.user.language = "en";
