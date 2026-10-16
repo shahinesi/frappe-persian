@@ -208,6 +208,34 @@ test.describe("Date Control", () => {
 		await expect(page.locator(".persian-datepicker")).toHaveCount(0);
 	});
 
+	test.describe("Persian date-only timezone safety", () => {
+		test.use({ timezoneId: "America/Los_Angeles" });
+
+		test("preserves the same ISO date for UTC and local Date objects", async ({
+			page,
+			desk,
+		}) => {
+			await page.evaluate(() => {
+				frappe.boot.user.language = "fa";
+			});
+			await get_dialog(desk);
+			const result = await page.evaluate(() => {
+				const control = cur_dialog.fields_dict.date;
+				return {
+					utcDate: control.format_for_input(new Date("2026-10-01")),
+					localDate: control.format_for_input(new Date(2026, 9, 1)),
+					parsedDate: control.parse("۱۴۰۵/۰۷/۰۹"),
+				};
+			});
+
+			expect(result).toEqual({
+				utcDate: "۱۴۰۵/۰۷/۰۹",
+				localDate: "۱۴۰۵/۰۷/۰۹",
+				parsedDate: "2026-10-01",
+			});
+		});
+	});
+
 	test("Persian date filters use the Jalali control and retain ISO values", async ({ page }) => {
 		await page.goto("/desk/website");
 		await page.evaluate(async () => {
