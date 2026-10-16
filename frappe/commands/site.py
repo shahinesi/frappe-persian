@@ -1616,6 +1616,7 @@ def get_base_tables() -> list[str]:
 
 def get_standard_tables():
 	import re
+
 	from frappe.modules.utils import get_app_path
 
 	tables = []

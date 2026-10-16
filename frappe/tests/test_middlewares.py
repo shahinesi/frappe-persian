@@ -30,4 +30,6 @@ class TestStaticDataMiddleware(UnitTestCase):
 				finally:
 					file.close()
 
-				self.assertEqual(middleware.get_directory_loader(sites_path)("../../../../outside.txt"), (None, None))
+				self.assertEqual(
+					middleware.get_directory_loader(sites_path)("../../../../outside.txt"), (None, None)
+				)
