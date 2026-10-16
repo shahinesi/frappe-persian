@@ -117,7 +117,6 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 	set_datepicker() {
 		if (this.usePersianCalendar && this.df.fieldtype === "Date") {
 			this.persianDatePickerPromise = loadPersianDatePicker().then((PersianDatePicker) => {
-				if (!this.input.isConnected) return;
 				this.persianDatePicker = new PersianDatePicker({
 					input: this.input,
 					locale: this.locale,

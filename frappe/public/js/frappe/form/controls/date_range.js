@@ -37,7 +37,6 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 	set_datepicker() {
 		if (this.usePersianCalendar) {
 			this.persianDatePickerPromise = loadPersianDatePicker().then((PersianDatePicker) => {
-				if (!this.input.isConnected) return;
 				this.persianDatePicker = new PersianDatePicker({
 					input: this.input,
 					locale: this.locale,
