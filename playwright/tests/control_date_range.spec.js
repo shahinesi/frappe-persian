@@ -77,13 +77,16 @@ test.describe("Date Range Control", () => {
 			"پ",
 			"ج",
 		]);
+		await expect(
+			page.locator('.persian-datepicker .datepicker--day-name[aria-label="شنبه"]')
+		).toHaveCount(1);
 		await expect(page.locator('.persian-datepicker [data-iso="2026-09-22"]')).toHaveAttribute(
 			"aria-label",
-			/۳۱ شهریور ۱۴۰۵/
+			/۱۴۰۵ شهریور ۳۱/
 		);
 		await expect(page.locator('.persian-datepicker [data-iso="2026-10-23"]')).toHaveAttribute(
 			"aria-label",
-			/۱ آبان ۱۴۰۵/
+			/۱۴۰۵ آبان ۱/
 		);
 		await page.locator('.persian-datepicker [data-iso="2026-10-01"]').click();
 		await page.locator('.persian-datepicker [data-iso="2026-10-02"]').click();

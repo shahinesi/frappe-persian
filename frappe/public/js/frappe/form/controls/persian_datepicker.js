@@ -142,9 +142,19 @@ export default class PersianDatePicker {
 		nav.className = "datepicker--nav";
 		const previous = this.createNavButton("prev", "‹", "Previous month");
 		const next = this.createNavButton("next", "›", "Next month");
-		const cellMonthFormatter = new Intl.DateTimeFormat(this.locale, {
+		const weekdayFormatter = new Intl.DateTimeFormat(this.locale, {
+			weekday: "long",
+			timeZone: "UTC",
+		});
+		const weekdayAriaLabels = Array.from({ length: 7 }, (_, index) =>
+			weekdayFormatter.format(new Date(Date.UTC(2023, 0, 7 + index)))
+		);
+		const cellDateFormatter = new Intl.DateTimeFormat(this.locale, {
 			calendar: "persian",
+			weekday: "long",
+			day: "numeric",
 			month: "long",
+			year: "numeric",
 			timeZone: "UTC",
 		});
 		const titleElement = document.createElement("div");
@@ -160,8 +170,8 @@ export default class PersianDatePicker {
 			const dayName = document.createElement("span");
 			dayName.className = "datepicker--day-name";
 			dayName.textContent = label;
-			dayName.setAttribute("aria-label", month.weekdayAriaLabels[index]);
-			dayName.title = month.weekdayAriaLabels[index];
+			dayName.setAttribute("aria-label", weekdayAriaLabels[index]);
+			dayName.title = weekdayAriaLabels[index];
 			names.appendChild(dayName);
 		});
 
@@ -173,14 +183,10 @@ export default class PersianDatePicker {
 			button.type = "button";
 			button.className = "datepicker--cell -day-";
 			button.dataset.iso = cell.isoDate;
-			button.textContent = cell.dayLabel || digits.format(cell.persianDate.day);
+			button.textContent = digits.format(cell.persianDate.day);
 			button.setAttribute(
 				"aria-label",
-				`${month.weekdayAriaLabels[cell.weekday]} ${button.textContent} ${
-					cell.isCurrentMonth
-						? month.monthName
-						: cellMonthFormatter.format(new Date(`${cell.isoDate}T00:00:00Z`))
-				} ${digits.format(cell.persianDate.year)}`
+				cellDateFormatter.format(new Date(`${cell.isoDate}T00:00:00Z`))
 			);
 			button.setAttribute("aria-pressed", String(this.isSelected(cell.isoDate)));
 			if (!cell.isCurrentMonth) button.classList.add("-other-month-");

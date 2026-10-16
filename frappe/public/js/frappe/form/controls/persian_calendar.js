@@ -72,17 +72,7 @@ function getPersianCalendarMonth(year, month, locale) {
 		timeZone: "UTC",
 	}).format(first);
 	const yearLabel = PERSIAN_DIGITS.format(year);
-	const weekdayFormatter = new Intl.DateTimeFormat(locale, {
-		weekday: "long",
-		timeZone: "UTC",
-	});
 	const weekdayLabels = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
-	const weekdayAriaLabels = [];
-	for (let index = 0; index < 7; index++) {
-		const date = new Date(Date.UTC(2023, 0, 7 + index));
-		const label = weekdayFormatter.format(date);
-		weekdayAriaLabels.push(label);
-	}
 
 	const weeks = Array.from({ length: 6 }, (_, weekIndex) =>
 		Array.from({ length: 7 }, (_, dayIndex) => {
@@ -92,14 +82,12 @@ function getPersianCalendarMonth(year, month, locale) {
 			return {
 				isoDate,
 				persianDate,
-				dayLabel: PERSIAN_DIGITS.format(persianDate.day),
-				weekday: (date.getUTCDay() + 1) % 7,
 				isCurrentMonth: persianDate.year === year && persianDate.month === month,
 			};
 		})
 	);
 
-	return { year, month, monthName, yearLabel, weekdayLabels, weekdayAriaLabels, weeks };
+	return { year, month, monthName, yearLabel, weekdayLabels, weeks };
 }
 
 function formatPersianDate(isoDate, locale) {
