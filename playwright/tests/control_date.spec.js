@@ -234,6 +234,29 @@ test.describe("Date Control", () => {
 				parsedDate: "2026-10-01",
 			});
 		});
+
+		test("keeps UTC date-only model values canonical in the native control", async ({
+			page,
+			desk,
+		}) => {
+			await page.evaluate(() => {
+				frappe.boot.user.language = "fa";
+			});
+			await get_dialog(desk);
+			const result = await page.evaluate(() => {
+				const control = cur_dialog.fields_dict.date;
+				control.set_input(new Date("2026-10-01"));
+				return {
+					displayed: control.get_input_value(),
+					backendValue: control.get_value(),
+				};
+			});
+
+			expect(result).toEqual({
+				displayed: "۱۴۰۵/۰۷/۰۹",
+				backendValue: "2026-10-01",
+			});
+		});
 	});
 
 	test("Persian date filters use the Jalali control and retain ISO values", async ({ page }) => {
