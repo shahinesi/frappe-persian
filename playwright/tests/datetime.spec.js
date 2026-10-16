@@ -175,7 +175,9 @@ test.describe("Control Date, Time and DateTime", () => {
 							const formatted = persianDigits.format(
 								Number(dateParts.find((item) => item.type === part).value)
 							);
-							return index ? formatted.padStart(2, persianDigits.format(0)) : formatted;
+							return index
+								? formatted.padStart(2, persianDigits.format(0))
+								: formatted;
 						})
 						.join("/");
 					const result = {
