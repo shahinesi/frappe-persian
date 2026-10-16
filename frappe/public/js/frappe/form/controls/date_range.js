@@ -48,8 +48,9 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 						this.$input.val(this.format_for_input(fromDate, toDate)).trigger("change");
 					},
 				});
+				const wasFocused = document.activeElement === this.input;
 				this.refresh();
-				if (document.activeElement === this.input) this.persianDatePicker.show(this.value);
+				if (wasFocused) this.persianDatePicker.show(this.value);
 			});
 			return;
 		}
