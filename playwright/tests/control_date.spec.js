@@ -91,6 +91,15 @@ test.describe("Date Control", () => {
 		const input = desk.get_field("date", "Date");
 		await expect(input).toHaveValue("۱۴۰۵/۰۷/۰۹");
 		await input.click();
+		await expect
+			.poll(() =>
+				page.evaluate(() =>
+					performance
+						.getEntriesByType("resource")
+						.some(({ name }) => name.includes("persian_datepicker.bundle"))
+				)
+			)
+			.toBe(true);
 		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
 			"مهر ۱۴۰۵"
 		);

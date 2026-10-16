@@ -1,5 +1,5 @@
 import { formatPersianDate, isPersianLocale, parsePersianDate } from "./persian_calendar.js";
-import PersianDatePicker from "./persian_datepicker.js";
+import { loadPersianDatePicker } from "./load_persian_datepicker.js";
 
 frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlData {
 	static trigger_change_on_input_event = false;
@@ -116,15 +116,22 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 
 	set_datepicker() {
 		if (this.usePersianCalendar && this.df.fieldtype === "Date") {
-			this.persianDatePicker = new PersianDatePicker({
-				input: this.input,
-				locale: this.locale,
-				minDate: this.df.min_date,
-				maxDate: this.df.max_date,
-				disabledDates: this.df.disabled_dates,
-				onSelect: (value) => {
-					this.$input.val(this.format_for_input(value)).trigger("change");
-				},
+			this.persianDatePickerPromise = loadPersianDatePicker().then((PersianDatePicker) => {
+				if (!this.input.isConnected) return;
+				this.persianDatePicker = new PersianDatePicker({
+					input: this.input,
+					locale: this.locale,
+					minDate: this.df.min_date,
+					maxDate: this.df.max_date,
+					disabledDates: this.df.disabled_dates,
+					onSelect: (value) => {
+						this.$input.val(this.format_for_input(value)).trigger("change");
+					},
+				});
+				this.set_formatted_input(this.get_value());
+				if (document.activeElement === this.input) {
+					this.persianDatePicker.show(this.get_value());
+				}
 			});
 			return;
 		}

@@ -267,7 +267,6 @@ export default class PersianDatePicker {
 		const date = new Date(Date.UTC(year, month - 1, day) + offset * DAY_IN_MS);
 		const isoDate = date.toISOString().slice(0, 10);
 		if (this.isDisabled(isoDate)) {
-			event.preventDefault();
 			return;
 		}
 		if (
