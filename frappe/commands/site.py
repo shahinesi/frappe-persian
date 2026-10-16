@@ -1619,6 +1619,14 @@ def get_standard_tables():
 
 	from frappe.modules.utils import get_app_path
 
+	if frappe.conf.db_type == "sqlite":
+		import sqlite3
+		from pathlib import Path
+
+		database_path = get_app_path("frappe", "database", "sqlite", "framework_sqlite.db")
+		with sqlite3.connect(f"{Path(database_path).as_uri()}?mode=ro&immutable=1", uri=True) as database:
+			return [row[0] for row in database.execute("SELECT name FROM sqlite_master WHERE type = 'table'")]
+
 	tables = []
 	sql_file = get_app_path(
 		"frappe",

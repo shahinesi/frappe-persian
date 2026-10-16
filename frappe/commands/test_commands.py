@@ -1085,6 +1085,14 @@ class TestTrimDatabase(IntegrationTestCase):
 			finally:
 				os.chdir(original_cwd)
 
+	def test_sqlite_standard_tables_come_from_read_only_template_database(self):
+		with patch.object(frappe.conf, "db_type", "sqlite"):
+			tables = frappe.commands.site.get_standard_tables()
+
+		self.assertIn("tabDocType", tables)
+		self.assertIn("tabSessions", tables)
+		self.assertIn("__Auth", tables)
+
 	def test_ghost_tables_include_deleted_doctype_tables(self):
 		doctype = new_doctype().insert().name
 		frappe.db.delete("DocType", {"name": doctype})
