@@ -246,15 +246,28 @@ test.describe("Date Control", () => {
 			const result = await page.evaluate(() => {
 				const control = cur_dialog.fields_dict.date;
 				control.set_input(new Date("2026-10-01"));
-				return {
+				const utcDateInput = {
 					displayed: control.get_input_value(),
 					backendValue: control.get_value(),
 				};
+				return control.set_value("2026-10-01").then(() => ({
+					utcDateInput,
+					modelValueInput: {
+						displayed: control.get_input_value(),
+						backendValue: control.get_value(),
+					},
+				}));
 			});
 
 			expect(result).toEqual({
-				displayed: "۱۴۰۵/۰۷/۰۹",
-				backendValue: "2026-10-01",
+				utcDateInput: {
+					displayed: "۱۴۰۵/۰۷/۰۹",
+					backendValue: "2026-10-01",
+				},
+				modelValueInput: {
+					displayed: "۱۴۰۵/۰۷/۰۹",
+					backendValue: "2026-10-01",
+				},
 			});
 		});
 	});
