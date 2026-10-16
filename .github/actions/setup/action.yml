@@ -248,6 +248,8 @@ runs:
         --db-name test_frappe \
         --db-password test_frappe \
         --verbose
+      # Avoid different worker processes lazily generating different encryption keys.
+      bench --site test_site execute frappe.utils.password.get_encryption_key > /dev/null
       if [ "$SITE_HOST" != "test_site" ]; then
         ln -s test_site "sites/$SITE_HOST"
       fi
