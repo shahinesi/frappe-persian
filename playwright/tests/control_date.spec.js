@@ -223,6 +223,23 @@ test.describe("Date Control", () => {
 			await picker.locator('[data-iso="2026-10-02"]').click();
 			await expect.poll(() => page.evaluate(() => cur_frm.doc.date)).toBe("2026-10-02");
 			await expect(input).toHaveValue("۱۴۰۵/۰۷/۱۰");
+
+			await page.evaluate(() =>
+				cur_frm.set_value("description", "Persian date persistence check")
+			);
+			await desk.save();
+			const savedDate = await page.evaluate(async () => {
+				const response = await frappe.call({
+					method: "frappe.client.get_value",
+					args: {
+						doctype: "ToDo",
+						filters: { name: cur_frm.doc.name },
+						fieldname: "date",
+					},
+				});
+				return response.message.date;
+			});
+			expect(savedDate).toBe("2026-10-02");
 		} finally {
 			await admin.set_value("User", TEST_USER, { language: originalLanguage });
 		}
