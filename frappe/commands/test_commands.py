@@ -1072,6 +1072,18 @@ class TestCommandUtils(IntegrationTestCase):
 
 
 class TestTrimDatabase(IntegrationTestCase):
+	def test_standard_tables_resolve_independent_of_working_directory(self):
+		import os
+		import tempfile
+
+		original_cwd = os.getcwd()
+		with tempfile.TemporaryDirectory() as cwd:
+			try:
+				os.chdir(cwd)
+				self.assertIn("tabUser", frappe.commands.site.get_standard_tables())
+			finally:
+				os.chdir(original_cwd)
+
 	def test_ghost_tables_include_deleted_doctype_tables(self):
 		doctype = new_doctype().insert().name
 		frappe.db.delete("DocType", {"name": doctype})

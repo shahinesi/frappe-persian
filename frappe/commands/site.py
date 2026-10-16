@@ -1616,12 +1616,10 @@ def get_base_tables() -> list[str]:
 
 def get_standard_tables():
 	import re
+	from frappe.modules.utils import get_app_path
 
 	tables = []
-	sql_file = os.path.join(
-		"..",
-		"apps",
-		"frappe",
+	sql_file = get_app_path(
 		"frappe",
 		"database",
 		frappe.conf.db_type,
