@@ -1,3 +1,5 @@
+import { formatPersianDate, parsePersianDate } from "./persian_calendar.js";
+
 frappe.ui.form.ControlDatetime = class ControlDatetime extends frappe.ui.form.ControlDate {
 	set_formatted_input(value) {
 		if (this.timepicker_only) return;
@@ -12,12 +14,15 @@ frappe.ui.form.ControlDatetime = class ControlDatetime extends frappe.ui.form.Co
 			value = frappe.datetime.now_datetime();
 		}
 		const should_refresh = this.last_value && this.last_value !== value;
+		const datepicker_value = this.usePersianCalendar
+			? this.get_user_datetime_for_picker(value)
+			: frappe.datetime.user_to_obj(this.format_for_input(value));
 		value = this.format_for_input(value);
 		this.$input && this.$input.val(value);
 		if (should_refresh) {
-			this.datepicker.selectDate(frappe.datetime.user_to_obj(value));
+			this.datepicker.selectDate(datepicker_value);
 		} else if (value) {
-			this.sync_datepicker_state(frappe.datetime.user_to_obj(value));
+			this.sync_datepicker_state(datepicker_value);
 		}
 	}
 
@@ -72,6 +77,10 @@ frappe.ui.form.ControlDatetime = class ControlDatetime extends frappe.ui.form.Co
 	}
 	parse(value) {
 		if (value) {
+			if (this.usePersianCalendar && this.df.fieldtype === "Datetime") {
+				const parsed = this.parse_persian_datetime(value);
+				if (parsed !== null) return parsed;
+			}
 			value = this.eval_expression(value, "datetime");
 
 			if (!frappe.datetime.is_system_time_zone()) {
@@ -84,8 +93,37 @@ frappe.ui.form.ControlDatetime = class ControlDatetime extends frappe.ui.form.Co
 		}
 		return value;
 	}
+	parse_persian_datetime(value) {
+		const match = /^\s*([\d۰-۹٠-٩]{4}[/-][\d۰-۹٠-٩]{1,2}[/-][\d۰-۹٠-٩]{1,2})\s+(.+?)\s*$/.exec(
+			value
+		);
+		if (!match) return null;
+
+		const isoDate = parsePersianDate(match[1]);
+		if (!isoDate) return null;
+		const userDate = moment(isoDate, "YYYY-MM-DD").format(
+			frappe.datetime.get_user_date_fmt().toUpperCase()
+		);
+		const userDatetime = frappe.datetime.user_to_str(`${userDate} ${match[2]}`);
+		return !frappe.datetime.is_system_time_zone()
+			? frappe.datetime.convert_to_system_tz(userDatetime, true)
+			: userDatetime;
+	}
+	get_user_datetime_for_picker(value) {
+		const userDatetime = frappe.datetime.convert_to_user_tz(value, false);
+		const userDate = userDatetime.format(frappe.datetime.get_user_date_fmt().toUpperCase());
+		const userTime = userDatetime.format(frappe.datetime.get_user_time_fmt());
+		return frappe.datetime.user_to_obj(`${userDate} ${userTime}`);
+	}
 	format_for_input(value) {
 		if (!value) return "";
+		if (this.usePersianCalendar && this.df.fieldtype === "Datetime") {
+			const userDatetime = frappe.datetime.convert_to_user_tz(value, false);
+			const isoDate = userDatetime.format("YYYY-MM-DD");
+			const date = formatPersianDate(isoDate, this.locale);
+			const time = userDatetime.format(frappe.datetime.get_user_time_fmt());
+			return `${date} ${time}`;
+		}
 		return frappe.datetime.str_to_user(value, false);
 	}
 	set_description() {

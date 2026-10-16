@@ -131,7 +131,7 @@ test.describe("Control Date, Time and DateTime", () => {
 	});
 
 	test.describe("DateTime formats", () => {
-		test("Persian DateTime keeps Gregorian formatting and its timezone-aware ISO value", async ({
+		test("Persian DateTime formats only its date as Jalali and keeps timezone-aware ISO values", async ({
 			page,
 			desk,
 		}) => {
@@ -161,6 +161,22 @@ test.describe("Control Date, Time and DateTime", () => {
 
 					const inputValue = control.input.value;
 					control.$input.trigger("focus");
+					const userDatetime = frappe.datetime.convert_to_user_tz(storedValue, false);
+					const dateParts = new Intl.DateTimeFormat("fa-IR-u-ca-persian-nu-latn", {
+						calendar: "persian",
+						year: "numeric",
+						month: "2-digit",
+						day: "2-digit",
+						timeZone: "UTC",
+					}).formatToParts(new Date(`${userDatetime.format("YYYY-MM-DD")}T00:00:00Z`));
+					const persianDigits = new Intl.NumberFormat("fa-IR", { useGrouping: false });
+					const expectedDate = ["year", "month", "day"]
+						.map((part) =>
+							persianDigits.format(
+								Number(dateParts.find((item) => item.type === part).value)
+							)
+						)
+						.join("/");
 					const result = {
 						language: frappe.boot.user.language,
 						usePersianCalendar: control.usePersianCalendar,
@@ -172,6 +188,8 @@ test.describe("Control Date, Time and DateTime", () => {
 						inputValue,
 						formattedValue: control.format_for_input(storedValue),
 						parsedValue: control.parse(inputValue),
+						expectedDate,
+						expectedTime: userDatetime.format(frappe.datetime.get_user_time_fmt()),
 					};
 
 					dialog.hide();
@@ -185,7 +203,7 @@ test.describe("Control Date, Time and DateTime", () => {
 				expect(state.usesTimepicker).toBe(true);
 				expect(state.pickerClass).not.toContain("persian-datepicker");
 				expect(state.inputValue).toBe(state.formattedValue);
-				expect(state.inputValue).toMatch(/2026/);
+				expect(state.inputValue).toBe(`${state.expectedDate} ${state.expectedTime}`);
 				expect(state.parsedValue).toBe(state.storedValue);
 			} finally {
 				await page.evaluate((language) => {
