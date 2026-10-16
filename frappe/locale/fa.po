@@ -36959,7 +36959,6 @@ msgstr ""
 #. Description of the 'Value to Validate' (Data) field in DocType 'Onboarding
 #. Step'
 #: frappe/desk/doctype/onboarding_step/onboarding_step.json
-#, python-format
 msgid "Use % for any non empty value."
 msgstr "از % برای هر مقدار غیرخالی استفاده کنید."
 
@@ -42394,4 +42393,36 @@ msgstr "{} در PATH یافت نشد! این مورد برای تهیه نسخه
 #: frappe/public/js/frappe/file_uploader/WebLink.vue:4
 msgid "← Back to upload files"
 msgstr "← بازگشت به آپلود فایل ها"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:58
+msgid "Good morning"
+msgstr "صبح بخیر"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:58
+msgid "Good morning, {0}"
+msgstr "صبح بخیر، {0}"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:60
+msgid "Good afternoon"
+msgstr "بعدازظهر بخیر"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:60
+msgid "Good afternoon, {0}"
+msgstr "بعدازظهر بخیر، {0}"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:62
+msgid "Good evening"
+msgstr "عصر بخیر"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:62
+msgid "Good evening, {0}"
+msgstr "عصر بخیر، {0}"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:82
+msgid "{0} of {1} done · {2} skipped"
+msgstr "{0} از {1} مورد انجام شده · {2} مورد رد شده"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:83
+msgid "{0} of {1} steps done"
+msgstr "{0} از {1} مرحله انجام شده"
 
