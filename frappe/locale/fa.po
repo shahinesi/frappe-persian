@@ -2251,7 +2251,7 @@ msgstr "تمام ارسال ها"
 #: frappe/public/js/frappe/ui/sidebar/dock.js:336
 #: frappe/public/js/frappe/ui/sidebar/sidebar_header.js:234
 msgid "All apps"
-msgstr ""
+msgstr "همهٔ برنامه‌ها"
 
 #: frappe/public/js/print_format_builder/components/inspector/TableFieldInspector.vue:76
 msgid "All available columns added."
