@@ -30621,7 +30621,7 @@ msgstr "شناسه توالی"
 #: frappe/public/js/frappe/form/doctype_settings/tabs/naming.js:135
 #: frappe/public/js/frappe/ui/naming_series.js:34
 msgid "Series"
-msgstr ""
+msgstr "سری"
 
 #. Label of the naming_series_options (Text) field in DocType 'Document Naming
 #. Settings'
