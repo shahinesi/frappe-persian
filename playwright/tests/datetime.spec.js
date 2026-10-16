@@ -171,11 +171,12 @@ test.describe("Control Date, Time and DateTime", () => {
 					}).formatToParts(new Date(`${userDatetime.format("YYYY-MM-DD")}T00:00:00Z`));
 					const persianDigits = new Intl.NumberFormat("fa-IR", { useGrouping: false });
 					const expectedDate = ["year", "month", "day"]
-						.map((part) =>
-							persianDigits.format(
+						.map((part, index) => {
+							const formatted = persianDigits.format(
 								Number(dateParts.find((item) => item.type === part).value)
-							)
-						)
+							);
+							return index ? formatted.padStart(2, persianDigits.format(0)) : formatted;
+						})
 						.join("/");
 					const result = {
 						language: frappe.boot.user.language,

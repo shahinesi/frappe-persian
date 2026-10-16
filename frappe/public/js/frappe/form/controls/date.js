@@ -274,6 +274,9 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 
 	parse(value) {
 		if (value) {
+			if (value instanceof Date) {
+				return getISODateFromDate(value) || "";
+			}
 			if (this.usePersianCalendar && this.df.fieldtype === "Date") {
 				const parsed = parsePersianDate(value);
 				if (parsed) return parsed;
