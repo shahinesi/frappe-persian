@@ -25,6 +25,23 @@ function toISODate(date) {
 	return date.toISOString().slice(0, 10);
 }
 
+function getISODateFromDate(value) {
+	if (!(value instanceof Date)) return value;
+	if (Number.isNaN(value.getTime())) return "";
+
+	// Date-only ISO values are UTC midnight; datepicker dates use local midnight.
+	const isUTCDateOnly =
+		value.getUTCHours() === 0 &&
+		value.getUTCMinutes() === 0 &&
+		value.getUTCSeconds() === 0 &&
+		value.getUTCMilliseconds() === 0;
+
+	if (isUTCDateOnly) return toISODate(value);
+
+	const pad = (part) => String(part).padStart(2, "0");
+	return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}`;
+}
+
 function getPersianDateFromISO(isoDate) {
 	const parts = PERSIAN_PARTS.formatToParts(parseISODate(isoDate));
 	const getPart = (type) => Number(parts.find((part) => part.type === type)?.value);
@@ -128,6 +145,7 @@ function isPersianLocale(locale) {
 
 export {
 	formatPersianDate,
+	getISODateFromDate,
 	getISODateFromPersianDate,
 	getPersianCalendarMonth,
 	getPersianDateFromISO,

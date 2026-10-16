@@ -1,21 +1,10 @@
-import { formatPersianDate, isPersianLocale, parsePersianDate } from "./persian_calendar.js";
+import {
+	formatPersianDate,
+	getISODateFromDate,
+	isPersianLocale,
+	parsePersianDate,
+} from "./persian_calendar.js";
 import { loadPersianDatePicker } from "./load_persian_datepicker.js";
-
-function getISODate(value) {
-	if (!(value instanceof Date)) return value;
-	if (Number.isNaN(value.getTime())) return "";
-
-	// Date-only ISO values are UTC midnight; datepicker dates use local midnight.
-	const isUTCDateOnly =
-		value.getUTCHours() === 0 &&
-		value.getUTCMinutes() === 0 &&
-		value.getUTCSeconds() === 0 &&
-		value.getUTCMilliseconds() === 0;
-
-	return isUTCDateOnly
-		? value.toISOString().slice(0, 10)
-		: moment(value).format("YYYY-MM-DD");
-}
 
 frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlData {
 	static trigger_change_on_input_event = false;
@@ -35,7 +24,7 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 
 		super.set_formatted_input(value);
 		if (this.persianDatePicker) {
-			const isoDate = getISODate(value);
+			const isoDate = getISODateFromDate(value);
 			this.persianDatePicker.setValue(isoDate || null);
 			this.$input.val(this.format_for_input(isoDate));
 			return;
@@ -299,7 +288,7 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 	format_for_input(value) {
 		if (value) {
 			if (this.usePersianCalendar && this.df.fieldtype === "Date") {
-				const isoDate = getISODate(value);
+				const isoDate = getISODateFromDate(value);
 				return formatPersianDate(isoDate, this.locale);
 			}
 			return frappe.datetime.str_to_user(value, false, true);
