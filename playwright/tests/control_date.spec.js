@@ -227,7 +227,13 @@ test.describe("Date Control", () => {
 			await page.evaluate(() =>
 				cur_frm.set_value("description", "Persian date persistence check")
 			);
-			await desk.save();
+			const saved = page.waitForResponse((response) =>
+				response.url().includes("/api/method/frappe.desk.form.save.savedocs")
+			);
+			await page.evaluate(() => document.activeElement?.blur());
+			const saveLabel = await page.evaluate(() => __("Save"));
+			await page.getByRole("button", { name: saveLabel, exact: true }).click();
+			await saved;
 			const savedDate = await page.evaluate(async () => {
 				const response = await frappe.call({
 					method: "frappe.client.get_value",
