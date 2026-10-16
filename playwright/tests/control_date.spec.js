@@ -112,6 +112,12 @@ test.describe("Date Control", () => {
 			"پ",
 			"ج",
 		]);
+		const previousMonthDay = page.locator('.persian-datepicker [data-iso="2026-09-19"]');
+		await expect(previousMonthDay).toHaveAttribute("aria-label", /شهریور/);
+		await expect(previousMonthDay).not.toHaveAttribute("aria-label", /مهر/);
+		const nextMonthDay = page.locator('.persian-datepicker [data-iso="2026-10-23"]');
+		await expect(nextMonthDay).toHaveAttribute("aria-label", /آبان/);
+		await expect(nextMonthDay).not.toHaveAttribute("aria-label", /مهر/);
 		const selectedDay = page.locator('.persian-datepicker [data-iso="2026-10-01"]');
 		await selectedDay.focus();
 		await selectedDay.press("ArrowLeft");
