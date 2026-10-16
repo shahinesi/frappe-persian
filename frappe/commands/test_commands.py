@@ -1080,7 +1080,8 @@ class TestTrimDatabase(IntegrationTestCase):
 		with tempfile.TemporaryDirectory() as cwd:
 			try:
 				os.chdir(cwd)
-				self.assertIn("tabUser", frappe.commands.site.get_standard_tables())
+				with patch.object(frappe.conf, "db_type", "mariadb"):
+					self.assertIn("tabDocType", frappe.commands.site.get_standard_tables())
 			finally:
 				os.chdir(original_cwd)
 
