@@ -131,6 +131,90 @@ test.describe("Control Date, Time and DateTime", () => {
 	});
 
 	test.describe("DateTime formats", () => {
+		test("Persian DateTime formats only its date as Jalali and keeps timezone-aware ISO values", async ({
+			page,
+			desk,
+		}) => {
+			await page.goto("/desk/website");
+			await desk.ready();
+
+			const originalLanguage = await page.evaluate(() => frappe.boot.user.language);
+			try {
+				const state = await page.evaluate(() => {
+					frappe.boot.user.language = "fa";
+
+					const dialog = new frappe.ui.Dialog({
+						fields: [
+							{
+								fieldname: "datetime",
+								fieldtype: "Datetime",
+								label: "Datetime",
+							},
+						],
+					});
+					dialog.show();
+
+					const control = dialog.get_field("datetime");
+					const storedValue = "2026-10-01 00:15:30";
+					control.value = storedValue;
+					control.set_input(storedValue);
+
+					const inputValue = control.input.value;
+					control.$input.trigger("focus");
+					const userDatetime = frappe.datetime.convert_to_user_tz(storedValue, false);
+					const dateParts = new Intl.DateTimeFormat("fa-IR-u-ca-persian-nu-latn", {
+						calendar: "persian",
+						year: "numeric",
+						month: "2-digit",
+						day: "2-digit",
+						timeZone: "UTC",
+					}).formatToParts(new Date(`${userDatetime.format("YYYY-MM-DD")}T00:00:00Z`));
+					const persianDigits = new Intl.NumberFormat("fa-IR", { useGrouping: false });
+					const expectedDate = ["year", "month", "day"]
+						.map((part, index) => {
+							const formatted = persianDigits.format(
+								Number(dateParts.find((item) => item.type === part).value)
+							);
+							return index
+								? formatted.padStart(2, persianDigits.format(0))
+								: formatted;
+						})
+						.join("/");
+					const result = {
+						language: frappe.boot.user.language,
+						usePersianCalendar: control.usePersianCalendar,
+						fieldtype: control.df.fieldtype,
+						usesPersianPicker: Boolean(control.persianDatePicker),
+						usesTimepicker: Boolean(control.datepicker.timepicker),
+						pickerClass: control.datepicker.$datepicker[0].className,
+						storedValue,
+						inputValue,
+						formattedValue: control.format_for_input(storedValue),
+						parsedValue: control.parse(inputValue),
+						expectedDate,
+						expectedTime: userDatetime.format(frappe.datetime.get_user_time_fmt()),
+					};
+
+					dialog.hide();
+					return result;
+				});
+
+				expect(state.language).toBe("fa");
+				expect(state.usePersianCalendar).toBe(true);
+				expect(state.fieldtype).toBe("Datetime");
+				expect(state.usesPersianPicker).toBe(false);
+				expect(state.usesTimepicker).toBe(true);
+				expect(state.pickerClass).not.toContain("persian-datepicker");
+				expect(state.inputValue).toBe(state.formattedValue);
+				expect(state.inputValue).toBe(`${state.expectedDate} ${state.expectedTime}`);
+				expect(state.parsedValue).toBe(state.storedValue);
+			} finally {
+				await page.evaluate((language) => {
+					frappe.boot.user.language = language;
+				}, originalLanguage);
+			}
+		});
+
 		const datetime_formats = [
 			{
 				date_format: "dd.mm.yyyy",

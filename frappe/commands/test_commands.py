@@ -1072,6 +1072,27 @@ class TestCommandUtils(IntegrationTestCase):
 
 
 class TestTrimDatabase(IntegrationTestCase):
+	def test_standard_tables_resolve_independent_of_working_directory(self):
+		import os
+		import tempfile
+
+		original_cwd = os.getcwd()
+		with tempfile.TemporaryDirectory() as cwd:
+			try:
+				os.chdir(cwd)
+				with patch.dict(frappe.conf, {"db_type": "mariadb"}):
+					self.assertIn("tabDocType", frappe.commands.site.get_standard_tables())
+			finally:
+				os.chdir(original_cwd)
+
+	def test_sqlite_standard_tables_come_from_read_only_template_database(self):
+		with patch.dict(frappe.conf, {"db_type": "sqlite"}):
+			tables = frappe.commands.site.get_standard_tables()
+
+		self.assertIn("tabDocType", tables)
+		self.assertIn("tabSessions", tables)
+		self.assertIn("__Auth", tables)
+
 	def test_ghost_tables_include_deleted_doctype_tables(self):
 		doctype = new_doctype().insert().name
 		frappe.db.delete("DocType", {"name": doctype})

@@ -1,3 +1,11 @@
+import {
+	formatPersianDate,
+	getISODateFromDate,
+	isPersianLocale,
+	parsePersianDate,
+} from "./persian_calendar.js";
+import { loadPersianDatePicker } from "./load_persian_datepicker.js";
+
 frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlData {
 	static trigger_change_on_input_event = false;
 	make_input() {
@@ -15,6 +23,12 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 		}
 
 		super.set_formatted_input(value);
+		if (this.persianDatePicker) {
+			const isoDate = getISODateFromDate(value);
+			this.persianDatePicker.setValue(isoDate || null);
+			this.$input.val(this.format_for_input(isoDate));
+			return;
+		}
 		if (this.timepicker_only) return;
 		if (!this.datepicker) return;
 		if (!value) {
@@ -51,8 +65,10 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 		// webformTODO:
 		let sysdefaults = frappe.boot.sysdefaults;
 
-		let lang = "en";
-		frappe.boot.user && (lang = frappe.boot.user.language);
+		let lang = frappe.boot.user?.language || "en";
+		this.locale = lang.replace("_", "-");
+		if (this.locale.toLowerCase() === "fa") this.locale = "fa-IR";
+		this.usePersianCalendar = isPersianLocale(this.locale);
 		if (!$.fn.datepicker.language[lang]) {
 			lang = "en";
 		}
@@ -104,6 +120,25 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 	}
 
 	set_datepicker() {
+		if (this.usePersianCalendar && this.df.fieldtype === "Date") {
+			this.persianDatePickerPromise = loadPersianDatePicker().then((PersianDatePicker) => {
+				this.persianDatePicker = new PersianDatePicker({
+					input: this.input,
+					locale: this.locale,
+					minDate: this.df.min_date,
+					maxDate: this.df.max_date,
+					disabledDates: this.df.disabled_dates,
+					onSelect: (value) => {
+						this.$input.val(this.format_for_input(value)).trigger("change");
+					},
+				});
+				this.set_formatted_input(this.get_value());
+				if (document.activeElement === this.input) {
+					this.persianDatePicker.show(this.get_value());
+				}
+			});
+			return;
+		}
 		this.$input.datepicker(this.datepicker_options);
 		this.datepicker = this.$input.data("datepicker");
 
@@ -239,6 +274,14 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 
 	parse(value) {
 		if (value) {
+			if (value instanceof Date) {
+				return getISODateFromDate(value) || "";
+			}
+			if (this.usePersianCalendar && this.df.fieldtype === "Date") {
+				const parsed = parsePersianDate(value);
+				if (parsed) return parsed;
+				if (/^\d{4}-\d{2}-\d{2}$/.test(value.trim())) return value.trim();
+			}
 			if (value == "Invalid date") {
 				return "";
 			}
@@ -247,6 +290,10 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 	}
 	format_for_input(value) {
 		if (value) {
+			if (this.usePersianCalendar && this.df.fieldtype === "Date") {
+				const isoDate = getISODateFromDate(value);
+				return formatPersianDate(isoDate, this.locale);
+			}
 			return frappe.datetime.str_to_user(value, false, true);
 		}
 		return "";

@@ -1,0 +1,13 @@
+@font-face {
+	font-family: "Vazirmatn";
+	src: url("/assets/frappe/css/fonts/vazirmatn/Vazirmatn-wght.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+html:lang(fa) {
+	--font-stack: "Vazirmatn", "InterVariable", "Inter", -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+}

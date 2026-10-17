@@ -1,4 +1,4 @@
-import { test, expect } from "../support";
+import { test, expect, TEST_USER } from "../support";
 
 test.describe("Date Control", () => {
 	test.beforeEach(async ({ page, desk }) => {
@@ -73,5 +73,288 @@ test.describe("Date Control", () => {
 
 		const today = await page.evaluate(() => frappe.datetime.get_today());
 		await expect.poll(() => get_date_value(page)).toBe(today);
+	});
+
+	test("Persian Desk datepicker presents Jalali dates and keeps ISO values", async ({
+		page,
+		desk,
+	}) => {
+		await page.evaluate(() => {
+			frappe.boot.user.language = "fa";
+		});
+		await get_dialog(desk);
+		await page.evaluate(() => {
+			cur_dialog.fields_dict.date.set_value("2026-10-01");
+		});
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");
+
+		const input = desk.get_field("date", "Date");
+		await expect(input).toHaveValue("۱۴۰۵/۰۷/۰۹");
+		await input.click();
+		await expect
+			.poll(() =>
+				page.evaluate(() =>
+					performance
+						.getEntriesByType("resource")
+						.some(({ name }) => name.includes("persian_datepicker.bundle"))
+				)
+			)
+			.toBe(true);
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"مهر ۱۴۰۵"
+		);
+		await expect(page.locator(".persian-datepicker .datepicker--day-name")).toHaveText([
+			"ش",
+			"ی",
+			"د",
+			"س",
+			"چ",
+			"پ",
+			"ج",
+		]);
+		const previousMonthDay = page.locator('.persian-datepicker [data-iso="2026-09-19"]');
+		await expect(previousMonthDay).toHaveAttribute("aria-label", /شهریور/);
+		await expect(previousMonthDay).not.toHaveAttribute("aria-label", /مهر/);
+		const nextMonthDay = page.locator('.persian-datepicker [data-iso="2026-10-23"]');
+		await expect(nextMonthDay).toHaveAttribute("aria-label", /آبان/);
+		await expect(nextMonthDay).not.toHaveAttribute("aria-label", /مهر/);
+		const selectedDay = page.locator('.persian-datepicker [data-iso="2026-10-01"]');
+		await selectedDay.focus();
+		await selectedDay.press("ArrowLeft");
+		await expect(page.locator(".persian-datepicker :focus")).toHaveAttribute(
+			"data-iso",
+			"2026-10-02"
+		);
+		await page.keyboard.press("Enter");
+
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-02");
+		await expect(page.locator(".persian-datepicker")).toBeHidden();
+		await expect(input).toBeFocused();
+		await input.click();
+		await expect(page.locator(".persian-datepicker")).toBeVisible();
+		await page.keyboard.press("Escape");
+		await expect(page.locator(".persian-datepicker")).toBeHidden();
+		await expect(input).toBeFocused();
+		await input.fill("۱۴۰۵/۰۷/۰۹");
+		await input.dispatchEvent("change");
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");
+		await page.evaluate(() => {
+			cur_dialog.fields_dict.date.set_value("2025-03-20");
+		});
+		await expect.poll(() => get_date_value(page)).toBe("2025-03-20");
+		await expect(input).toHaveValue("۱۴۰۳/۱۲/۳۰");
+		await input.click();
+		await page.locator('.persian-datepicker [data-action="next"]').click();
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"فروردین ۱۴۰۴"
+		);
+		await page.locator('.persian-datepicker [data-action="prev"]').click();
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"اسفند ۱۴۰۳"
+		);
+	});
+
+	test("keyboard navigation keeps focus when crossing into a disabled month", async ({
+		page,
+		desk,
+	}) => {
+		await page.evaluate(() => {
+			frappe.boot.user.language = "fa";
+		});
+		await get_dialog(desk, { min_date: "2026-10-01" });
+		await page.evaluate(() => {
+			cur_dialog.fields_dict.date.set_value("2026-10-01");
+		});
+
+		const input = desk.get_field("date", "Date");
+		await input.click();
+		const firstAllowedDay = page.locator('.persian-datepicker [data-iso="2026-10-01"]');
+		await firstAllowedDay.focus();
+		await firstAllowedDay.press("ArrowRight");
+
+		await expect(page.locator(".persian-datepicker .datepicker--nav-title")).toHaveText(
+			"مهر ۱۴۰۵"
+		);
+		await expect(page.locator(".persian-datepicker :focus")).toHaveAttribute(
+			"data-iso",
+			"2026-10-01"
+		);
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");
+	});
+
+	test("English Desk datepicker stays Gregorian", async ({ page, desk }) => {
+		await page.evaluate(() => {
+			frappe.boot.user.language = "en";
+		});
+		await get_dialog(desk);
+		await page.evaluate(() => {
+			cur_dialog.fields_dict.date.set_value("2026-10-01");
+		});
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-01");
+		await desk.get_field("date", "Date").click();
+
+		await expect(page.locator(".persian-datepicker")).toHaveCount(0);
+		await expect(page.locator(".datepicker--nav-title")).toContainText("October");
+		await page.locator('.datepicker--days .datepicker--cell[data-date="2"]').click();
+		await expect.poll(() => get_date_value(page)).toBe("2026-10-02");
+	});
+
+	test("removes the Persian datepicker when its form control is detached", async ({
+		page,
+		desk,
+	}) => {
+		await page.evaluate(() => {
+			frappe.boot.user.language = "fa";
+		});
+		await get_dialog(desk);
+		await desk.get_field("date", "Date").click();
+		await expect(page.locator(".persian-datepicker")).toHaveCount(1);
+
+		await page.evaluate(() => cur_dialog.$wrapper.remove());
+		await expect(page.locator(".persian-datepicker")).toHaveCount(0);
+	});
+
+	test.describe("Persian date-only timezone safety", () => {
+		test.use({ timezoneId: "America/Los_Angeles" });
+
+		test("preserves the same ISO date for UTC and local Date objects", async ({
+			page,
+			desk,
+		}) => {
+			await page.evaluate(() => {
+				frappe.boot.user.language = "fa";
+			});
+			await get_dialog(desk);
+			const result = await page.evaluate(() => {
+				const control = cur_dialog.fields_dict.date;
+				return {
+					utcDate: control.format_for_input(new Date("2026-10-01")),
+					localDate: control.format_for_input(new Date(2026, 9, 1)),
+					parsedDate: control.parse("۱۴۰۵/۰۷/۰۹"),
+				};
+			});
+
+			expect(result).toEqual({
+				utcDate: "۱۴۰۵/۰۷/۰۹",
+				localDate: "۱۴۰۵/۰۷/۰۹",
+				parsedDate: "2026-10-01",
+			});
+		});
+
+		test("keeps UTC date-only model values canonical in the native control", async ({
+			page,
+			desk,
+		}) => {
+			await page.evaluate(() => {
+				frappe.boot.user.language = "fa";
+			});
+			await get_dialog(desk);
+			const result = await page.evaluate(() => {
+				const control = cur_dialog.fields_dict.date;
+				control.set_input(new Date("2026-10-01"));
+				const utcDateInput = {
+					displayed: control.get_input_value(),
+					backendValue: control.get_value(),
+				};
+				return control.set_value("2026-10-01").then(() => ({
+					utcDateInput,
+					modelValueInput: {
+						displayed: control.get_input_value(),
+						backendValue: control.get_value(),
+					},
+				}));
+			});
+
+			expect(result).toEqual({
+				utcDateInput: {
+					displayed: "۱۴۰۵/۰۷/۰۹",
+					backendValue: "2026-10-01",
+				},
+				modelValueInput: {
+					displayed: "۱۴۰۵/۰۷/۰۹",
+					backendValue: "2026-10-01",
+				},
+			});
+		});
+	});
+
+	test("Persian date filters use the Jalali control and retain ISO values", async ({ page }) => {
+		await page.goto("/desk/website");
+		await page.evaluate(async () => {
+			frappe.boot.user.language = "fa";
+			await frappe.model.with_doctype("ToDo");
+			const parent = $("<div>").appendTo("body");
+			window.persian_date_filter_group = new frappe.ui.FilterGroup({
+				parent,
+				doctype: "ToDo",
+				on_change: () => {},
+			});
+			await window.persian_date_filter_group.add_filter("ToDo", "date", "=", "2026-10-01");
+		});
+
+		const input = page.locator(".filter-field input").first();
+		await expect(input).toHaveValue("۱۴۰۵/۰۷/۰۹");
+		await input.click();
+		const picker = page.locator(".persian-datepicker:visible");
+		await expect(picker.locator(".datepicker--nav-title")).toHaveText("مهر ۱۴۰۵");
+		const pickerBounds = await picker.boundingBox();
+		const viewport = page.viewportSize();
+		expect(pickerBounds.x).toBeGreaterThanOrEqual(0);
+		expect(pickerBounds.x + pickerBounds.width).toBeLessThanOrEqual(viewport.width);
+		await picker.locator('[data-iso="2026-10-02"]').click();
+
+		const filters = await page.evaluate(() => window.persian_date_filter_group.get_filters());
+		expect(filters).toEqual([["ToDo", "date", "=", "2026-10-02"]]);
+	});
+
+	test("Persian calendar works in the standard ToDo Desk form", async ({
+		page,
+		desk,
+		admin,
+	}) => {
+		const user = await admin.get_doc("User", TEST_USER);
+		const originalLanguage = user.data.language;
+
+		try {
+			await admin.set_value("User", TEST_USER, { language: "fa" });
+			await desk.new_form("ToDo");
+
+			const input = desk.get_field("date", "Date");
+			await page.evaluate(() => cur_frm.set_value("date", "2026-10-01"));
+			await expect.poll(() => page.evaluate(() => cur_frm.doc.date)).toBe("2026-10-01");
+			await expect(input).toHaveValue("۱۴۰۵/۰۷/۰۹");
+
+			await input.click();
+			const picker = page.locator(".persian-datepicker:visible");
+			await expect(picker.locator(".datepicker--nav-title")).toHaveText("مهر ۱۴۰۵");
+			await picker.locator('[data-iso="2026-10-02"]').click();
+			await expect.poll(() => page.evaluate(() => cur_frm.doc.date)).toBe("2026-10-02");
+			await expect(input).toHaveValue("۱۴۰۵/۰۷/۱۰");
+
+			await page.evaluate(() =>
+				cur_frm.set_value("description", "Persian date persistence check")
+			);
+			const saved = page.waitForResponse((response) =>
+				response.url().includes("/api/method/frappe.desk.form.save.savedocs")
+			);
+			await page.evaluate(() => document.activeElement?.blur());
+			const saveLabel = await page.evaluate(() => __("Save"));
+			await page.getByRole("button", { name: saveLabel, exact: true }).click();
+			await saved;
+			const savedDate = await page.evaluate(async () => {
+				const response = await frappe.call({
+					method: "frappe.client.get_value",
+					args: {
+						doctype: "ToDo",
+						filters: { name: cur_frm.doc.name },
+						fieldname: "date",
+					},
+				});
+				return response.message.date;
+			});
+			expect(savedDate).toBe("2026-10-02");
+		} finally {
+			await admin.set_value("User", TEST_USER, { language: originalLanguage });
+		}
 	});
 });

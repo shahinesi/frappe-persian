@@ -35,16 +35,26 @@ inputs:
     default: mariadb
   db-root-password:
     required: true
+  site-host:
+    description: 'Valid HTTP host used to route requests to the test site'
+    required: false
+    default: test_site
 
 runs:
   using: "composite"
   steps:
   - shell: bash -e {0}
     run: |
-      # Add 'test_site' to /etc/hosts & setup git config
-      echo "127.0.0.1 test_site" | sudo tee -a /etc/hosts
+      # Keep the bench site name separate from its HTTP host when needed.
+      if [ "$SITE_HOST" = "test_site" ]; then
+        echo "127.0.0.1 test_site" | sudo tee -a /etc/hosts
+      else
+        echo "127.0.0.1 test_site $SITE_HOST" | sudo tee -a /etc/hosts
+      fi
       git config --global init.defaultBranch main
       git config --global advice.detachedHead false
+    env:
+      SITE_HOST: ${{ inputs.site-host }}
 
   - name: Clone
     uses: actions/checkout@v6
@@ -196,6 +206,7 @@ runs:
       DB: ${{ inputs.db }}
       BUILD_ASSETS: ${{ inputs.build-assets }}
       ENABLE_SERVER_SCRIPTS: ${{ inputs.enable-server-scripts }}
+      SITE_HOST: ${{ inputs.site-host }}
     run: |
       # Create Site (asset build is CPU-bound and independent of the DB, so
       # build it in the background while the site is being created)
@@ -237,8 +248,13 @@ runs:
         --db-name test_frappe \
         --db-password test_frappe \
         --verbose
+      # Avoid different worker processes lazily generating different encryption keys.
+      bench --site test_site execute frappe.utils.password.get_encryption_key > /dev/null
+      if [ "$SITE_HOST" != "test_site" ]; then
+        ln -s test_site "sites/$SITE_HOST"
+      fi
       bench --site test_site set-config allow_tests 1 --parse
-      bench --site test_site set-config host_name "http://test_site:8000"
+      bench --site test_site set-config host_name "http://$SITE_HOST:8000"
       bench --site test_site set-config auto_email_id "test@example.com"
       bench --site test_site set-config mail_server localhost
       bench --site test_site set-config mail_port 2525 --parse
