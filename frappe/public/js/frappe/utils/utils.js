@@ -2334,6 +2334,7 @@ Object.assign(frappe.utils, {
 	},
 	eval_expression(value, number_format) {
 		if (typeof value === "string") {
+			value = convert_to_english_digits(value);
 			const parsed_components = value.match(/[^\d.,]+|[\d.,]+/g);
 			var parsed_value = value;
 			if (parsed_components !== null) {
