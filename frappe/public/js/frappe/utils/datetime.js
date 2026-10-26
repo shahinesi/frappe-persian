@@ -141,7 +141,9 @@ $.extend(frappe.datetime, {
 	},
 
 	obj_to_user: function (d) {
-		return moment(d).format(frappe.datetime.get_user_date_fmt().toUpperCase());
+		const date_obj = moment(d);
+		const format = frappe.datetime.get_user_date_fmt().toUpperCase();
+		return format_in_persian_calendar(date_obj, format) || date_obj.format(format);
 	},
 
 	get_diff: function (d1, d2) {

@@ -26,6 +26,7 @@ test.describe("Utils", () => {
 					date: frappe.datetime.str_to_user("2026-03-21", false, true),
 					datetime: frappe.datetime.str_to_user("2026-03-21 20:30:00"),
 					datetimeCell: frappe.form.formatters.Datetime("2026-03-21 20:30:00"),
+					objectDate: frappe.datetime.obj_to_user(new Date(2026, 2, 21)),
 					persianGlobalDate: frappe.datetime.global_date_format("2026-03-21"),
 					parsedPersianInput: frappe.datetime.user_to_str("۱۴۰۵-۰۱-۰۱"),
 					parsedArabicInput: frappe.datetime.user_to_str("١٤٠٥-٠١-٠١"),
@@ -34,6 +35,7 @@ test.describe("Utils", () => {
 						return {
 							date: frappe.datetime.str_to_user("2026-03-21", false, true),
 							datetimeCell: frappe.form.formatters.Datetime("2026-03-21 20:30:00"),
+							objectDate: frappe.datetime.obj_to_user(new Date(2026, 2, 21)),
 							globalDate: frappe.datetime.global_date_format("2026-03-21"),
 						};
 					})(),
@@ -50,12 +52,14 @@ test.describe("Utils", () => {
 			date: "1405-01-01",
 			datetime: "1405-01-02 00:00:00",
 			datetimeCell: "1405-01-02 00:00:00",
+			objectDate: "1405-01-01",
 			parsedPersianInput: "2026-03-21",
 			parsedArabicInput: "2026-03-21",
 			persianGlobalDate: "1 فروردین 1405",
 			englishDate: {
 				date: "2026-03-21",
 				datetimeCell: "2026-03-22 00:00:00",
+				objectDate: "2026-03-21",
 				globalDate: "21st March 2026",
 			},
 		});
