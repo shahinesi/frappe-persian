@@ -1,6 +1,13 @@
 function prettyDate(date, mini) {
 	if (!date) return "";
 
+	const formatCount = (count) => {
+		const lang = (frappe.boot?.lang || "en").replace(/_/g, "-");
+		return lang.toLowerCase().startsWith("fa")
+			? new Intl.NumberFormat(lang).format(count)
+			: count;
+	};
+
 	if (typeof date == "string") {
 		date = frappe.datetime.convert_to_user_tz(date);
 		date = new Date(
@@ -26,19 +33,19 @@ function prettyDate(date, mini) {
 			if (diff < 60) {
 				return __("now");
 			} else if (diff < 3600) {
-				return __("{0} m", [Math.floor(diff / 60)]);
+				return __("{0} m", [formatCount(Math.floor(diff / 60))]);
 			} else if (diff < 86400) {
-				return __("{0} h", [Math.floor(diff / 3600)]);
+				return __("{0} h", [formatCount(Math.floor(diff / 3600))]);
 			}
 		} else {
 			if (day_diff < 7) {
-				return __("{0} d", [day_diff]);
+				return __("{0} d", [formatCount(day_diff)]);
 			} else if (day_diff < 31) {
-				return __("{0} w", [Math.floor(day_diff / 7)]);
+				return __("{0} w", [formatCount(Math.floor(day_diff / 7))]);
 			} else if (day_diff < 365) {
-				return __("{0} M", [Math.floor(day_diff / 30)]);
+				return __("{0} M", [formatCount(Math.floor(day_diff / 30))]);
 			} else {
-				return __("{0} y", [Math.floor(day_diff / 365)]);
+				return __("{0} y", [formatCount(Math.floor(day_diff / 365))]);
 			}
 		}
 	} else {
@@ -49,29 +56,29 @@ function prettyDate(date, mini) {
 			} else if (diff < 120) {
 				return __("1 minute ago");
 			} else if (diff < 3600) {
-				return __("{0} minutes ago", [Math.floor(diff / 60)]);
+				return __("{0} minutes ago", [formatCount(Math.floor(diff / 60))]);
 			} else if (diff < 7200) {
 				return __("1 hour ago");
 			} else if (diff < 86400) {
-				return __("{0} hours ago", [Math.floor(diff / 3600)]);
+				return __("{0} hours ago", [formatCount(Math.floor(diff / 3600))]);
 			}
 		} else {
 			if (day_diff == 1) {
 				return __("yesterday");
 			} else if (day_diff < 7) {
-				return __("{0} days ago", [day_diff]);
+				return __("{0} days ago", [formatCount(day_diff)]);
 			} else if (day_diff < 14) {
 				return __("1 week ago");
 			} else if (day_diff < 31) {
-				return __("{0} weeks ago", [Math.floor(day_diff / 7)]);
+				return __("{0} weeks ago", [formatCount(Math.floor(day_diff / 7))]);
 			} else if (day_diff < 62) {
 				return __("1 month ago");
 			} else if (day_diff < 365) {
-				return __("{0} months ago", [Math.floor(day_diff / 30)]);
+				return __("{0} months ago", [formatCount(Math.floor(day_diff / 30))]);
 			} else if (day_diff < 730) {
 				return __("1 year ago");
 			} else {
-				return __("{0} years ago", [Math.floor(day_diff / 365)]);
+				return __("{0} years ago", [formatCount(Math.floor(day_diff / 365))]);
 			}
 		}
 	}
