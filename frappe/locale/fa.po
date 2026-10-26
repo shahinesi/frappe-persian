@@ -7600,27 +7600,27 @@ msgstr "ایجاد یک {0} جدید"
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/notification.js:95
 msgid "Create a notification to alert users about {0} events."
-msgstr ""
+msgstr "برای آگاه‌کردن کاربران از رویدادهای {0} یک اعلان بسازید."
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/print_format.js:113
 msgid "Create a print format to customize how {0} prints."
-msgstr ""
+msgstr "برای سفارشی‌کردن نحوهٔ چاپ {0}، یک قالب چاپ بسازید."
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/email_template.js:73
 msgid "Create a template to reuse when emailing {0}."
-msgstr ""
+msgstr "برای استفادهٔ دوباره هنگام ایمیل‌کردن {0}، یک قالب بسازید."
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/workflow.js:65
 msgid "Create a workflow to control the states {0} moves through."
-msgstr ""
+msgstr "برای کنترل وضعیت‌هایی که {0} از آن‌ها می‌گذرد، یک گردش‌کار بسازید."
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/print_format.js:287
 msgid "Create a {0} document first to preview this print format."
-msgstr ""
+msgstr "برای پیش‌نمایش این قالب چاپ، ابتدا یک سند {0} بسازید."
 
 #: frappe/public/js/frappe/list/list_filter/layout_dialog.js:75
 msgid "Create layout"
-msgstr ""
+msgstr "ایجاد چیدمان"
 
 #: frappe/workflow/page/workflow_builder/workflow_builder.js:34
 msgid "Create or Edit Workflow"
@@ -7628,7 +7628,7 @@ msgstr "ایجاد یا ویرایش گردش کار"
 
 #: frappe/public/js/frappe/list/list_view.js:715
 msgid "Create your first {0} to get started."
-msgstr ""
+msgstr "برای شروع، نخستین {0} خود را ایجاد کنید."
 
 #: frappe/workflow/doctype/workflow/workflow.js:16
 msgid "Create your workflow visually using the Workflow Builder."
@@ -7672,7 +7672,7 @@ msgstr "ایجاد شده در"
 
 #: frappe/automation_engine/actions/core.py:131
 msgid "Created {0} {1}"
-msgstr ""
+msgstr "{0} مورد {1} ایجاد کرد"
 
 #: frappe/public/js/frappe/desk.js:603
 #: frappe/public/js/frappe/views/treeview.js:745
@@ -7686,7 +7686,7 @@ msgstr "ایجاد این سند فقط در حالت توسعه دهنده مج
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:177
 msgid "Creator's Access"
-msgstr ""
+msgstr "دسترسی ایجادکننده"
 
 #. Option for the 'Frequency' (Select) field in DocType 'Scheduled Job Type'
 #. Option for the 'Event Frequency' (Select) field in DocType 'Server Script'
@@ -7698,7 +7698,7 @@ msgstr ""
 #. Label of the cron_expression (Data) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Cron Expression"
-msgstr ""
+msgstr "عبارت Cron"
 
 #. Label of the cron_format (Data) field in DocType 'Scheduled Job Type'
 #. Label of the cron_format (Data) field in DocType 'Server Script'
@@ -7798,12 +7798,12 @@ msgstr "وضعیت فعلی"
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/naming.js:157
 msgid "Current value"
-msgstr ""
+msgstr "مقدار فعلی"
 
 #: frappe/public/js/print_format_builder/components/VersionHistory.vue:11
 #: frappe/public/js/print_format_builder/components/VersionHistory.vue:41
 msgid "Current version"
-msgstr ""
+msgstr "نسخهٔ فعلی"
 
 #: frappe/public/js/frappe/form/form_viewers.js:5
 msgid "Currently Viewing"
@@ -7811,11 +7811,11 @@ msgstr "در حال مشاهده"
 
 #: frappe/public/js/print_format_builder/components/inspector/VisibilitySection.vue:30
 msgid "Currently hidden"
-msgstr ""
+msgstr "اکنون پنهان است"
 
 #: frappe/public/js/print_format_builder/components/inspector/VisibilitySection.vue:30
 msgid "Currently visible"
-msgstr ""
+msgstr "اکنون قابل‌مشاهده است"
 
 #. Label of the custom (Check) field in DocType 'DocType Action'
 #. Label of the custom (Check) field in DocType 'DocType Link'
@@ -7851,7 +7851,7 @@ msgstr "URL پایه سفارشی"
 
 #: frappe/desk/doctype/workspace/workspace.py:224
 msgid "Custom Block"
-msgstr ""
+msgstr "بلوک سفارشی"
 
 #. Label of the custom_block_name (Link) field in DocType 'Workspace Custom
 #. Block'
@@ -7880,12 +7880,12 @@ msgstr "CSS سفارشی"
 #: frappe/public/js/print_format_builder/utils.js:93
 #: frappe/utils/typst_emitter.py:138
 msgid "Custom CSS in the Style box"
-msgstr ""
+msgstr "CSS سفارشی در کادر Style"
 
 #: frappe/public/js/print_format_builder/utils.js:144
 #: frappe/utils/typst_emitter.py:175
 msgid "Custom CSS on fields: {0}"
-msgstr ""
+msgstr "CSS سفارشی برای فیلدها: {0}"
 
 #. Label of the custom_configuration_section (Section Break) field in DocType
 #. 'Number Card'
@@ -7916,11 +7916,11 @@ msgstr "اسناد سفارشی"
 #. Label of the custom_event (Data) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Custom Event"
-msgstr ""
+msgstr "رویداد سفارشی"
 
 #: frappe/automation/doctype/automation_flow/automation_flow.py:196
 msgid "Custom Event trigger requires an event name"
-msgstr ""
+msgstr "راه‌انداز رویداد سفارشی به نام رویداد نیاز دارد."
 
 #. Label of a Sidebar Item
 #. Label of a Link in the Build Workspace
@@ -7981,12 +7981,12 @@ msgstr "راهنمای HTML سفارشی"
 #: frappe/public/js/print_format_builder/utils.js:91
 #: frappe/utils/typst_emitter.py:132
 msgid "Custom HTML format"
-msgstr ""
+msgstr "قالب HTML سفارشی"
 
 #. Name of a DocType
 #: frappe/core/doctype/custom_icon/custom_icon.json
 msgid "Custom Icon"
-msgstr ""
+msgstr "آیکون سفارشی"
 
 #: frappe/integrations/doctype/ldap_settings/ldap_settings.py:116
 msgid "Custom LDAP Directoy Selected, please ensure 'LDAP Group Member attribute' and 'Group Object Class' are entered"
@@ -8006,7 +8006,7 @@ msgstr "موارد منوی سفارشی"
 
 #: frappe/installer.py:1017
 msgid "Custom Module Renamed"
-msgstr ""
+msgstr "نام ماژول سفارشی تغییر کرد"
 
 #. Label of the custom_options (Code) field in DocType 'Dashboard Chart'
 #: frappe/desk/doctype/dashboard_chart/dashboard_chart.json
@@ -8040,7 +8040,7 @@ msgstr "SCSS سفارشی"
 #. Name of a DocType
 #: frappe/desk/doctype/custom_sidebar/custom_sidebar.json
 msgid "Custom Sidebar"
-msgstr ""
+msgstr "نوار کناری سفارشی"
 
 #. Label of the custom_sidebar_menu (Section Break) field in DocType 'Portal
 #. Settings'
@@ -8052,7 +8052,7 @@ msgstr "منوی نوار کناری سفارشی"
 #: frappe/public/js/print_format_builder/components/inspector/FieldInspector.vue:158
 #: frappe/public/js/print_format_builder/components/inspector/RepeaterFieldInspector.vue:3
 msgid "Custom Table"
-msgstr ""
+msgstr "جدول سفارشی"
 
 #. Label of a Sidebar Item
 #. Label of a Link in the Build Workspace
@@ -8064,7 +8064,7 @@ msgstr "ترجمه سفارشی"
 #. Name of a DocType
 #: frappe/desk/doctype/custom_workspace/custom_workspace.json
 msgid "Custom Workspace"
-msgstr ""
+msgstr "فضای کاری سفارشی"
 
 #: frappe/custom/doctype/custom_field/custom_field.py:439
 msgid "Custom field renamed to {0} successfully."
@@ -8076,15 +8076,15 @@ msgstr "متد سفارشی get_list برای {0} باید یک شیء QueryBuil
 
 #: frappe/core/page/component_explorer/component_explorer.js:835
 msgid "Custom hint text"
-msgstr ""
+msgstr "متن راهنمای سفارشی"
 
 #: frappe/core/page/component_explorer/component_explorer.js:1021
 msgid "Custom icon"
-msgstr ""
+msgstr "آیکون سفارشی"
 
 #: frappe/core/page/component_explorer/component_explorer.js:1154
 msgid "Custom icon + footer"
-msgstr ""
+msgstr "آیکون سفارشی + پابرگ"
 
 #. Label of the custom (Check) field in DocType 'DocType'
 #. Label of the custom (Check) field in DocType 'Website Theme'
@@ -8189,7 +8189,7 @@ msgstr "فیروزه‌ای"
 #. Label of the db_tables (Table) field in DocType 'DuckDB Sync'
 #: frappe/core/doctype/duckdb_sync/duckdb_sync.json
 msgid "DB Tables"
-msgstr ""
+msgstr "جدول‌های پایگاه داده"
 
 #. Option for the 'Delivery Status Notification Type' (Select) field in DocType
 #. 'Email Account'
@@ -8343,7 +8343,7 @@ msgstr "منبع نمودار داشبورد"
 
 #: frappe/core/page/dashboard_view/dashboard_view.js:87
 msgid "Dashboard List"
-msgstr ""
+msgstr "فهرست داشبوردها"
 
 #. Name of a role
 #: frappe/desk/doctype/dashboard/dashboard.json
@@ -8434,7 +8434,7 @@ msgstr "لاگ درون‌بُرد داده"
 #. Name of a DocType
 #: frappe/core/doctype/data_import_skipped_row/data_import_skipped_row.json
 msgid "Data Import Skipped Row"
-msgstr ""
+msgstr "ردیف نادیده‌گرفته‌شده در درون‌ریزی داده"
 
 #: frappe/core/doctype/data_export/exporter.py:175
 msgid "Data Import Template"
@@ -8443,7 +8443,7 @@ msgstr "الگوی درون‌بُرد داده"
 #. Name of a DocType
 #: frappe/core/doctype/data_import_value_mapping/data_import_value_mapping.json
 msgid "Data Import Value Mapping"
-msgstr ""
+msgstr "نگاشت مقدار در درون‌ریزی داده"
 
 #: frappe/core/doctype/data_import/data_import.py:111
 msgid "Data Import is not allowed for {0}. Enable 'Allow Import' in DocType settings."
@@ -8455,7 +8455,7 @@ msgstr "داده خیلی طولانی است"
 
 #: frappe/core/doctype/mapreduce_job/mapreduce_job.py:46
 msgid "Data cannot be an empty list"
-msgstr ""
+msgstr "داده نمی‌تواند فهرستی خالی باشد."
 
 #. Label of the database (Data) field in DocType 'System Health Report'
 #. Label of the database_section (Section Break) field in DocType 'System
@@ -8523,21 +8523,21 @@ msgstr "تاریخ"
 #. Option for the 'Trigger Type' (Select) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Date Based"
-msgstr ""
+msgstr "مبتنی بر تاریخ"
 
 #: frappe/automation/doctype/automation_flow/automation_flow.py:194
 msgid "Date Based trigger requires a Date Field and a Date Direction"
-msgstr ""
+msgstr "راه‌انداز مبتنی بر تاریخ به فیلد تاریخ و جهت تاریخ نیاز دارد."
 
 #. Label of the date_direction (Select) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Date Direction"
-msgstr ""
+msgstr "جهت تاریخ"
 
 #. Label of the date_field (Select) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Date Field"
-msgstr ""
+msgstr "فیلد تاریخ"
 
 #. Label of the date_format (Select) field in DocType 'Language'
 #. Label of the date_format (Select) field in DocType 'System Settings'
@@ -8551,7 +8551,7 @@ msgstr "قالب تاریخ"
 #. Label of the date_offset (Int) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Date Offset (Days)"
-msgstr ""
+msgstr "اختلاف تاریخ (روز)"
 
 #. Label of the section_break_dfrx (Section Break) field in DocType 'Audit
 #. Trail'
@@ -8574,7 +8574,7 @@ msgstr "قالب تاریخ و اعداد"
 #: frappe/public/js/print_format_builder/components/inspector/TableFieldInspector.vue:138
 #: frappe/public/js/print_format_builder/components/inspector/field_properties.js:151
 msgid "Date format"
-msgstr ""
+msgstr "قالب تاریخ"
 
 #: frappe/public/js/frappe/form/controls/date.js:257
 msgid "Date {0} must be in format: {1}"
@@ -8645,7 +8645,7 @@ msgstr "روزهای باقی‌مانده"
 #. Settings'
 #: frappe/automation/doctype/automation_settings/automation_settings.json
 msgid "Days a Failed or Skipped queue row is kept before the nightly sweep removes it."
-msgstr ""
+msgstr "تعداد روزهایی که ردیف ناموفق یا نادیده‌گرفته‌شدهٔ صف، پیش از پاک‌سازی شبانه نگه داشته می‌شود."
 
 #: frappe/public/js/frappe/request.js:261
 msgid "Deadlock Occurred"
@@ -8675,11 +8675,11 @@ msgstr "جداکننده اعشاری باید یک کاراکتر باشد"
 
 #: frappe/public/js/print_format_builder/components/inspector/Stepper.vue:9
 msgid "Decrease"
-msgstr ""
+msgstr "کاهش"
 
 #: frappe/public/js/frappe/form/controls/text_editor.js:328
 msgid "Decrease indent"
-msgstr ""
+msgstr "کاهش تورفتگی"
 
 #. Label of the default (Small Text) field in DocType 'DocField'
 #. Option for the 'Button Color' (Select) field in DocType 'DocField'
@@ -8749,7 +8749,7 @@ msgstr "ورودی پیش‌فرض"
 #: frappe/public/js/frappe/list/list_filter/list_filter.js:10
 #: frappe/public/js/frappe/list/list_view_select.js:271
 msgid "Default Layout"
-msgstr ""
+msgstr "چیدمان پیش‌فرض"
 
 #. Label of the default_letter_head (Link) field in DocType 'Report'
 #. Label of the is_default (Check) field in DocType 'Letter Head'
@@ -8872,11 +8872,11 @@ msgstr "ارز نمایش پیش‌فرض"
 
 #: frappe/public/js/frappe/form/doctype_settings/registry.js:174
 msgid "Default removed"
-msgstr ""
+msgstr "پیش‌فرض حذف شد"
 
 #: frappe/public/js/frappe/form/doctype_settings/registry.js:161
 msgid "Default updated"
-msgstr ""
+msgstr "پیش‌فرض به‌روزرسانی شد"
 
 #: frappe/core/doctype/doctype/doctype.py:1522
 msgid "Default value for {0} must be in the list of options."
@@ -8931,7 +8931,7 @@ msgstr "وضعیت ها و قوانین گردش کار را برای یک سن�
 
 #: frappe/core/page/component_explorer/component_explorer.js:458
 msgid "Delay"
-msgstr ""
+msgstr "تأخیر"
 
 #. Option for the 'Delivery Status' (Select) field in DocType 'Communication'
 #: frappe/core/doctype/communication/communication.json
@@ -9015,7 +9015,7 @@ msgstr "حذف داده‌ها"
 #: frappe/public/js/frappe/legacy_gravatar_cleanup.js:13
 #: frappe/public/js/frappe/legacy_gravatar_cleanup.js:39
 msgid "Delete Gravatar URLs"
-msgstr ""
+msgstr "حذف نشانی‌های Gravatar"
 
 #: frappe/public/js/frappe/views/kanban/kanban_view.js:140
 msgid "Delete Kanban Board"
@@ -9081,11 +9081,11 @@ msgstr "حذف کل زبانه به همراه فیلدها"
 
 #: frappe/public/js/frappe/list/list_filter/manage_layouts_dialog.js:115
 msgid "Delete layout <strong>{0}</strong>?"
-msgstr ""
+msgstr "چیدمان <strong>{0}</strong> حذف شود؟"
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/naming.js:314
 msgid "Delete naming rule {0}?"
-msgstr ""
+msgstr "قاعدهٔ نام‌گذاری {0} حذف شود؟"
 
 #: frappe/public/js/frappe/form/grid.js:309
 msgid "Delete row"
@@ -9102,11 +9102,11 @@ msgstr "حذف بخش"
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/naming.js:104
 msgid "Delete series {0}?"
-msgstr ""
+msgstr "مجموعهٔ {0} حذف شود؟"
 
 #: frappe/public/js/print_format_builder/components/PrintFormatControls.vue:161
 msgid "Delete snippet"
-msgstr ""
+msgstr "حذف قطعه‌کد"
 
 #: frappe/public/js/form_builder/components/Tabs.vue:71
 msgctxt "Button text"
@@ -9115,19 +9115,19 @@ msgstr "حذف تب"
 
 #: frappe/public/js/frappe/form/template_manager.js:398
 msgid "Delete template"
-msgstr ""
+msgstr "حذف قالب"
 
 #: frappe/public/js/frappe/form/template_manager.js:222
 msgid "Delete template <strong>{0}</strong>?"
-msgstr ""
+msgstr "قالب <strong>{0}</strong> حذف شود؟"
 
 #: frappe/public/js/frappe/views/workspace/workspace.js:936
 msgid "Delete the <b>{0}</b> workspace? This cannot be undone."
-msgstr ""
+msgstr "فضای کاری <b>{0}</b> حذف شود؟ این کار برگشت‌پذیر نیست."
 
 #: frappe/public/js/print_format_builder/components/PrintFormatControls.vue:517
 msgid "Delete the snippet '{0}'?"
-msgstr ""
+msgstr "قطعه‌کد «{0}» حذف شود؟"
 
 #: frappe/email/doctype/email_unsubscribe/email_unsubscribe.py:31
 msgid "Delete this record to allow sending to this email address"
@@ -9135,11 +9135,11 @@ msgstr "این سابقه را حذف کنید تا امکان ارسال به �
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/user_permissions.js:57
 msgid "Delete this user permission?"
-msgstr ""
+msgstr "این مجوز کاربر حذف شود؟"
 
 #: frappe/public/js/print_format_builder/components/VersionHistory.vue:91
 msgid "Delete this version"
-msgstr ""
+msgstr "حذف این نسخه"
 
 #: frappe/public/js/frappe/form/template_manager.js:400
 msgid "Delete {0}"
@@ -9192,11 +9192,11 @@ msgstr "نام حذف شده"
 
 #: frappe/desk/form/linked_with.py:648
 msgid "Deleted {0} linked documents."
-msgstr ""
+msgstr "{0} سند پیوندشده حذف شد."
 
 #: frappe/desk/reportview.py:928
 msgid "Deleted {0} records from {1} doctype"
-msgstr ""
+msgstr "{0} رکورد از DocType {1} حذف شد"
 
 #: frappe/public/js/frappe/web_form/web_form.js:210
 msgid "Deleted!"
@@ -9291,7 +9291,7 @@ msgstr "بستگی دارد به"
 
 #: frappe/public/js/frappe/data_import/data_exporter.js:325
 msgid "Depends on: {0}"
-msgstr ""
+msgstr "وابسته به: {0}"
 
 #. Label of the deprecated (Check) field in DocType 'DocType'
 #: frappe/core/doctype/doctype/doctype.json
@@ -9315,7 +9315,7 @@ msgstr "زیرمجموعه‌های (شامل خودش)"
 
 #: frappe/public/js/frappe/list/list_filter/layout_dialog.js:64
 msgid "Descending"
-msgstr ""
+msgstr "نزولی"
 
 #. Label of the description (Small Text) field in DocType 'Assignment Rule'
 #. Label of the description (Small Text) field in DocType 'Reminder'
@@ -9367,7 +9367,7 @@ msgstr "شرح"
 #. Field'
 #: frappe/core/doctype/doctype_layout_field/doctype_layout_field.json
 msgid "Description Override"
-msgstr ""
+msgstr "بازنویسی توضیحات"
 
 #. Description of the 'Description' (Section Break) field in DocType
 #. 'Onboarding Step'
@@ -9462,7 +9462,7 @@ msgstr "آیکون دسکتاپ"
 #. Option for the 'Desktop Page' (Select) field in DocType 'Desktop Settings'
 #: frappe/desk/doctype/desktop_settings/desktop_settings.json
 msgid "Desktop Icons"
-msgstr ""
+msgstr "آیکون‌های دسکتاپ"
 
 #. Name of a DocType
 #: frappe/desk/doctype/desktop_layout/desktop_layout.json
@@ -9472,7 +9472,7 @@ msgstr "چیدمان دسکتاپ"
 #. Label of the desktop_page (Select) field in DocType 'Desktop Settings'
 #: frappe/desk/doctype/desktop_settings/desktop_settings.json
 msgid "Desktop Page"
-msgstr ""
+msgstr "صفحهٔ دسکتاپ"
 
 #. Name of a DocType
 #: frappe/desk/doctype/desktop_settings/desktop_settings.json
@@ -9518,7 +9518,7 @@ msgstr "حذف نشد"
 
 #: frappe/www/login.html:198
 msgid "Didn't receive the link?"
-msgstr ""
+msgstr "پیوند را دریافت نکردید؟"
 
 #: frappe/public/js/frappe/utils/diffview.js:57
 msgid "Diff"
@@ -9541,7 +9541,7 @@ msgstr "دینار"
 
 #: frappe/public/js/print_format_builder/components/inspector/TableFieldInspector.vue:219
 msgid "Direction"
-msgstr ""
+msgstr "جهت"
 
 #. Label of the ldap_directory_server (Select) field in DocType 'LDAP Settings'
 #: frappe/integrations/doctype/ldap_settings/ldap_settings.json
@@ -9551,11 +9551,11 @@ msgstr "سرور دایرکتوری"
 #: frappe/public/js/frappe/form/doctype_settings/tabs/notification.js:63
 #: frappe/public/js/frappe/form/doctype_settings/tabs/workflow.js:36
 msgid "Disable"
-msgstr ""
+msgstr "غیرفعال‌کردن"
 
 #: frappe/core/doctype/installed_applications/installed_applications.js:73
 msgid "Disable <b>{0}</b> on this site? It keeps its data, but stops taking effect."
-msgstr ""
+msgstr "<b>{0}</b> در این سایت غیرفعال شود؟ داده‌هایش حفظ می‌شوند، اما دیگر اعمال نخواهد شد."
 
 #. Label of the disable_application (Button) field in DocType 'Installed
 #. Application'
@@ -9579,7 +9579,7 @@ msgstr "غیرفعال کردن فیلترهای اخیر خودکار"
 #. Settings'
 #: frappe/automation/doctype/automation_settings/automation_settings.json
 msgid "Disable Automations"
-msgstr ""
+msgstr "غیرفعال‌کردن خودکارسازی‌ها"
 
 #. Label of the disable_change_log_notification (Check) field in DocType
 #. 'System Settings'
@@ -9608,7 +9608,7 @@ msgstr "غیرفعال کردن اشتراک گذاری سند"
 #. 'Report'
 #: frappe/core/doctype/report/report.json
 msgid "Disable Prepared Report Automation"
-msgstr ""
+msgstr "غیرفعال‌کردن خودکارسازی گزارش آماده"
 
 #. Label of the disable_product_suggestion (Check) field in DocType 'System
 #. Settings'
@@ -9660,7 +9660,7 @@ msgstr "غیرفعال کردن ورود با نام کاربری/رمز عبو�
 
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:464
 msgid "Disable all notification and alert sounds across the application."
-msgstr ""
+msgstr "همهٔ صداهای اعلان و هشدار را در برنامه غیرفعال کنید."
 
 #. Label of the disable_signup (Check) field in DocType 'Website Settings'
 #: frappe/website/doctype/website_settings/website_settings.json
@@ -9716,11 +9716,11 @@ msgstr "پاسخ خودکار غیرفعال است"
 #. Label of the disabled_reason (Small Text) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Disabled Reason"
-msgstr ""
+msgstr "دلیل غیرفعال‌سازی"
 
 #: frappe/core/page/component_explorer/component_explorer.js:732
 msgid "Disabled options (a page-size picker)"
-msgstr ""
+msgstr "گزینه‌های غیرفعال (انتخاب‌گر اندازهٔ صفحه)"
 
 #: frappe/desk/page/desktop/desktop.html:55
 #: frappe/desk/page/desktop/desktop_icons.html:45
@@ -9743,11 +9743,11 @@ msgstr "دور انداختن"
 
 #: frappe/public/js/print_format_builder/components/VersionHistory.vue:51
 msgid "Discard the draft and go back to this"
-msgstr ""
+msgstr "پیش‌نویس را دور بیندازید و به این نسخه برگردید"
 
 #: frappe/public/js/print_format_builder/components/VersionHistory.vue:137
 msgid "Discard your unapplied changes and go back to what this format prints?"
-msgstr ""
+msgstr "تغییرهای اعمال‌نشده کنار گذاشته شوند و به نسخهٔ چاپ‌شدهٔ این قالب برگردید؟"
 
 #: frappe/public/js/frappe/form/form.js:1012
 msgid "Discard {0}"
@@ -9794,7 +9794,7 @@ msgstr "رد"
 
 #: frappe/core/page/component_explorer/component_explorer.js:1143
 msgid "Dismissible"
-msgstr ""
+msgstr "قابل‌بستن"
 
 #. Label of the display (Section Break) field in DocType 'DocField'
 #. Label of the updates_tab (Tab Break) field in DocType 'System Settings'
@@ -9826,20 +9826,20 @@ msgstr "نمایش نوار کناری در فرم‌ها با پیوست‌ها
 
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:656
 msgid "Display exact timestamps instead of relative time in the activity timeline."
-msgstr ""
+msgstr "در خط زمانی فعالیت، زمان دقیق را به‌جای زمان نسبی نمایش دهید."
 
 #. Description of the 'Title' (Data) field in DocType 'DocType Layout'
 #: frappe/core/doctype/doctype_layout/doctype_layout.json
 msgid "Display name shown in the layout switcher"
-msgstr ""
+msgstr "نام نمایشی در انتخاب‌گر چیدمان"
 
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:587
 msgid "Display the filter and group-by sidebar in list views."
-msgstr ""
+msgstr "نوار کناری فیلتر و گروه‌بندی را در نماهای فهرست نمایش دهید."
 
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:450
 msgid "Display the search bar in the navigation area for quick access."
-msgstr ""
+msgstr "نوار جست‌وجو را برای دسترسی سریع در بخش پیمایش نمایش دهید."
 
 #: frappe/public/js/print_format_builder/components/PrintFormatControls.vue:453
 msgid "Divider"
@@ -9874,22 +9874,22 @@ msgstr "آیا می‌خواهید همه اسناد پیوند شده را لغ
 
 #: frappe/public/js/frappe/form/form.js:1405
 msgid "Do you want to delete {0} along with all linked documents?"
-msgstr ""
+msgstr "می‌خواهید {0} را همراه با همهٔ سندهای پیوندشده حذف کنید؟"
 
 #. Option for the 'Trigger Type' (Select) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Doc Cancelled"
-msgstr ""
+msgstr "سند لغو شد"
 
 #. Option for the 'Trigger Type' (Select) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Doc Created"
-msgstr ""
+msgstr "سند ایجاد شد"
 
 #. Option for the 'Trigger Type' (Select) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Doc Deleted"
-msgstr ""
+msgstr "سند حذف شد"
 
 #. Label of the webhook_docevent (Select) field in DocType 'Webhook'
 #: frappe/integrations/doctype/webhook/webhook.json
@@ -9914,18 +9914,18 @@ msgstr "بازنشانی وضعیت سند"
 #. Option for the 'Trigger Type' (Select) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Doc Submitted"
-msgstr ""
+msgstr "سند ثبت نهایی شد"
 
 #. Option for the 'Trigger Type' (Select) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Doc Updated"
-msgstr ""
+msgstr "سند به‌روزرسانی شد"
 
 #. Label of the doc_values (Code) field in DocType 'Web Form Request'
 #: frappe/website/doctype/web_form_request/web_form_request.json
 #: frappe/website/doctype/web_form_request/web_form_request.py:104
 msgid "Doc Values"
-msgstr ""
+msgstr "مقادیر سند"
 
 #. Name of a DocType
 #. Option for the 'Applied On' (Select) field in DocType 'Property Setter'
@@ -10048,7 +10048,7 @@ msgstr "چیدمان DocType"
 #. Name of a DocType
 #: frappe/core/doctype/doctype_layout_child_table/doctype_layout_child_table.json
 msgid "DocType Layout Child Table"
-msgstr ""
+msgstr "جدول فرزند چیدمان DocType"
 
 #. Name of a DocType
 #: frappe/core/doctype/doctype_layout_field/doctype_layout_field.json
@@ -10068,17 +10068,17 @@ msgstr "DocType موجود نیست"
 
 #: frappe/public/js/frappe/form/doctype_settings/doctype_settings.js:86
 msgid "DocType Settings"
-msgstr ""
+msgstr "تنظیمات DocType"
 
 #. Name of a DocType
 #: frappe/core/doctype/doctype_settings_map/doctype_settings_map.json
 msgid "DocType Settings Map"
-msgstr ""
+msgstr "نگاشت تنظیمات DocType"
 
 #. Name of a DocType
 #: frappe/core/doctype/doctype_settings_map_item/doctype_settings_map_item.json
 msgid "DocType Settings Map Item"
-msgstr ""
+msgstr "مورد نگاشت تنظیمات DocType"
 
 #. Name of a DocType
 #. Option for the 'Applied On' (Select) field in DocType 'Property Setter'
@@ -10137,11 +10137,11 @@ msgstr "DocType {0} وجود ندارد."
 
 #: frappe/api/discovery.py:386
 msgid "DocType {0} is not available for discovery"
-msgstr ""
+msgstr "DocType {0} برای کشف در دسترس نیست."
 
 #: frappe/desk/doctype_settings/settings_map.py:42
 msgid "DocType {0} not found"
-msgstr ""
+msgstr "DocType {0} پیدا نشد."
 
 #: frappe/modules/utils.py:299
 msgid "DocType {} not found"
@@ -10157,27 +10157,27 @@ msgstr "Doctype ها قابل تغییر نیستند، لطفاً از {0} اس
 
 #: frappe/core/doctype/role/role.js:431
 msgid "DocTypes this role can access."
-msgstr ""
+msgstr "DocTypeهایی که این نقش به آن‌ها دسترسی دارد."
 
 #. Name of a DocType
 #: frappe/desk/doctype/dock/dock.json
 msgid "Dock"
-msgstr ""
+msgstr "داک"
 
 #. Name of a DocType
 #: frappe/desk/doctype/dock_item/dock_item.json
 msgid "Dock Item"
-msgstr ""
+msgstr "مورد داک"
 
 #. Label of the items_section (Section Break) field in DocType 'Dock'
 #. Label of the items (Table) field in DocType 'Dock'
 #: frappe/desk/doctype/dock/dock.json
 msgid "Dock Items"
-msgstr ""
+msgstr "موارد داک"
 
 #: frappe/public/js/frappe/ui/sidebar/dock_manager.js:29
 msgid "Dock updated"
-msgstr ""
+msgstr "داک به‌روزرسانی شد"
 
 #: frappe/public/js/frappe/ui/sidebar/dock_manager.js:36
 msgid "Dock updated for everyone"

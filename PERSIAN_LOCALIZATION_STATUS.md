@@ -88,3 +88,9 @@ Updated: 2026-10-26. This file tracks the existing Workspace repositories and de
 - `node --check` and `git diff --check` pass for changed Framework JS/spec files. Framework Playwright tests, full Build, and Deploy are NOT RUN because dependencies are absent and package registry access failed. Framework branch is ahead 38; no push or deploy was made.
 - ERPNext: `customer_overview.js` period dates now use the shared Framework Jalali formatter in Persian and preserve the English Moment format. Existing JS suite: 19/19 PASS; commit `718dee5` on the existing `custom/develop-fa` branch (ahead 7). Build, Deploy, and Push NOT RUN.
 - No new branch, PR, or merge was created. Other uncommitted Framework files remain preserved.
+
+### Frappe Framework continuation — 2026-10-27 (settings, workspace and DocType UI translations)
+
+- Added 98 active, source-referenced Persian translations for creation flows, permissions, settings, automation, print/layout controls, destructive confirmations, and notification preferences in `frappe/locale/fa.po`.
+- Active empty entries decreased from 1,321 to 1,223; 15 remaining empty references are stale because their referenced source files no longer exist. No fuzzy entries were added.
+- Translation-map placeholder/HTML-tag/canonical-digit checks, PO syntax validation, and `git diff --check`: PASS. UI/translation runtime tests, Build, and Deploy: NOT RUN (`node_modules` absent).
