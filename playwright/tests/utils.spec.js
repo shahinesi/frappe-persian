@@ -91,6 +91,38 @@ test.describe("Utils", () => {
 		});
 	});
 
+	test("formats duration units with Persian words and digits without changing English", async ({ page }) => {
+		const values = await page.evaluate(() => {
+			const previousLanguage = frappe.boot.lang;
+			const previousTranslate = window.__;
+			frappe.boot.lang = "fa-IR";
+			window.__ = (message, _args, context) => {
+				if (!(frappe.boot.lang || "").toLowerCase().startsWith("fa")) return message;
+				return context === "Days (Field: Duration)"
+					? "روز"
+					: context === "Hours (Field: Duration)"
+						? "ساعت"
+						: context === "Minutes (Field: Duration)"
+							? "دقیقه"
+							: context === "Seconds (Field: Duration)"
+								? "ثانیه"
+								: message;
+			};
+
+			try {
+				const persian = frappe.utils.get_formatted_duration(90061, { hide_seconds: 1 });
+				frappe.boot.lang = "en";
+				const english = frappe.utils.get_formatted_duration(90061, { hide_seconds: 1 });
+				return { persian, english };
+			} finally {
+				frappe.boot.lang = previousLanguage;
+				window.__ = previousTranslate;
+			}
+		});
+
+		expect(values).toEqual({ persian: "۱ روز ۱ ساعت ۱ دقیقه", english: "1d 1h 1m" });
+	});
+
 	test("should escape the docname when it is used as the link text", async ({ page }) => {
 		const link = await run_util(
 			page,

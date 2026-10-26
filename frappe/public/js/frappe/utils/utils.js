@@ -1259,6 +1259,11 @@ Object.assign(frappe.utils, {
 
 	get_formatted_duration(value, duration_options = null) {
 		let duration = "";
+		const language = (frappe.boot?.lang || "en").replace(/_/g, "-");
+		const is_persian = language.toLowerCase().startsWith("fa");
+		const format_count = (count) =>
+			is_persian ? new Intl.NumberFormat(language).format(count) : count;
+		const unit_separator = is_persian ? " " : "";
 		if (!duration_options) {
 			duration_options = {
 				hide_days: 0,
@@ -1269,19 +1274,31 @@ Object.assign(frappe.utils, {
 			let total_duration = frappe.utils.seconds_to_duration(value, duration_options);
 
 			if (total_duration.days && duration_options.hide_days !== 1) {
-				duration += total_duration.days + __("d", null, "Days (Field: Duration)");
+				duration +=
+					format_count(total_duration.days) +
+					unit_separator +
+					__("d", null, "Days (Field: Duration)");
 			}
 			if (total_duration.hours) {
 				duration += duration.length ? " " : "";
-				duration += total_duration.hours + __("h", null, "Hours (Field: Duration)");
+				duration +=
+					format_count(total_duration.hours) +
+					unit_separator +
+					__("h", null, "Hours (Field: Duration)");
 			}
 			if (total_duration.minutes) {
 				duration += duration.length ? " " : "";
-				duration += total_duration.minutes + __("m", null, "Minutes (Field: Duration)");
+				duration +=
+					format_count(total_duration.minutes) +
+					unit_separator +
+					__("m", null, "Minutes (Field: Duration)");
 			}
 			if (total_duration.seconds && duration_options.hide_seconds !== 1) {
 				duration += duration.length ? " " : "";
-				duration += total_duration.seconds + __("s", null, "Seconds (Field: Duration)");
+				duration +=
+					format_count(total_duration.seconds) +
+					unit_separator +
+					__("s", null, "Seconds (Field: Duration)");
 			}
 		}
 		return duration;

@@ -40180,7 +40180,7 @@ msgstr "فیروزه‌ای"
 #: frappe/public/js/frappe/utils/utils.js:1271
 msgctxt "Days (Field: Duration)"
 msgid "d"
-msgstr "د"
+msgstr "روز"
 
 #. Option for the 'Indicator Color' (Select) field in DocType 'Custom
 #. Workspace'
@@ -40472,7 +40472,7 @@ msgstr "طولانی"
 #: frappe/public/js/frappe/utils/utils.js:1279
 msgctxt "Minutes (Field: Duration)"
 msgid "m"
-msgstr "متر"
+msgstr "دقیقه"
 
 #: frappe/model/rename_doc.py:205
 msgid "merged {0} into {1}"
@@ -40711,7 +40711,7 @@ msgstr "ردیف‌ها {0}"
 #: frappe/public/js/frappe/utils/utils.js:1283
 msgctxt "Seconds (Field: Duration)"
 msgid "s"
-msgstr "س"
+msgstr "ثانیه"
 
 #. Option for the 'Code challenge method' (Select) field in DocType 'OAuth
 #. Authorization Code'
