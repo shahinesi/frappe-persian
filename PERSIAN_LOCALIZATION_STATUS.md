@@ -94,3 +94,9 @@ Updated: 2026-10-26. This file tracks the existing Workspace repositories and de
 - Added 98 active, source-referenced Persian translations for creation flows, permissions, settings, automation, print/layout controls, destructive confirmations, and notification preferences in `frappe/locale/fa.po`.
 - Active empty entries decreased from 1,321 to 1,223; 15 remaining empty references are stale because their referenced source files no longer exist. No fuzzy entries were added.
 - Translation-map placeholder/HTML-tag/canonical-digit checks, PO syntax validation, and `git diff --check`: PASS. UI/translation runtime tests, Build, and Deploy: NOT RUN (`node_modules` absent).
+
+### Frappe Framework continuation — 2026-10-27 (failures, filters, display settings and help text)
+
+- Added 95 active Persian UI translations for error states, filters, display preferences, automation fields, print builder controls, login flows, and supporting help text.
+- Source-backed empty entries decreased from 1,223 to 1,128. The 15 source-missing references remain classified as stale; fuzzy count remains 0.
+- PO syntax, per-map placeholder/HTML-tag/canonical-digit checks, and `git diff --check`: PASS. Runtime translation tests and Build: NOT RUN (`node_modules` absent).
