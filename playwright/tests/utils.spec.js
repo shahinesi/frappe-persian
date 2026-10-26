@@ -10,6 +10,43 @@ test.describe("Utils", () => {
 		return page.evaluate(([name, args]) => frappe.utils[name](...args), [name, args]);
 	}
 
+	test("formats Persian dates after converting datetimes to the user timezone", async ({ page }) => {
+		const values = await page.evaluate(() => {
+			const previousLanguage = frappe.boot.lang;
+			const previousTimeZone = frappe.boot.time_zone;
+			const previousPersianDate = window.persianDate;
+			frappe.boot.lang = "fa-IR";
+			frappe.boot.time_zone = { system: "UTC", user: "Asia/Tehran" };
+			window.persianDate = function (date) {
+				this.toCalendar = () => this;
+				this.toLocale = () => this;
+				this.format = (format) => {
+					const isNextDay = date.getDate() === 22;
+					const persianDate = isNextDay ? "۱۴۰۵-۰۱-۰۲" : "۱۴۰۵-۰۱-۰۱";
+					return format.includes("HH")
+						? `${persianDate} ۰۰:۰۰:۰۰`
+						: persianDate;
+				};
+			};
+
+			try {
+				return {
+					date: frappe.datetime.str_to_user("2026-03-21", false, true),
+					datetime: frappe.datetime.str_to_user("2026-03-21 20:30:00"),
+				};
+			} finally {
+				frappe.boot.lang = previousLanguage;
+				frappe.boot.time_zone = previousTimeZone;
+				window.persianDate = previousPersianDate;
+			}
+		});
+
+		expect(values).toEqual({
+			date: "۱۴۰۵-۰۱-۰۱",
+			datetime: "۱۴۰۵-۰۱-۰۲ ۰۰:۰۰:۰۰",
+		});
+	});
+
 	test("should round hidden seconds to minutes", async ({ page }) => {
 		expect(await run_util(page, "seconds_to_duration", 89, { hide_seconds: 1 })).toEqual({
 			days: 0,

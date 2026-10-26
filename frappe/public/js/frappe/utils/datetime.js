@@ -3,6 +3,27 @@
 
 frappe.provide("frappe.datetime");
 
+function format_in_persian_calendar(date_obj, format) {
+	const language = (frappe.boot?.lang || "").toLowerCase().split(/[-_]/)[0];
+	if (language !== "fa" || typeof window.persianDate !== "function") return null;
+	if (date_obj.isValid && !date_obj.isValid()) return null;
+
+	// Build from the user's wall-clock fields so browser timezone cannot shift the date.
+	const local_date = new Date(
+		date_obj.year(),
+		date_obj.month(),
+		date_obj.date(),
+		date_obj.hour(),
+		date_obj.minute(),
+		date_obj.second(),
+		date_obj.millisecond()
+	);
+	return new window.persianDate(local_date)
+		.toCalendar("persian")
+		.toLocale("fa")
+		.format(format);
+}
+
 frappe.defaultDateFormat = "YYYY-MM-DD";
 frappe.defaultTimeFormat = "HH:mm:ss";
 frappe.defaultDatetimeFormat = frappe.defaultDateFormat + " " + frappe.defaultTimeFormat;
@@ -164,10 +185,12 @@ $.extend(frappe.datetime, {
 
 		if (only_time) {
 			let date_obj = moment(val, frappe.defaultTimeFormat);
-			return date_obj.format(user_time_fmt);
+			const persian_time = format_in_persian_calendar(date_obj, user_time_fmt);
+			return persian_time || date_obj.format(user_time_fmt);
 		} else if (only_date || (typeof val === "string" && val.indexOf(" ") === -1)) {
 			let date_obj = moment(val, frappe.defaultDateFormat);
-			return date_obj.format(user_date_fmt);
+			const persian_date = format_in_persian_calendar(date_obj, user_date_fmt);
+			return persian_date || date_obj.format(user_date_fmt);
 		} else {
 			const system_datetime = moment.tz(
 				val,
@@ -176,7 +199,10 @@ $.extend(frappe.datetime, {
 			);
 			const user_datetime = system_datetime.clone().tz(frappe.boot.time_zone.user);
 
-			return user_datetime.format(user_date_fmt + " " + user_time_fmt);
+			return (
+				format_in_persian_calendar(user_datetime, user_date_fmt + " " + user_time_fmt) ||
+				user_datetime.format(user_date_fmt + " " + user_time_fmt)
+			);
 		}
 	},
 
