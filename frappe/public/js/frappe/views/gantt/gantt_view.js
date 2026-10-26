@@ -203,10 +203,12 @@ frappe.views.GanttView = class GanttView extends frappe.views.ListView {
 			},
 			popup: ({ task }) => {
 				var item = me.get_item(task.id);
+				const format_task_date = (date) =>
+					(frappe.boot?.lang || "").toLowerCase().startsWith("fa")
+						? frappe.datetime.str_to_user(date, false, true)
+						: moment(date).format("MMM D");
 				var html = `<div class="title">${task.name}</div>
-					<div class="subtitle">${moment(task.start).format("MMM D")} - ${moment(task.end).format(
-					"MMM D"
-				)}</div>`;
+					<div class="subtitle">${format_task_date(task.start)} - ${format_task_date(task.end)}</div>`;
 
 				// custom html in doctype settings
 				var custom = me.settings.gantt_custom_popup_html;
