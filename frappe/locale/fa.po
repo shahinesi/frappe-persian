@@ -869,11 +869,11 @@ msgstr "یک DocType تک‌نمونه (تنظیمات)."
 
 #: frappe/core/doctype/doctype_settings_map/doctype_settings_map.py:137
 msgid "A custom settings map already exists for {0}."
-msgstr ""
+msgstr "از قبل یک نگاشت تنظیمات سفارشی برای {0} وجود دارد."
 
 #: frappe/desk/doctype/custom_sidebar/custom_sidebar.py:105
 msgid "A customization for {0} already exists for this layer."
-msgstr ""
+msgstr "برای {0} در این لایه از قبل سفارشی‌سازی وجود دارد."
 
 #: frappe/custom/doctype/custom_field/custom_field.py:187
 msgid "A field with the name {0} already exists in {1}"
@@ -1718,7 +1718,7 @@ msgstr "افزودن یک نظر"
 #: frappe/core/doctype/user/user.json
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:457
 msgid "Add a link to your own private workspaces in the user menu."
-msgstr ""
+msgstr "پیوند فضای کاری خصوصی خود را به منوی کاربر اضافه کنید."
 
 #: frappe/public/js/form_builder/components/Tabs.vue:193
 msgid "Add a new section"
@@ -1774,7 +1774,7 @@ msgstr "افزودن فیلد"
 
 #: frappe/automation/doctype/automation_flow/automation_flow.js:23
 msgid "Add field rules below, every rule must match before the flow can run"
-msgstr ""
+msgstr "قواعد فیلد را در ادامه اضافه کنید؛ برای اجرای جریان، همهٔ قواعد باید برقرار باشند."
 
 #: frappe/public/js/print_format_builder/components/inspector/TableFieldInspector.vue:210
 msgid "Add field..."
@@ -2588,7 +2588,7 @@ msgstr "مجاز"
 #. DocType 'System Settings'
 #: frappe/core/doctype/system_settings/system_settings.json
 msgid "Allowed Doctypes for Guest Uploads"
-msgstr ""
+msgstr "DocTypeهای مجاز برای بارگذاری مهمان"
 
 #. Label of the allowed_file_extensions (Small Text) field in DocType 'System
 #. Settings'
@@ -2896,7 +2896,7 @@ msgstr "یک فایل آیکون با پسوند .ico. باید 16 × 16 پیک�
 
 #: frappe/core/doctype/custom_icon/custom_icon.js:28
 msgid "An icon named {0} already ships with the desk, and it takes precedence."
-msgstr ""
+msgstr "آیکونی با نام {0} از قبل همراه Desk ارائه شده و در اولویت قرار می‌گیرد."
 
 #. Description of the 'Island' (Data) field in DocType 'Page'
 #: frappe/core/doctype/page/page.json
@@ -2919,7 +2919,7 @@ msgstr "بالادست‌های"
 
 #: frappe/core/page/component_explorer/component_explorer.js:848
 msgid "Animate the first bar above"
-msgstr ""
+msgstr "نوار نخست بالا را متحرک کنید"
 
 #. Label of the announcement_widget (Text Editor) field in DocType 'Navbar
 #. Settings'
@@ -3042,11 +3042,11 @@ msgstr "اپ {0} به {1} وابسته است. ابتدا {1} را فعال کن
 
 #: frappe/installer.py:501
 msgid "App {0} is a dependency of {1}. Disable {1} first."
-msgstr ""
+msgstr "اپ {0} وابستگی اپ {1} است. ابتدا {1} را غیرفعال کنید."
 
 #: frappe/__init__.py:637
 msgid "App {0} is disabled on this site"
-msgstr ""
+msgstr "اپ {0} در این سایت غیرفعال است."
 
 #: frappe/installer.py:454 frappe/installer.py:491
 #: frappe/utils/__init__.py:1290
@@ -3055,25 +3055,25 @@ msgstr "برنامه {0} نصب نشده است"
 
 #: frappe/desk/doctype/dock/dock.py:218
 msgid "App {0} is not installed, so a standard dock cannot be written to it."
-msgstr ""
+msgstr "اپ {0} نصب نشده است؛ بنابراین نمی‌توان داک استانداردی برای آن ذخیره کرد."
 
 #: frappe/desk/doctype/sidebar/sidebar.py:412
 msgid "App {0} is not installed, so a standard sidebar cannot be written to it."
-msgstr ""
+msgstr "اپ {0} نصب نشده است؛ بنابراین نمی‌توان نوار کناری استانداردی برای آن ذخیره کرد."
 
 #: frappe/apps.py:121
 msgid "App {} is disabled on this site"
-msgstr ""
+msgstr "اپ {} در این سایت غیرفعال است."
 
 #: frappe/apps.py:124
 msgid "App {} is not installed"
-msgstr ""
+msgstr "اپ {} نصب نشده است."
 
 #. Description of the 'Removed Roles' (Table) field in DocType 'Custom
 #. Workspace'
 #: frappe/desk/doctype/custom_workspace/custom_workspace.json
 msgid "App-shipped roles whose access is revoked on this site."
-msgstr ""
+msgstr "نقش‌هایی که همراه اپ ارائه شده‌اند و دسترسی آن‌ها در این سایت لغو شده است."
 
 #. Label of the appearance_section (Section Break) field in DocType 'Custom
 #. Workspace'
@@ -3082,7 +3082,7 @@ msgstr ""
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:328
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:330
 msgid "Appearance"
-msgstr ""
+msgstr "ظاهر"
 
 #. Label of the append_emails_to_sent_folder (Check) field in DocType 'Email
 #. Account'
@@ -3144,7 +3144,7 @@ msgstr "برنامه نصب نشده است"
 
 #: frappe/public/js/print_format_builder/stores/useDraftSave.js:94
 msgid "Applied"
-msgstr ""
+msgstr "اعمال شد"
 
 #. Label of the doctype_or_field (Select) field in DocType 'Property Setter'
 #: frappe/custom/doctype/property_setter/property_setter.json
@@ -3160,7 +3160,7 @@ msgstr "اعمال می‌شود به (DocType)"
 #. Map'
 #: frappe/core/doctype/doctype_settings_map/doctype_settings_map.json
 msgid "Applies to DocType"
-msgstr ""
+msgstr "اعمال برای DocType"
 
 #: frappe/core/page/component_explorer/component_explorer.js:531
 #: frappe/public/js/form_builder/components/Field.vue:92
@@ -3206,7 +3206,7 @@ msgstr "اعمال مجوز کاربر بر"
 #. Description of the 'DocType Layout' (Link) field in DocType 'Workspace Link'
 #: frappe/desk/doctype/workspace_link/workspace_link.json
 msgid "Apply a specific layout when opening this DocType link"
-msgstr ""
+msgstr "هنگام بازکردن پیوند این DocType، چیدمان مشخصی را اعمال کنید."
 
 #. Label of the apply_document_permissions (Check) field in DocType 'Web Form'
 #: frappe/website/doctype/web_form/web_form.json
@@ -3215,7 +3215,7 @@ msgstr "اعمال مجوزهای سند"
 
 #: frappe/public/js/frappe/form/template_manager.js:177
 msgid "Apply template <strong>{0}</strong>? This will modify the current document."
-msgstr ""
+msgstr "قالب <strong>{0}</strong> اعمال شود؟ این کار سند فعلی را تغییر می‌دهد."
 
 #. Description of the 'If user is the owner' (Check) field in DocType 'Custom
 #. DocPerm'
@@ -3262,7 +3262,7 @@ msgstr "برنامه‌های درگیر"
 #. Settings'
 #: frappe/desk/doctype/desktop_settings/desktop_settings.json
 msgid "Apps shows the hook-driven apps screen. Desktop Icons shows the arrangeable desktop icon grid instead."
-msgstr ""
+msgstr "گزینهٔ «اپ‌ها» صفحهٔ اپ‌های مدیریت‌شده با hook را نشان می‌دهد. «آیکون‌های دسکتاپ» به‌جای آن شبکهٔ آیکون‌های قابل‌چینش را نمایش می‌دهد."
 
 #: frappe/public/js/frappe/utils/number_systems.js:41
 msgctxt "Number system"
@@ -3334,7 +3334,7 @@ msgstr "آیا مطمئن هستید که می‌خواهید یک گزارش ج
 
 #: frappe/public/js/frappe/desk.js:444
 msgid "Are you sure you want to log out?"
-msgstr ""
+msgstr "آیا مطمئن هستید که می‌خواهید خارج شوید؟"
 
 #: frappe/public/js/frappe/form/toolbar.js:137
 msgid "Are you sure you want to merge {0} with {1}?"
@@ -3354,7 +3354,7 @@ msgstr "آیا مطمئن هستید که می‌خواهید این ارتبا�
 
 #: frappe/core/doctype/communication/communication.js:166
 msgid "Are you sure you want to relink this communication?"
-msgstr ""
+msgstr "آیا مطمئن هستید که می‌خواهید این مکاتبه را دوباره پیوند دهید؟"
 
 #: frappe/core/doctype/rq_job/rq_job_list.js:10
 msgid "Are you sure you want to remove all failed jobs?"
@@ -3362,7 +3362,7 @@ msgstr "آیا مطمئن هستید که می‌خواهید همه کارها�
 
 #: frappe/core/doctype/user_invitation/user_invitation.js:18
 msgid "Are you sure you want to resend the invitation?"
-msgstr ""
+msgstr "آیا مطمئن هستید که می‌خواهید دعوت‌نامه را دوباره بفرستید؟"
 
 #: frappe/public/js/frappe/views/dashboard/dashboard_view.js:259
 msgid "Are you sure you want to reset all customizations?"
@@ -3397,11 +3397,11 @@ msgstr "Arial"
 
 #: frappe/public/js/frappe/ui/sidebar/arrangement_editor.js:52
 msgid "Arrange"
-msgstr ""
+msgstr "چینش"
 
 #: frappe/public/js/frappe/ui/sidebar/arrangement_editor.js:190
 msgid "Arranging"
-msgstr ""
+msgstr "در حال چینش"
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:11
 msgid "As a best practice, do not assign the same set of permission rule to different Roles. Instead, set multiple Roles to the same User."
@@ -3417,7 +3417,7 @@ msgstr "طبق درخواست شما، حساب و داده‌های شما در
 
 #: frappe/public/js/frappe/list/list_filter/layout_dialog.js:65
 msgid "Ascending"
-msgstr ""
+msgstr "صعودی"
 
 #. Option for the 'Show External Link Warning' (Select) field in DocType
 #. 'System Settings'
@@ -3502,7 +3502,7 @@ msgstr "اختصاص داده شده به / مالک"
 
 #: frappe/automation_engine/actions/core.py:331
 msgid "Assigned to {0}"
-msgstr ""
+msgstr "واگذارشده به {0}"
 
 #. Label of the assignee (Table MultiSelect) field in DocType 'Auto Repeat'
 #: frappe/automation/doctype/auto_repeat/auto_repeat.json
@@ -3511,7 +3511,7 @@ msgstr "گیرنده تخصیص"
 
 #: frappe/automation_engine/actions/core.py:192
 msgid "Assignees"
-msgstr ""
+msgstr "مسئولان"
 
 #: frappe/public/js/frappe/form/sidebar/assign_to.js:387
 msgid "Assigning..."
@@ -3578,7 +3578,7 @@ msgstr "تکالیف"
 
 #: frappe/core/page/component_explorer/component_explorer.js:135
 msgid "Async items (loading state)"
-msgstr ""
+msgstr "موارد ناهمگام (وضعیت بارگذاری)"
 
 #. Label of the asynchronous (Check) field in DocType 'Workflow Transition
 #. Task'
@@ -3588,7 +3588,7 @@ msgstr "ناهمزمان"
 
 #: frappe/automation_engine/actions/core.py:316
 msgid "At least one assignee is required"
-msgstr ""
+msgstr "انتخاب دست‌کم یک مسئول الزامی است."
 
 #: frappe/public/js/frappe/form/grid_row.js:690
 msgid "At least one column is required to show in the grid."
@@ -3604,7 +3604,7 @@ msgstr "حداقل یک فیلد از نوع سند والد اجباری است
 
 #: frappe/automation_engine/actions/core.py:247
 msgid "At least one recipient is required"
-msgstr ""
+msgstr "انتخاب دست‌کم یک گیرنده الزامی است."
 
 #. Option for the 'Type' (Select) field in DocType 'DocField'
 #. Option for the 'Field Type' (Select) field in DocType 'Custom Field'
@@ -3747,7 +3747,7 @@ msgstr "پیوست‌ها"
 #: frappe/automation/doctype/automation_trigger_queue/automation_trigger_queue.json
 #: frappe/integrations/doctype/webhook_request_log/webhook_request_log.json
 msgid "Attempt"
-msgstr ""
+msgstr "تلاش"
 
 #: frappe/public/js/frappe/form/print_utils.js:173
 msgid "Attempting Connection to QZ Tray..."
@@ -3766,7 +3766,7 @@ msgstr "شرکت کننده‌ای در این رویداد یافت نشد."
 #: frappe/desk/doctype/event/event.json
 #: frappe/desk/doctype/event_participants/event_participants.json
 msgid "Attending"
-msgstr ""
+msgstr "شرکت می‌کند"
 
 #: frappe/www/attribution.html:5
 msgid "Attribution"
@@ -3845,7 +3845,7 @@ msgstr "کد مجوز"
 
 #: frappe/integrations/oauth2.py:101
 msgid "Authorization POST requests must use application/x-www-form-urlencoded"
-msgstr ""
+msgstr "درخواست‌های POST احراز هویت باید از قالب application/x-www-form-urlencoded استفاده کنند."
 
 #. Label of the authorization_uri (Small Text) field in DocType 'Connected App'
 #: frappe/integrations/doctype/connected_app/connected_app.json
@@ -3869,7 +3869,7 @@ msgstr "مجوز دسترسی به ایندکس‌سازی API"
 
 #: frappe/templates/includes/oauth_confirmation.html:132
 msgid "Authorize App"
-msgstr ""
+msgstr "دادن مجوز به اپ"
 
 #. Label of the authorize_google_calendar_access (Button) field in DocType
 #. 'Google Calendar'
@@ -4005,11 +4005,11 @@ msgstr "تکرار خودکار ناموفق بود. لطفاً پس از رفع
 
 #: frappe/automation/doctype/auto_repeat/auto_repeat.py:242
 msgid "Auto repeat skipped. The owner cannot access the reference document."
-msgstr ""
+msgstr "تکرار خودکار نادیده گرفته شد؛ مالک به سند مرجع دسترسی ندارد."
 
 #: frappe/automation_engine/runner.py:621
 msgid "Auto-disabled after {0} consecutive failures"
-msgstr ""
+msgstr "پس از {0} بار شکست پیاپی، به‌طور خودکار غیرفعال شد."
 
 #. Option for the 'Type' (Select) field in DocType 'DocField'
 #. Option for the 'Field Type' (Select) field in DocType 'Custom Field'
@@ -4080,12 +4080,12 @@ msgstr "اتوماسیون"
 #. Name of a DocType
 #: frappe/automation/doctype/automation_action/automation_action.json
 msgid "Automation Action"
-msgstr ""
+msgstr "عملیات خودکارسازی"
 
 #. Name of a DocType
 #: frappe/automation/doctype/automation_event_subscription/automation_event_subscription.json
 msgid "Automation Event Subscription"
-msgstr ""
+msgstr "اشتراک رویداد خودکارسازی"
 
 #. Name of a DocType
 #. Label of the automation (Link) field in DocType 'Automation Trigger Queue'
@@ -4094,57 +4094,57 @@ msgstr ""
 #: frappe/automation/doctype/automation_trigger_queue/automation_trigger_queue.json
 #: frappe/automation/sidebar/automation/automation.json
 msgid "Automation Flow"
-msgstr ""
+msgstr "جریان خودکارسازی"
 
 #: frappe/automation/doctype/automation_flow/automation_flow.py:185
 msgid "Automation Flow cannot target a child table: {0}"
-msgstr ""
+msgstr "جریان خودکارسازی نمی‌تواند جدول فرزند {0} را هدف بگیرد."
 
 #: frappe/automation_engine/runner.py:647
 msgid "Automation Flow {0} was auto-disabled"
-msgstr ""
+msgstr "جریان خودکارسازی {0} به‌طور خودکار غیرفعال شد."
 
 #. Name of a DocType
 #: frappe/automation/doctype/automation_settings/automation_settings.json
 msgid "Automation Settings"
-msgstr ""
+msgstr "تنظیمات خودکارسازی"
 
 #. Name of a DocType
 #. Label of a Sidebar Item
 #: frappe/automation/doctype/automation_trigger_queue/automation_trigger_queue.json
 #: frappe/automation/sidebar/automation/automation.json
 msgid "Automation Trigger Queue"
-msgstr ""
+msgstr "صف راه‌اندازهای خودکارسازی"
 
 #. Option for the 'Run As' (Select) field in DocType 'Automation Flow'
 #. Label of the automation_user (Link) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Automation User"
-msgstr ""
+msgstr "کاربر خودکارسازی"
 
 #: frappe/automation/doctype/automation_flow/automation_flow.py:134
 msgid "Automation User {0} is disabled or missing"
-msgstr ""
+msgstr "کاربر خودکارسازی {0} غیرفعال است یا وجود ندارد."
 
 #: frappe/automation_engine/events.py:251
 msgid "Automation event payload is too large"
-msgstr ""
+msgstr "دادهٔ رویداد خودکارسازی بیش از حد بزرگ است."
 
 #: frappe/automation_engine/runner.py:391
 msgid "Automation paused"
-msgstr ""
+msgstr "خودکارسازی متوقف شد"
 
 #: frappe/public/js/frappe/data_import/data_exporter.js:328
 msgid "Autoname: {0}"
-msgstr ""
+msgstr "نام‌گذاری خودکار: {0}"
 
 #: frappe/public/js/print_format_builder/stores/useDraftSave.js:166
 msgid "Autosave failed"
-msgstr ""
+msgstr "ذخیرهٔ خودکار ناموفق بود"
 
 #: frappe/public/js/frappe/list/list_filter/layout_dialog.js:35
 msgid "Available to all users"
-msgstr ""
+msgstr "در دسترس همهٔ کاربران"
 
 #. Option for the 'Chart Type' (Select) field in DocType 'Dashboard Chart'
 #. Option for the 'Group By Type' (Select) field in DocType 'Dashboard Chart'
@@ -4285,15 +4285,15 @@ msgstr "بازگشت به خانه"
 
 #: frappe/www/login.html:175 frappe/www/update-password.html:76
 msgid "Back to sign in"
-msgstr ""
+msgstr "بازگشت به ورود"
 
 #: frappe/public/js/print_format_builder/print_format_builder.bundle.js:119
 msgid "Back to the builder"
-msgstr ""
+msgstr "بازگشت به سازنده"
 
 #: frappe/public/js/print_format_builder/components/inspector/SectionPropertiesPanel.vue:43
 msgid "Background"
-msgstr ""
+msgstr "پس‌زمینه"
 
 #. Label of the bg_color (Select) field in DocType 'Desktop Icon'
 #. Label of the background_color (Color) field in DocType 'Number Card'
@@ -4316,7 +4316,7 @@ msgstr "تصویر پس‌زمینه"
 #. Label of a chart in the System Workspace
 #: frappe/system/workspace/system/system.json
 msgid "Background Job Activity"
-msgstr ""
+msgstr "فعالیت کارهای پس‌زمینه"
 
 #. Label of a Link in the Build Workspace
 #. Label of the background_jobs_section (Section Break) field in DocType
@@ -4348,17 +4348,17 @@ msgstr "چاپ پس‌زمینه (برای بیش از ۲۵ سند الزامی 
 #: frappe/public/js/frappe/ui/background_tasks/background_tasks.js:142
 #: frappe/system/sidebar/system/system.json
 msgid "Background Task"
-msgstr ""
+msgstr "وظیفهٔ پس‌زمینه"
 
 #: frappe/core/doctype/background_task/background_task.py:180
 #: frappe/core/doctype/background_task/background_task.py:229
 msgid "Background Task {0} not found"
-msgstr ""
+msgstr "وظیفهٔ پس‌زمینهٔ {0} پیدا نشد."
 
 #: frappe/public/js/frappe/ui/background_tasks/background_tasks.js:11
 #: frappe/public/js/frappe/ui/sidebar/sidebar.js:928
 msgid "Background Tasks"
-msgstr ""
+msgstr "وظایف پس‌زمینه"
 
 #. Label of the background_workers (Section Break) field in DocType 'System
 #. Settings'
@@ -4371,7 +4371,7 @@ msgstr "ورکرهای پس‌زمینه"
 
 #: frappe/public/js/frappe/form/controls/text_editor.js:335
 msgid "Background color"
-msgstr ""
+msgstr "رنگ پس‌زمینه"
 
 #: frappe/desk/page/backups/backups.js:28
 msgid "Backup Encryption Key"
@@ -4455,17 +4455,17 @@ msgstr "بارکد"
 
 #: frappe/public/js/print_format_builder/components/PrintFormatControls.vue:476
 msgid "Barcode or QR code from a field or static value"
-msgstr ""
+msgstr "بارکد یا کد QR از یک فیلد یا مقدار ثابت"
 
 #: frappe/public/js/print_format_builder/utils.js:130
 #: frappe/public/js/print_format_builder/utils.js:134
 #: frappe/utils/typst_emitter.py:189 frappe/utils/typst_emitter.py:198
 msgid "Barcode that is not a QR code"
-msgstr ""
+msgstr "بارکدی غیر از کد QR"
 
 #: frappe/utils/print_format_generator.py:103
 msgid "Barcode value must be text under 2000 characters"
-msgstr ""
+msgstr "مقدار بارکد باید متنی با کمتر از 2000 نویسه باشد."
 
 #. Label of the base_dn (Data) field in DocType 'LDAP Settings'
 #: frappe/integrations/doctype/ldap_settings/ldap_settings.json
@@ -4490,11 +4490,11 @@ msgstr "بر اساس"
 
 #: frappe/core/doctype/doctype_layout/doctype_layout.py:85
 msgid "Based On layout {0} must be for the same Document Type ({1})"
-msgstr ""
+msgstr "چیدمان مبتنی بر {0} باید برای همان نوع سند ({1}) باشد."
 
 #: frappe/public/js/print_format_builder/components/inspector/LetterHeadZoneInspector.vue:14
 msgid "Based on"
-msgstr ""
+msgstr "مبتنی بر"
 
 #. Option for the 'Rule' (Select) field in DocType 'Assignment Rule'
 #: frappe/automation/doctype/assignment_rule/assignment_rule.json
@@ -4514,11 +4514,11 @@ msgstr "پایه"
 
 #: frappe/core/page/component_explorer/component_explorer.js:425
 msgid "Basic (hover, or focus with Tab)"
-msgstr ""
+msgstr "پایه (با بردن اشاره‌گر یا تمرکز با Tab)"
 
 #: frappe/core/page/component_explorer/component_explorer.js:872
 msgid "Basic (icon + title + description)"
-msgstr ""
+msgstr "پایه (آیکون + عنوان + توضیح)"
 
 #: frappe/core/page/component_explorer/component_explorer.js:809
 msgid "Basic (label + hint)"
