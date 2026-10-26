@@ -58,15 +58,15 @@ msgstr "\"{0}\" یک URL معتبر Google Sheets نیست"
 
 #: frappe/core/doctype/data_import/importer.py:1453
 msgid "\"{0}\" is not a valid date. Use {1}"
-msgstr ""
+msgstr "«{0}» تاریخ معتبری نیست. از قالب {1} استفاده کنید."
 
 #: frappe/core/doctype/data_import/importer.py:1469
 msgid "\"{0}\" is not a valid datetime. Use {1}"
-msgstr ""
+msgstr "«{0}» تاریخ و ساعت معتبری نیست. از قالب {1} استفاده کنید."
 
 #: frappe/core/doctype/data_import/importer.py:1500
 msgid "\"{0}\" is not a valid number, or could mean two numbers. Write it like {1}"
-msgstr ""
+msgstr "«{0}» عدد معتبری نیست یا ممکن است دو عدد را نشان دهد. آن را به‌شکل {1} بنویسید."
 
 #: frappe/core/doctype/data_import/importer.py:1433
 msgid "\"{0}\" is not a valid {1}"
@@ -82,7 +82,7 @@ msgstr ""
 
 #: frappe/core/doctype/data_import/importer.py:1415
 msgid "\"{0}\" is not valid. Allowed: {1}"
-msgstr ""
+msgstr "«{0}» معتبر نیست. مقادیر مجاز: {1}"
 
 #: frappe/core/doctype/data_import/importer.py:1483
 msgid "\"{0}\" is not valid. Use duration format: d h m s"
@@ -881,11 +881,11 @@ msgstr "فیلدی با نام {0} از قبل در {1} وجود دارد"
 
 #: frappe/core/doctype/file/file.py:122 frappe/core/doctype/file/file.py:174
 msgid "A folder cannot have a File URL"
-msgstr ""
+msgstr "نشانی فایل را نمی‌توان برای پوشه تعیین کرد."
 
 #: frappe/public/js/frappe/list/list_filter/layout_dialog.js:245
 msgid "A layout with this name already exists"
-msgstr ""
+msgstr "چیدمانی با این نام از قبل وجود دارد."
 
 #: frappe/core/page/component_explorer/component_explorer.js:482
 msgid "A list of reasons"
@@ -898,11 +898,11 @@ msgstr "لیستی از منابعی که برنامه مشتری پس از اج
 
 #: frappe/core/doctype/user/user.py:714
 msgid "A pending rename involving {0} is still being applied. Please try again later."
-msgstr ""
+msgstr "تغییر نام مربوط به {0} هنوز در حال اجراست. لطفاً بعداً دوباره تلاش کنید."
 
 #: frappe/desk/doctype/document_template/document_template.py:56
 msgid "A private template named {0} already exists for {1}"
-msgstr ""
+msgstr "قالب خصوصی «{0}» برای {1} از قبل وجود دارد."
 
 #: frappe/public/js/frappe/views/workspace/workspace.js:249
 msgid "A private workspace is yours alone. Only you can see it."
@@ -910,7 +910,7 @@ msgstr ""
 
 #: frappe/desk/doctype/document_template/document_template.py:73
 msgid "A public template named {0} already exists for {1}"
-msgstr ""
+msgstr "قالب عمومی «{0}» برای {1} از قبل وجود دارد."
 
 #: frappe/automation/doctype/auto_repeat/auto_repeat.py:447
 msgid "A recurring {0} {1} has been created for you via Auto Repeat {2}."
@@ -918,11 +918,11 @@ msgstr "یک {0} {1} تکرارشونده از طریق تکرار خودکار 
 
 #: frappe/desk/doctype/workspace/workspace.py:181
 msgid "A shared workspace needs a module other than {0}."
-msgstr ""
+msgstr "برای فضای کاری مشترک، ماژولی غیر از {0} انتخاب کنید."
 
 #: frappe/public/js/frappe/ui/sidebar/sidebar_manager.js:805
 msgid "A sidebar needs at least one entry that leads somewhere. Put one back, or use Reset to drop this arrangement."
-msgstr ""
+msgstr "نوار کناری باید دست‌کم یک ورودیِ قابل‌هدایت داشته باشد. یکی را بازگردانید یا برای حذف این چیدمان، بازنشانی را بزنید."
 
 #: frappe/desk/doctype/sidebar/sidebar.py:269
 msgid "A sidebar's name is part of its desk URL, so it cannot contain {0}."
