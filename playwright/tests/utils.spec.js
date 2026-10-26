@@ -109,6 +109,28 @@ test.describe("Utils", () => {
 		expect(value).toBe("1 d");
 	});
 
+	test("uses Saturday as the first day for Persian calendars and preserves the English setting", async ({ page }) => {
+		const values = await page.evaluate(() => {
+			const previousLanguage = frappe.boot.lang;
+			const previousFirstDay = frappe.sys_defaults.first_day_of_the_week;
+			frappe.sys_defaults.first_day_of_the_week = "Sunday";
+			try {
+				frappe.boot.lang = "fa-IR";
+				const persian = frappe.datetime.get_first_day_of_the_week_index();
+				frappe.boot.lang = "en";
+				return {
+					persian,
+					english: frappe.datetime.get_first_day_of_the_week_index(),
+				};
+			} finally {
+				frappe.boot.lang = previousLanguage;
+				frappe.sys_defaults.first_day_of_the_week = previousFirstDay;
+			}
+		});
+
+		expect(values).toEqual({ persian: 6, english: 0 });
+	});
+
 	test("should round hidden seconds to minutes", async ({ page }) => {
 		expect(await run_util(page, "seconds_to_duration", 89, { hide_seconds: 1 })).toEqual({
 			days: 0,

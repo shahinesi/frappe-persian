@@ -318,8 +318,9 @@ frappe.views.Calendar = class Calendar {
 		defaults.meridiem = "false";
 		this.cal_options = {
 			plugins: frappe.FullCalendar.Plugins,
+			locales: frappe.FullCalendar.Locales,
 			initialView: defaults.initialView || "dayGridMonth",
-			locale: frappe.boot.lang,
+			locale: /^fa(?:[-_]|$)/i.test(frappe.boot.lang || "") ? "fa" : frappe.boot.lang,
 			eventTimeFormat: {
 				hour: "numeric",
 				minute: "2-digit",

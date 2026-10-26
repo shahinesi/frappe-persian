@@ -1,27 +1,76 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // MIT License. See license.txt
 
+import { digitsArToFa, digitsFaToEn } from "@persian-tools/persian-tools";
+import { isValidJalaaliDate, toGregorian, toJalaali } from "jalaali-js";
+
 frappe.provide("frappe.datetime");
+
+const PERSIAN_MONTHS = [
+	"فروردین",
+	"اردیبهشت",
+	"خرداد",
+	"تیر",
+	"مرداد",
+	"شهریور",
+	"مهر",
+	"آبان",
+	"آذر",
+	"دی",
+	"بهمن",
+	"اسفند",
+];
+const PERSIAN_MONTHS_SHORT = [
+	"فرو",
+	"ارد",
+	"خرد",
+	"تیر",
+	"مرد",
+	"شهر",
+	"مهر",
+	"آبا",
+	"آذر",
+	"دی",
+	"بهم",
+	"اسف",
+];
+const PERSIAN_WEEKDAYS = [
+	"یکشنبه",
+	"دوشنبه",
+	"سه‌شنبه",
+	"چهارشنبه",
+	"پنجشنبه",
+	"جمعه",
+	"شنبه",
+];
+const PERSIAN_WEEKDAYS_SHORT = ["ی", "د", "س", "چ", "پ", "ج", "ش"];
 
 function format_in_persian_calendar(date_obj, format) {
 	const language = (frappe.boot?.lang || "").toLowerCase().split(/[-_]/)[0];
-	if (language !== "fa" || typeof window.persianDate !== "function") return null;
+	if (language !== "fa") return null;
 	if (date_obj.isValid && !date_obj.isValid()) return null;
 
-	// Build from the user's wall-clock fields so browser timezone cannot shift the date.
-	const local_date = new Date(
-		date_obj.year(),
-		date_obj.month(),
-		date_obj.date(),
-		date_obj.hour(),
-		date_obj.minute(),
-		date_obj.second(),
-		date_obj.millisecond()
+	const jalali = toJalaali(date_obj.year(), date_obj.month() + 1, date_obj.date());
+	const pad = (value) => String(value).padStart(2, "0");
+	const values = {
+		YYYY: String(jalali.jy),
+		YY: String(jalali.jy).slice(-2),
+		MMMM: PERSIAN_MONTHS[jalali.jm - 1],
+		MMM: PERSIAN_MONTHS_SHORT[jalali.jm - 1],
+		MM: pad(jalali.jm),
+		M: String(jalali.jm),
+		DD: pad(jalali.jd),
+		D: String(jalali.jd),
+		dddd: PERSIAN_WEEKDAYS[date_obj.day()],
+		ddd: PERSIAN_WEEKDAYS_SHORT[date_obj.day()],
+		dd: PERSIAN_WEEKDAYS_SHORT[date_obj.day()],
+		d: String(date_obj.day()),
+	};
+	const tokens = /YYYY|YY|MMMM|MMM|MM|M|DD|D|dddd|ddd|dd|d|HH|H|hh|h|mm|m|ss|s|A|a/g;
+	return format.replace(
+		tokens,
+		(token) => values[token] ?? date_obj.locale("en").format(token)
 	);
-	return new window.persianDate(local_date)
-		.toCalendar("persian")
-		.toLocale("fa")
-		.format(format);
 }
 
 frappe.defaultDateFormat = "YYYY-MM-DD";
@@ -213,6 +262,7 @@ $.extend(frappe.datetime, {
 	},
 
 	user_to_str: function (val, only_time = false) {
+		val = digitsFaToEn(digitsArToFa(String(val ?? "")));
 		var user_time_fmt = frappe.datetime.get_user_time_fmt();
 		if (only_time) {
 			return moment(val, user_time_fmt).format(frappe.defaultTimeFormat);
@@ -227,9 +277,27 @@ $.extend(frappe.datetime, {
 		}
 
 		// user_fmt.replace("YYYY", "YY")? user might only input 2 digits of the year, which should also be parsed
-		return moment(val, [user_fmt.replace("YYYY", "YY"), user_fmt])
-			.locale("en")
-			.format(system_fmt);
+		const user_formats = [user_fmt, user_fmt.replace("YYYY", "YY")];
+		const parsed = moment(val, user_formats).locale("en");
+		const language = (frappe.boot?.lang || "").toLowerCase().split(/[-_]/)[0];
+		if (language === "fa" && parsed.isValid()) {
+			const year = parsed.year();
+			const month = parsed.month() + 1;
+			const date = parsed.date();
+			if (isValidJalaaliDate(year, month, date)) {
+				const gregorian = toGregorian(year, month, date);
+				const converted = moment(
+					`${gregorian.gy}-${String(gregorian.gm).padStart(2, "0")}-${String(
+						gregorian.gd
+					).padStart(2, "0")}`
+				);
+				if (system_fmt.includes("HH:mm:ss")) {
+					converted.hour(parsed.hour()).minute(parsed.minute()).second(parsed.second());
+				}
+				return converted.format(system_fmt);
+			}
+		}
+		return parsed.format(system_fmt);
 	},
 
 	user_to_obj: function (d) {
@@ -239,8 +307,12 @@ $.extend(frappe.datetime, {
 	global_date_format: function (d) {
 		var m = moment(d);
 		if (m._f && m._f.indexOf("HH") !== -1) {
+			const persian_datetime = format_in_persian_calendar(m, "D MMMM YYYY, HH:mm");
+			if (persian_datetime) return persian_datetime;
 			return m.format("Do MMMM YYYY, hh:mm A");
 		} else {
+			const persian_date = format_in_persian_calendar(m, "D MMMM YYYY");
+			if (persian_date) return persian_date;
 			return m.format("Do MMMM YYYY");
 		}
 	},
@@ -321,6 +393,10 @@ $.extend(frappe.datetime, {
 	},
 
 	get_first_day_of_the_week_index() {
+		if ((frappe.boot?.lang || "").toLowerCase().startsWith("fa")) {
+			return 6;
+		}
+
 		const first_day_of_the_week = frappe.sys_defaults.first_day_of_the_week || "Sunday";
 		return moment.weekdays().indexOf(first_day_of_the_week);
 	},

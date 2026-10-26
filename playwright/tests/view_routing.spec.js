@@ -67,6 +67,36 @@ test.describe("View", () => {
 		await expect_list_view(page, "Calendar");
 	});
 
+	test("Persian Calendar view uses FullCalendar's RTL and Saturday-first locale", async ({ page, desk }) => {
+		await page.goto("/desk/todo/view/calendar");
+		await desk.ready();
+
+		const options = await page.evaluate(() => {
+			const previousLanguage = frappe.boot.lang;
+			frappe.boot.lang = "fa-IR";
+			try {
+				const view = Object.create(frappe.views.CalendarView.prototype);
+				view.setup_options({ initialView: "dayGridMonth", weekends: true });
+				const persian = frappe.FullCalendar.Locales.find((locale) => locale.code === "fa");
+				return {
+					calendarLocale: view.cal_options.locale,
+					localeCode: persian?.code,
+					direction: persian?.direction,
+					firstDay: persian?.week?.dow,
+				};
+			} finally {
+				frappe.boot.lang = previousLanguage;
+			}
+		});
+
+		expect(options).toEqual({
+			calendarLocale: "fa",
+			localeCode: "fa",
+			direction: "rtl",
+			firstDay: 6,
+		});
+	});
+
 	test("Route to Custom Tree View", async ({ page, desk, api }) => {
 		await api.call("frappe.tests.ui_test_helpers.setup_tree_doctype");
 		await page.goto("/desk/custom-tree/view/tree");
