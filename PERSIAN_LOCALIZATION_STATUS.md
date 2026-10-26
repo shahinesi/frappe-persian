@@ -100,3 +100,9 @@ Updated: 2026-10-26. This file tracks the existing Workspace repositories and de
 - Added 95 active Persian UI translations for error states, filters, display preferences, automation fields, print builder controls, login flows, and supporting help text.
 - Source-backed empty entries decreased from 1,223 to 1,128. The 15 source-missing references remain classified as stale; fuzzy count remains 0.
 - PO syntax, per-map placeholder/HTML-tag/canonical-digit checks, and `git diff --check`: PASS. Runtime translation tests and Build: NOT RUN (`node_modules` absent).
+
+### Frappe Framework continuation — 2026-10-27 (letterhead, print settings, maps and system UI)
+
+- Added 95 active Persian translations covering letterhead/print settings, loading and error states, profile/navigation preferences, automation and MapReduce labels, and no-data/help states.
+- Source-backed empty entries decreased from 1,128 to 1,033; 15 entries still point only to source files absent from this checkout. Fuzzy count remains 0.
+- PO syntax and translation-map placeholder/HTML-tag/canonical-digit checks plus `git diff --check`: PASS. Runtime localization suite/build: NOT RUN (dependencies unavailable).
