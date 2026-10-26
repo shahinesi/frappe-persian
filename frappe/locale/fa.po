@@ -50,7 +50,7 @@ msgstr "فیلد \"amended_from\" باید برای اصلاح وجود داشت
 
 #: frappe/core/doctype/data_import/importer.py:1726
 msgid "\"{0}\" does not match any field — map it in the preview"
-msgstr ""
+msgstr "«{0}» با هیچ فیلدی منطبق نیست؛ آن را در پیش‌نمایش نگاشت کنید."
 
 #: frappe/utils/csvutils.py:278
 msgid "\"{0}\" is not a valid Google Sheets URL"
@@ -70,15 +70,15 @@ msgstr "«{0}» عدد معتبری نیست یا ممکن است دو عدد ر
 
 #: frappe/core/doctype/data_import/importer.py:1433
 msgid "\"{0}\" is not a valid {1}"
-msgstr ""
+msgstr "«{0}» برای {1} معتبر نیست."
 
 #: frappe/core/doctype/data_import/value_mapping.py:259
 msgid "\"{0}\" is not a valid {1} — {2}"
-msgstr ""
+msgstr "«{0}» برای {1} معتبر نیست — {2}"
 
 #: frappe/core/doctype/data_import/value_mapping.py:263
 msgid "\"{0}\" is not valid — {1}"
-msgstr ""
+msgstr "«{0}» معتبر نیست — {1}"
 
 #: frappe/core/doctype/data_import/importer.py:1415
 msgid "\"{0}\" is not valid. Allowed: {1}"
@@ -86,7 +86,7 @@ msgstr "«{0}» معتبر نیست. مقادیر مجاز: {1}"
 
 #: frappe/core/doctype/data_import/importer.py:1483
 msgid "\"{0}\" is not valid. Use duration format: d h m s"
-msgstr ""
+msgstr "«{0}» معتبر نیست. از قالب مدت‌زمان d h m s استفاده کنید."
 
 #: frappe/public/js/frappe/ui/toolbar/tag_utils.js:21
 #: frappe/public/js/frappe/ui/toolbar/tag_utils.js:22
@@ -196,7 +196,7 @@ msgstr "0 بالاترین است"
 #. Description of the 'Added' (Check) field in DocType 'Sidebar Item'
 #: frappe/desk/doctype/sidebar_item/sidebar_item.json
 msgid "0 means this row references a base item: non-empty fields override it, empty fields mean no opinion. 1 means a full item the layer added, rendered as it stands."
-msgstr ""
+msgstr "0 یعنی این ردیف به مورد پایه ارجاع می‌دهد: فیلدهای پُر مقدار آن را بازنویسی می‌کنند و فیلدهای خالی تغییری نمی‌دهند. 1 یعنی این لایه موردی کامل افزوده که همان‌طور نمایش داده می‌شود."
 
 #: frappe/public/js/frappe/form/grid_row.js:902
 msgid "1 = True & 0 = False"
@@ -219,7 +219,7 @@ msgstr "1 رویداد تقویم Google همگام‌سازی شد."
 
 #: frappe/core/doctype/error_log/error_log_list.js:23
 msgid "1 Queued Error Log"
-msgstr ""
+msgstr "1 خطای در صف"
 
 #: frappe/public/js/frappe/views/reports/query_report.js:1091
 msgid "1 Report"
@@ -250,11 +250,11 @@ msgstr "1 ماه پیش"
 
 #: frappe/public/js/frappe/data_import/import_tree_preview.js:33
 msgid "1 node"
-msgstr ""
+msgstr "1 گره"
 
 #: frappe/public/js/print_format_builder/components/editor/PrintFormat.vue:14
 msgid "1 of N"
-msgstr ""
+msgstr "1 از N"
 
 #: frappe/public/js/frappe/data_import/data_exporter.js:248
 msgid "1 record will be exported"
@@ -262,7 +262,7 @@ msgstr "1 رکورد برون‌بُرد خواهد شد"
 
 #: frappe/public/js/frappe/data_import/import_preview.js:202
 msgid "1 row"
-msgstr ""
+msgstr "1 ردیف"
 
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:323
 msgctxt "User removed row from child table"
@@ -280,7 +280,7 @@ msgstr "1 ثانیه پیش"
 
 #: frappe/public/js/frappe/data_import/import_tree_preview.js:89
 msgid "1 tree structure warning found."
-msgstr ""
+msgstr "1 هشدار دربارهٔ ساختار درخت پیدا شد."
 
 #: frappe/public/js/frappe/utils/pretty_date.js:64
 #: frappe/tests/test_utils.py:1115
@@ -859,13 +859,13 @@ msgstr "یک نمونه چارچوب Frappe می‌تواند به عنوان م
 
 #: frappe/core/doctype/page/page.py:92
 msgid "A Frappe UI page has to be Standard. Its Vue source lives in the app's page folder."
-msgstr ""
+msgstr "صفحهٔ Frappe UI باید از نوع استاندارد باشد. کد Vue آن در پوشهٔ صفحه‌های اپ قرار می‌گیرد."
 
 #. Description of the 'Settings DocType' (Link) field in DocType 'DocType
 #. Settings Map Item'
 #: frappe/core/doctype/doctype_settings_map_item/doctype_settings_map_item.json
 msgid "A Single (Settings) doctype."
-msgstr ""
+msgstr "یک DocType تک‌نمونه (تنظیمات)."
 
 #: frappe/core/doctype/doctype_settings_map/doctype_settings_map.py:137
 msgid "A custom settings map already exists for {0}."
@@ -889,7 +889,7 @@ msgstr "چیدمانی با این نام از قبل وجود دارد."
 
 #: frappe/core/page/component_explorer/component_explorer.js:482
 msgid "A list of reasons"
-msgstr ""
+msgstr "فهرستی از دلیل‌ها"
 
 #. Description of the 'Scopes' (Text) field in DocType 'OAuth Client'
 #: frappe/integrations/doctype/oauth_client/oauth_client.json
@@ -906,7 +906,7 @@ msgstr "قالب خصوصی «{0}» برای {1} از قبل وجود دارد."
 
 #: frappe/public/js/frappe/views/workspace/workspace.js:249
 msgid "A private workspace is yours alone. Only you can see it."
-msgstr ""
+msgstr "فضای کاری خصوصی فقط متعلق به شماست و تنها خودتان می‌توانید آن را ببینید."
 
 #: frappe/desk/doctype/document_template/document_template.py:73
 msgid "A public template named {0} already exists for {1}"
@@ -926,7 +926,7 @@ msgstr "نوار کناری باید دست‌کم یک ورودیِ قابل‌
 
 #: frappe/desk/doctype/sidebar/sidebar.py:269
 msgid "A sidebar's name is part of its desk URL, so it cannot contain {0}."
-msgstr ""
+msgstr "نام نوار کناری بخشی از نشانی Desk آن است؛ بنابراین نمی‌تواند شامل {0} باشد."
 
 #. Description of a DocType
 #: frappe/desk/doctype/custom_workspace/custom_workspace.json
@@ -935,27 +935,27 @@ msgstr ""
 
 #: frappe/public/js/print_format_builder/composables/useSnippets.js:49
 msgid "A snippet named {0} already exists for {1}."
-msgstr ""
+msgstr "از قبل قطعه‌کدی با نام {0} برای {1} وجود دارد."
 
 #: frappe/core/doctype/doctype_settings_map/doctype_settings_map.py:133
 msgid "A standard settings map already exists for {0} in {1}."
-msgstr ""
+msgstr "از قبل نگاشت تنظیمات استانداردی برای {0} در {1} وجود دارد."
 
 #: frappe/desk/doctype/sidebar/sidebar.py:408
 msgid "A standard sidebar needs a module or an app to be written to."
-msgstr ""
+msgstr "برای ذخیرهٔ نوار کناری استاندارد باید یک ماژول یا اپ مشخص شود."
 
 #: frappe/desk/doctype/workspace/workspace.py:1284
 msgid "A standard workspace belongs to the module that ships it."
-msgstr ""
+msgstr "فضای کاری استاندارد متعلق به ماژولی است که آن را ارائه می‌کند."
 
 #: frappe/public/js/frappe/views/workspace/workspace.js:780
 msgid "A standard workspace is shipped by the app; changes are saved as customizations."
-msgstr ""
+msgstr "اپ، فضای کاری استاندارد را ارائه می‌کند و تغییرات به‌صورت سفارشی‌سازی ذخیره می‌شوند."
 
 #: frappe/public/js/frappe/views/workspace/workspace.js:857
 msgid "A standard workspace stays in the module that ships it."
-msgstr ""
+msgstr "فضای کاری استاندارد در ماژولی باقی می‌ماند که آن را ارائه می‌کند."
 
 #. Description of the 'Symbol' (Data) field in DocType 'Currency'
 #: frappe/geo/doctype/currency/currency.json
@@ -968,11 +968,11 @@ msgstr "یک الگو از قبل برای فیلد {0} از {1} وجود دار
 
 #: frappe/core/page/component_explorer/component_explorer.js:369
 msgid "A user preview on a link (rest the pointer on it)"
-msgstr ""
+msgstr "پیش‌نمایش پیوند برای کاربر (اشاره‌گر را روی پیوند نگه دارید)"
 
 #: frappe/public/js/print_format_builder/components/PrintFormatControls.vue:511
 msgid "A value from a linked document"
-msgstr ""
+msgstr "مقداری از یک سند پیوندشده"
 
 #. Description of the 'Software Version' (Data) field in DocType 'OAuth Client'
 #: frappe/integrations/doctype/oauth_client/oauth_client.json
@@ -1125,7 +1125,7 @@ msgstr "API Secret"
 
 #: frappe/api/discovery.py:230
 msgid "API discovery cache is being generated. Please try again in a few seconds."
-msgstr ""
+msgstr "حافظهٔ نهانِ کشف API در حال ایجاد است. چند ثانیهٔ دیگر دوباره تلاش کنید."
 
 #. Option for the 'Default Sort Order' (Select) field in DocType 'DocType'
 #. Option for the 'Sort Order' (Select) field in DocType 'Customize Form'
@@ -1176,7 +1176,7 @@ msgstr "پذیرش دعوت نامه"
 #. 'Automation Settings'
 #: frappe/automation/doctype/automation_settings/automation_settings.json
 msgid "Accept emit() calls for events no app registered through the automation_events hook."
-msgstr ""
+msgstr "پذیرفتن فراخوانی‌های emit() برای رویدادهایی که هیچ اپی از طریق hook مربوط به automation_events ثبت نکرده است."
 
 #. Option for the 'Status' (Select) field in DocType 'User Invitation'
 #: frappe/core/doctype/user_invitation/user_invitation.json
@@ -1224,7 +1224,7 @@ msgstr "URL توکن دسترسی"
 
 #: frappe/core/doctype/role/role.js:656
 msgid "Access added."
-msgstr ""
+msgstr "دسترسی افزوده شد."
 
 #: frappe/auth.py:512
 msgid "Access not allowed from this IP Address"
@@ -1316,15 +1316,15 @@ msgstr "نوع اقدام"
 
 #: frappe/automation/doctype/automation_flow/automation_flow.py:163
 msgid "Action Type is required for action steps"
-msgstr ""
+msgstr "برای مراحل عملیات، انتخاب نوع عملیات الزامی است."
 
 #: frappe/automation_engine/runner.py:498
 msgid "Action completed"
-msgstr ""
+msgstr "عملیات انجام شد"
 
 #: frappe/public/js/frappe/ui/embedded_list.js:421
 msgid "Action failed."
-msgstr ""
+msgstr "عملیات ناموفق بود."
 
 #: frappe/core/doctype/submission_queue/submission_queue.py:122
 msgid "Action {0} completed successfully on {1} {2}. View it {3}"
@@ -1568,7 +1568,7 @@ msgstr "افزودن قانون مجوز جدید"
 
 #: frappe/core/doctype/role/role.js:735
 msgid "Add Page"
-msgstr ""
+msgstr "افزودن صفحه"
 
 #: frappe/desk/doctype/event/event.js:40
 msgid "Add Participants"
@@ -1576,11 +1576,11 @@ msgstr "افزودن شرکت کنندگان"
 
 #: frappe/core/doctype/role/role.js:435
 msgid "Add Permission"
-msgstr ""
+msgstr "افزودن مجوز"
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:161
 msgid "Add Permission for {0}"
-msgstr ""
+msgstr "افزودن مجوز برای {0}"
 
 #. Label of the add_query_parameters (Check) field in DocType 'Email Group'
 #: frappe/email/doctype/email_group/email_group.json
@@ -1594,7 +1594,7 @@ msgstr "افزودن سرآیند Reply-To"
 
 #: frappe/core/doctype/role/role.js:705
 msgid "Add Report"
-msgstr ""
+msgstr "افزودن گزارش"
 
 #: frappe/core/doctype/user/user.py:930
 msgid "Add Roles"
@@ -1607,7 +1607,7 @@ msgstr "افزودن بخش"
 #: frappe/public/js/frappe/form/doctype_settings/tabs/naming.js:62
 #: frappe/public/js/frappe/form/doctype_settings/tabs/naming.js:172
 msgid "Add Series"
-msgstr ""
+msgstr "افزودن مجموعه"
 
 #: frappe/public/js/frappe/ui/naming_series.js:26
 msgid "Add Series Prefix"
@@ -1673,7 +1673,7 @@ msgstr "افزودن کاربر"
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/user_permissions.js:100
 msgid "Add User Permission"
-msgstr ""
+msgstr "افزودن مجوز کاربر"
 
 #: frappe/core/doctype/user_permission/user_permission_list.js:6
 msgid "Add User Permissions"
@@ -1681,7 +1681,7 @@ msgstr "افزودن مجوزهای کاربر"
 
 #: frappe/core/doctype/role/role.js:257
 msgid "Add User to {0}"
-msgstr ""
+msgstr "افزودن کاربر به {0}"
 
 #. Label of the add_video_conferencing (Check) field in DocType 'Event'
 #: frappe/desk/doctype/event/event.json
@@ -1690,7 +1690,7 @@ msgstr "افزودن ویدئو کنفرانس"
 
 #: frappe/core/doctype/role/role.js:766
 msgid "Add Workspace"
-msgstr ""
+msgstr "افزودن فضای کاری"
 
 #. Label of the add_x_original_from (Check) field in DocType 'Email Account'
 #: frappe/email/doctype/email_account/email_account.json
@@ -1742,12 +1742,12 @@ msgstr "افزودن یک ردیف زیر ردیف فعلی"
 
 #: frappe/public/js/print_format_builder/components/editor/PrintFormat.vue:66
 msgid "Add a section"
-msgstr ""
+msgstr "افزودن بخش"
 
 #: frappe/public/js/print_format_builder/components/PrintFormatControls.vue:178
 #: frappe/public/js/print_format_builder/components/PrintFormatControls.vue:358
 msgid "Add a section to the canvas to see it here."
-msgstr ""
+msgstr "برای نمایش محتوا در اینجا، بخشی به بوم اضافه کنید."
 
 #: frappe/public/js/frappe/views/dashboard/dashboard_view.js:277
 msgid "Add a {0} Chart"
@@ -1795,7 +1795,7 @@ msgstr "اعداد یا کاراکترهای ویژه اضافه کنید."
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/roles.js:11
 msgid "Add role"
-msgstr ""
+msgstr "افزودن نقش"
 
 #: frappe/public/js/frappe/form/grid.js:144
 msgid "Add row"
@@ -1829,11 +1829,11 @@ msgstr "افزودن به جدول"
 
 #: frappe/public/js/frappe/ui/sidebar/sidebar_manager.js:332
 msgid "Add to the Sidebar"
-msgstr ""
+msgstr "افزودن به نوار کناری"
 
 #: frappe/public/js/frappe/ui/sidebar/dock_manager.js:368
 msgid "Add to the dock"
-msgstr ""
+msgstr "افزودن به داک"
 
 #: frappe/public/js/frappe/form/footer/form_timeline.js:104
 msgid "Add to this activity by mailing to {0}"
@@ -1851,11 +1851,11 @@ msgstr "افزودن {0}"
 
 #: frappe/core/doctype/role/role.js:640
 msgid "Add {0} Access to {1}"
-msgstr ""
+msgstr "افزودن دسترسی {0} به {1}"
 
 #: frappe/public/js/frappe/views/workspace/workspace.js:514
 msgid "Add {0} to a module"
-msgstr ""
+msgstr "افزودن {0} به یک ماژول"
 
 #: frappe/public/js/frappe/widgets/quick_list_widget.js:67
 msgid "Add/Update Filter"
@@ -1880,12 +1880,12 @@ msgstr "HTML اضافه‌شده در بخش &lt;head&gt; صفحه وب، عمد
 #. Label of the added_roles (Table) field in DocType 'Custom Workspace'
 #: frappe/desk/doctype/custom_workspace/custom_workspace.json
 msgid "Added Roles"
-msgstr ""
+msgstr "نقش‌های افزوده‌شده"
 
 #. Label of the widgets (Long Text) field in DocType 'Custom Workspace'
 #: frappe/desk/doctype/custom_workspace/custom_workspace.json
 msgid "Added Widgets"
-msgstr ""
+msgstr "ابزارک‌های افزوده‌شده"
 
 #: frappe/core/doctype/log_settings/log_settings.py:84
 msgid "Added default log doctypes: {}"
@@ -1893,7 +1893,7 @@ msgstr "انواع سند گزارش پیش‌فرض اضافه شد: {}"
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/global_search.js:127
 msgid "Added to global search"
-msgstr ""
+msgstr "به جست‌وجوی سراسری افزوده شد"
 
 #: frappe/public/js/frappe/form/link_selector.js:190
 #: frappe/public/js/frappe/form/link_selector.js:212
@@ -1902,7 +1902,7 @@ msgstr "اضافه شده {0} ({1})"
 
 #: frappe/public/js/frappe/views/workspace/workspace.js:545
 msgid "Added {0} to {1}"
-msgstr ""
+msgstr "{0} به {1} افزوده شد"
 
 #. Label of the additional_permissions (Section Break) field in DocType 'Custom
 #. DocPerm'
@@ -2051,7 +2051,7 @@ msgstr "پیشرفته"
 #. 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Advanced Condition"
-msgstr ""
+msgstr "شرط پیشرفته"
 
 #. Label of the advanced_control_section (Section Break) field in DocType 'User
 #. Permission'
@@ -2063,7 +2063,7 @@ msgstr "کنترل پیشرفته"
 #. Label of the condition (Code) field in DocType 'Automation Flow'
 #: frappe/automation/doctype/automation_flow/automation_flow.json
 msgid "Advanced Expression using Python"
-msgstr ""
+msgstr "عبارت پیشرفته با استفاده از Python"
 
 #: frappe/public/js/frappe/form/controls/link.js:533
 #: frappe/public/js/frappe/form/controls/link.js:535
@@ -2146,7 +2146,7 @@ msgstr "برای ایجاد نمودار داشبورد، فیلد عملکرد 
 
 #: frappe/core/page/component_explorer/component_explorer.js:1149
 msgid "Alert dismissed"
-msgstr ""
+msgstr "هشدار بسته شد"
 
 #: frappe/database/query.py:2736
 msgid "Alias must be a string"
@@ -2173,15 +2173,15 @@ msgstr "تراز به راست"
 
 #: frappe/public/js/print_format_builder/components/inspector/align_opts.js:3
 msgid "Align center"
-msgstr ""
+msgstr "تراز وسط"
 
 #: frappe/public/js/print_format_builder/components/inspector/align_opts.js:2
 msgid "Align left"
-msgstr ""
+msgstr "تراز چپ"
 
 #: frappe/public/js/print_format_builder/components/inspector/align_opts.js:4
 msgid "Align right"
-msgstr ""
+msgstr "تراز راست"
 
 #. Label of the alignment (Select) field in DocType 'DocField'
 #. Label of the alignment (Select) field in DocType 'Custom Field'
@@ -2233,7 +2233,7 @@ msgstr "تمام روز"
 
 #: frappe/public/js/frappe/form/doctype_settings/tabs/user_permissions.js:90
 msgid "All DocTypes"
-msgstr ""
+msgstr "همهٔ DocTypeها"
 
 #: frappe/website/doctype/website_slideshow/website_slideshow.py:45
 msgid "All Images attached to Website Slideshow should be public"
@@ -2251,11 +2251,11 @@ msgstr "تمام ارسال ها"
 #: frappe/public/js/frappe/ui/sidebar/dock.js:336
 #: frappe/public/js/frappe/ui/sidebar/sidebar_header.js:234
 msgid "All apps"
-msgstr ""
+msgstr "همهٔ اپ‌ها"
 
 #: frappe/public/js/print_format_builder/components/inspector/TableFieldInspector.vue:76
 msgid "All available columns added."
-msgstr ""
+msgstr "همهٔ ستون‌های موجود افزوده شدند."
 
 #: frappe/custom/doctype/customize_form/customize_form.js:476
 msgid "All customizations will be removed. Please confirm."
@@ -2428,18 +2428,18 @@ msgstr "اجازه ارسال داده‌های استفاده برای بهبو
 #. Settings'
 #: frappe/automation/doctype/automation_settings/automation_settings.json
 msgid "Allow Unregistered Events"
-msgstr ""
+msgstr "اجازهٔ رویدادهای ثبت‌نشده"
 
 #. Label of the allow_user_cancellation (Check) field in DocType 'Background
 #. Task'
 #: frappe/core/doctype/background_task/background_task.json
 msgid "Allow User Cancellation"
-msgstr ""
+msgstr "اجازهٔ لغو توسط کاربر"
 
 #. Label of the allow_user_retry (Check) field in DocType 'Background Task'
 #: frappe/core/doctype/background_task/background_task.json
 msgid "Allow User Retry"
-msgstr ""
+msgstr "اجازهٔ تلاش دوباره توسط کاربر"
 
 #. Description of the 'Allow Self Approval' (Check) field in DocType 'Workflow
 #. Transition'
@@ -2561,7 +2561,7 @@ msgstr ""
 
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:603
 msgid "Allow switching between list, kanban, report, and other views from the toolbar"
-msgstr ""
+msgstr "اجازهٔ جابه‌جایی میان فهرست، کانبان، گزارش و نماهای دیگر از نوار ابزار"
 
 #. Description of the 'Login After' (Int) field in DocType 'User'
 #: frappe/core/doctype/user/user.json
@@ -2633,7 +2633,7 @@ msgstr "کاراکترهای ویژه مجاز عبارتند از '/' و '-'"
 
 #: frappe/core/doctype/data_import/value_mapping.py:267
 msgid "Allowed: {0}"
-msgstr ""
+msgstr "مجاز: {0}"
 
 #: frappe/public/js/frappe/form/form.js:1615
 msgid "Allowing DocType, DocType. Be careful!"
@@ -2671,11 +2671,11 @@ msgstr "اجازه می‌دهد URL پایه فعال شده کلید ورود 
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:52
 msgid "Allows printing or PDF download of documents."
-msgstr ""
+msgstr "اجازهٔ چاپ یا دریافت سندها به‌صورت PDF را می‌دهد."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:77
 msgid "Allows sharing document access with other users."
-msgstr ""
+msgstr "اجازهٔ اشتراک‌گذاری دسترسی سند با کاربران دیگر را می‌دهد."
 
 #. Description of the 'Skip Authorization' (Check) field in DocType 'OAuth
 #. Settings'
@@ -2686,87 +2686,87 @@ msgstr "در صورتی که کاربر توکن‌های فعال داشته ب
 #: frappe/core/page/permission_manager/permission_manager_help.html:62
 #: frappe/public/js/frappe/ui/permission_dialog.js:52
 msgid "Allows the user to access reports related to the document."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد به گزارش‌های مرتبط با سند دسترسی داشته باشد."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:31
 msgid "Allows the user to amend a cancelled document into a new copy."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد از سند لغوشده یک نسخهٔ جدید برای اصلاح ایجاد کند."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:28
 msgid "Allows the user to cancel submitted documents."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد سندهای ثبت‌شده را لغو کند."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:42
 #: frappe/public/js/frappe/ui/permission_dialog.js:22
 msgid "Allows the user to create new documents."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد سندهای جدید ایجاد کند."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:47
 #: frappe/public/js/frappe/ui/permission_dialog.js:23
 msgid "Allows the user to delete documents."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد سندها را حذف کند."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:37
 #: frappe/public/js/frappe/ui/permission_dialog.js:20
 msgid "Allows the user to edit existing records they have access to."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد رکوردهایی را که به آن‌ها دسترسی دارد ویرایش کند."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:57
 msgid "Allows the user to email from the document."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد از داخل سند ایمیل بفرستد."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:67
 msgid "Allows the user to export data from the Report view."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد داده‌ها را از نمای گزارش خروجی بگیرد."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:56
 msgid "Allows the user to export document data from the system."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد داده‌های سند را از سیستم خروجی بگیرد."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:70
 msgid "Allows the user to print or download the document as a PDF."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد سند را چاپ کند یا به‌صورت PDF دریافت کند."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:27
 msgid "Allows the user to search and see records."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد رکوردها را جست‌وجو و مشاهده کند."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:35
 msgid "Allows the user to search and select records in other forms. This does not allow the user to view the record itself."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد در فرم‌های دیگر رکوردها را جست‌وجو و انتخاب کند؛ اما امکان مشاهدهٔ خود رکورد را نمی‌دهد."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:74
 msgid "Allows the user to send emails linked to the document."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد ایمیل‌های مرتبط با سند را ارسال کند."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:64
 msgid "Allows the user to share document access with other users who may not have access to the document themselves."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد دسترسی سند را با کاربرانی به اشتراک بگذارد که خودشان به آن سند دسترسی ندارند."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:26
 msgid "Allows the user to submit documents."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد سندها را ثبت نهایی کند."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:72
 msgid "Allows the user to use Data Import tool to create / update records."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد با ابزار درون‌ریزی داده، رکوردها را ایجاد یا به‌روزرسانی کند."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:60
 msgid "Allows the user to use import documents into the system."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد سندها را به سیستم درون‌ریزی کند."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:32
 #: frappe/public/js/frappe/ui/permission_dialog.js:17
 msgid "Allows the user to view the document."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد سند را مشاهده کند."
 
 #: frappe/public/js/frappe/ui/permission_dialog.js:41
 msgid "Allows the user to view the value of a masked field in the document."
-msgstr ""
+msgstr "به کاربر اجازه می‌دهد مقدار فیلد پوشیده‌شده در سند را ببیند."
 
 #: frappe/core/page/permission_manager/permission_manager_help.html:82
 msgid "Allows users to enable the mask property for any field of the respective doctype."
-msgstr ""
+msgstr "به کاربران اجازه می‌دهد ویژگی پوشاندن را برای فیلدهای DocType مربوطه فعال کنند."
 
 #: frappe/public/js/frappe/form/toolbar.js:778
 msgid "Already amended as {0}"
@@ -2887,7 +2887,7 @@ msgstr "هنگام تنظیم پیش‌فرض‌های نشست خطایی رو�
 
 #: frappe/public/js/frappe/ui/user_settings_dialog.js:748
 msgid "An error occurred while updating your session defaults."
-msgstr ""
+msgstr "هنگام به‌روزرسانی پیش‌فرض‌های نشست شما خطایی رخ داد."
 
 #. Description of the 'FavIcon' (Attach) field in DocType 'Website Settings'
 #: frappe/website/doctype/website_settings/website_settings.json
@@ -3021,7 +3021,7 @@ msgstr "نام برنامه (نام کلاینت)"
 
 #: frappe/installer.py:488
 msgid "App frappe cannot be disabled"
-msgstr ""
+msgstr "اپ frappe را نمی‌توان غیرفعال کرد."
 
 #: frappe/integrations/frappe_providers/cloud_marketplace.py:108
 msgid "App name is required."
@@ -3038,7 +3038,7 @@ msgstr ""
 
 #: frappe/installer.py:463
 msgid "App {0} depends on {1}. Enable {1} first."
-msgstr ""
+msgstr "اپ {0} به {1} وابسته است. ابتدا {1} را فعال کنید."
 
 #: frappe/installer.py:501
 msgid "App {0} is a dependency of {1}. Disable {1} first."
