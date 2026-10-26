@@ -245,6 +245,10 @@ frappe.form.formatters = {
 	},
 	Datetime: function (value) {
 		if (value) {
+			if ((frappe.boot?.lang || "").toLowerCase().startsWith("fa")) {
+				return frappe.datetime.str_to_user(value);
+			}
+
 			return moment(frappe.datetime.convert_to_user_tz(value)).format(
 				frappe.boot.sysdefaults.date_format.toUpperCase() +
 					" " +

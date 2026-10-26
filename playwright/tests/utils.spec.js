@@ -14,37 +14,99 @@ test.describe("Utils", () => {
 		const values = await page.evaluate(() => {
 			const previousLanguage = frappe.boot.lang;
 			const previousTimeZone = frappe.boot.time_zone;
-			const previousPersianDate = window.persianDate;
+			const previousDateFormat = frappe.sys_defaults.date_format;
+			const previousTimeFormat = frappe.sys_defaults.time_format;
 			frappe.boot.lang = "fa-IR";
 			frappe.boot.time_zone = { system: "UTC", user: "Asia/Tehran" };
-			window.persianDate = function (date) {
-				this.toCalendar = () => this;
-				this.toLocale = () => this;
-				this.format = (format) => {
-					const isNextDay = date.getDate() === 22;
-					const persianDate = isNextDay ? "۱۴۰۵-۰۱-۰۲" : "۱۴۰۵-۰۱-۰۱";
-					return format.includes("HH")
-						? `${persianDate} ۰۰:۰۰:۰۰`
-						: persianDate;
-				};
-			};
+			frappe.sys_defaults.date_format = "yyyy-mm-dd";
+			frappe.sys_defaults.time_format = "HH:mm:ss";
 
 			try {
 				return {
 					date: frappe.datetime.str_to_user("2026-03-21", false, true),
 					datetime: frappe.datetime.str_to_user("2026-03-21 20:30:00"),
+					datetimeCell: frappe.form.formatters.Datetime("2026-03-21 20:30:00"),
+					persianGlobalDate: frappe.datetime.global_date_format("2026-03-21"),
+					parsedPersianInput: frappe.datetime.user_to_str("۱۴۰۵-۰۱-۰۱"),
+					parsedArabicInput: frappe.datetime.user_to_str("١٤٠٥-٠١-٠١"),
+					englishDate: (() => {
+						frappe.boot.lang = "en";
+						return {
+							date: frappe.datetime.str_to_user("2026-03-21", false, true),
+							datetimeCell: frappe.form.formatters.Datetime("2026-03-21 20:30:00"),
+							globalDate: frappe.datetime.global_date_format("2026-03-21"),
+						};
+					})(),
 				};
 			} finally {
 				frappe.boot.lang = previousLanguage;
 				frappe.boot.time_zone = previousTimeZone;
-				window.persianDate = previousPersianDate;
+				frappe.sys_defaults.date_format = previousDateFormat;
+				frappe.sys_defaults.time_format = previousTimeFormat;
 			}
 		});
 
 		expect(values).toEqual({
-			date: "۱۴۰۵-۰۱-۰۱",
-			datetime: "۱۴۰۵-۰۱-۰۲ ۰۰:۰۰:۰۰",
+			date: "1405-01-01",
+			datetime: "1405-01-02 00:00:00",
+			datetimeCell: "1405-01-02 00:00:00",
+			parsedPersianInput: "2026-03-21",
+			parsedArabicInput: "2026-03-21",
+			persianGlobalDate: "1 فروردین 1405",
+			englishDate: {
+				date: "2026-03-21",
+				datetimeCell: "2026-03-22 00:00:00",
+				globalDate: "21st March 2026",
+			},
 		});
+	});
+
+	test("normalizes Persian digits only on input and keeps displayed numbers canonical", async ({ page }) => {
+		const values = await page.evaluate(() => {
+			const previousLanguage = frappe.boot.lang;
+			frappe.boot.lang = "fa-IR";
+			try {
+				const persianDisplay = format_number(1234.5, "#,###.##", 2);
+				const persianInput = frappe.utils.eval_expression("۱۲۳۴ + ۵");
+				const arabicInput = frappe.utils.eval_expression("١٢٣٤ + ٥");
+				frappe.boot.lang = "en";
+				return {
+					persianInput,
+					arabicInput,
+					persianDisplay,
+					englishDisplay: format_number(1234.5, "#,###.##", 2),
+				};
+			} finally {
+				frappe.boot.lang = previousLanguage;
+			}
+		});
+
+		expect(values).toEqual({
+			persianInput: 1239,
+			arabicInput: 1239,
+			persianDisplay: "1,234.50",
+			englishDisplay: "1,234.50",
+		});
+	});
+
+	test("keeps relative-time digits canonical in Persian", async ({ page }) => {
+		const value = await page.evaluate(() => {
+			const previousLanguage = frappe.boot.lang;
+			const previousTranslate = window.__;
+			const previousNow = frappe.datetime.now_datetime;
+			frappe.boot.lang = "fa-IR";
+			frappe.datetime.now_datetime = () => "2026-04-03 12:00:00";
+			window.__ = (message, args) => (args ? message.replace("{0}", args[0]) : message);
+			try {
+				return frappe.datetime.prettyDate(new Date(2026, 3, 2, 12), true);
+			} finally {
+				frappe.boot.lang = previousLanguage;
+				frappe.datetime.now_datetime = previousNow;
+				window.__ = previousTranslate;
+			}
+		});
+
+		expect(value).toBe("1 d");
 	});
 
 	test("should round hidden seconds to minutes", async ({ page }) => {
@@ -91,7 +153,7 @@ test.describe("Utils", () => {
 		});
 	});
 
-	test("formats duration units with Persian words and digits without changing English", async ({ page }) => {
+	test("formats duration units with Persian words and canonical digits without changing English", async ({ page }) => {
 		const values = await page.evaluate(() => {
 			const previousLanguage = frappe.boot.lang;
 			const previousTranslate = window.__;
@@ -120,7 +182,7 @@ test.describe("Utils", () => {
 			}
 		});
 
-		expect(values).toEqual({ persian: "۱ روز ۱ ساعت ۱ دقیقه", english: "1d 1h 1m" });
+		expect(values).toEqual({ persian: "1 روز 1 ساعت 1 دقیقه", english: "1d 1h 1m" });
 	});
 
 	test("should escape the docname when it is used as the link text", async ({ page }) => {
