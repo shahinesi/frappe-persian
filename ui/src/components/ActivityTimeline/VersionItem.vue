@@ -12,9 +12,8 @@
 			>
 				<span class="text-ink-gray-5">
 					<span class="font-medium text-ink-gray-8">{{ authorName }}</span>
-					made
-					<span class="font-medium text-ink-gray-8"> {{ changes.length }} changes </span>
-					<span v-if="sessionSpan">over {{ sessionSpan }}</span>
+					{{ __("{0} made {1} changes", authorName, changes.length) }}
+					<span v-if="sessionSpan">{{ __("over {0}", sessionSpan) }}</span>
 				</span>
 				<LucideChevronUp v-if="expanded" class="size-3.5" />
 				<LucideChevronDown v-else class="size-3.5" />
@@ -35,22 +34,24 @@
 						}}</span>
 						<!-- diff: prefix + from → to (arrow only when there's a `from`) -->
 						<template v-if="change.type === 'diff'">
-							<span :class="{ 'cap-first': changes.length > 1 }">{{
-								change.prefix
-							}}</span>
-							<ValueChange :from="change.from" :to="change.to">
-								<button
-									v-if="hasHistory(change)"
-									type="button"
-									class="text-ink-gray-5 hover:text-ink-gray-7"
-									aria-label="Show field history"
-									:aria-expanded="isOpen(change.name)"
-									@click="toggle(change.name)"
-								>
-									<LucideChevronUp v-if="isOpen(change.name)" class="size-3.5" />
-									<LucideChevronDown v-else class="size-3.5" />
-								</button>
-							</ValueChange>
+							<span v-if="change.displayText">{{ change.displayText }}</span>
+							<template v-else>
+								<span :class="{ 'cap-first': changes.length > 1 }">{{
+									change.prefix
+								}}</span>
+								<ValueChange :from="change.from" :to="change.to" />
+							</template>
+							<button
+								v-if="hasHistory(change)"
+								type="button"
+								class="text-ink-gray-5 hover:text-ink-gray-7"
+								aria-label="Show field history"
+								:aria-expanded="isOpen(change.name)"
+								@click="toggle(change.name)"
+							>
+								<LucideChevronUp v-if="isOpen(change.name)" class="size-3.5" />
+								<LucideChevronDown v-else class="size-3.5" />
+							</button>
 						</template>
 						<!-- phrase: finished, value-less line -->
 						<template v-else>
@@ -81,12 +82,17 @@
 						class="flex flex-wrap items-center gap-1.5 leading-6 text-ink-gray-5"
 					>
 						<span class="font-medium text-ink-gray-8">{{ authorName }}</span>
-						<span>{{ prefixOf(change) }}</span>
-						<ValueChange
-							:from="historyEntry.from || null"
-							:to="historyEntry.to"
-							show-empty-from
-						/>
+						<template v-if="historyEntry.displayText">
+							<span>{{ historyEntry.displayText }}</span>
+						</template>
+						<template v-else>
+							<span>{{ prefixOf(change) }}</span>
+							<ValueChange
+								:from="historyEntry.from || null"
+								:to="historyEntry.to"
+								show-empty-from
+							/>
+						</template>
 						<span>·</span>
 						<TimeAgo :timestamp="historyEntry.timestamp" />
 					</div>
@@ -99,6 +105,8 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from "vue";
 import ValueChange from "./ValueChange.vue";
+const __ = (window as any).__;
+
 import { timeValue } from "./grouping";
 import TimeAgo from "./TimeAgo.vue";
 import type { FieldChange, VersionChange, VersionItemProps } from "./types";
@@ -127,9 +135,10 @@ const sessionSpan = computed(() => {
 	const span = Math.max(...times) - Math.min(...times);
 	if (span < 60_000) return "";
 	const minutes = Math.round(span / 60_000);
-	if (minutes < 60) return `${minutes} minute${minutes === 1 ? "" : "s"}`;
+	if (minutes < 60)
+		return minutes === 1 ? __("{0} minute", minutes) : __("{0} minutes", minutes);
 	const hours = Math.round(minutes / 60);
-	return `${hours} hour${hours === 1 ? "" : "s"}`;
+	return hours === 1 ? __("{0} hour", hours) : __("{0} hours", hours);
 });
 
 // per-change history panels, keyed by change.name

@@ -9,6 +9,8 @@ import type {
   OnboardingStepCallback,
   UseOnboarding,
 } from "./types";
+import { formatLocalizedNumber } from "./formatLocalizedNumber";
+export { formatLocalizedNumber };
 
 type StoredStep = { name: string; completed: boolean };
 type StoredStatus = Record<string, Record<string, StoredStep[]>>;

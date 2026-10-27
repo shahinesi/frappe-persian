@@ -128,6 +128,7 @@ export interface FieldChange {
   from: string;
   to: string;
   timestamp: string;
+  displayText?: string;
 }
 
 /** A shown field change; the frontend lays out the values. */
@@ -138,6 +139,8 @@ export interface DiffChange extends VersionChangeBase {
   /** old value (frontend-truncated); absent ⇒ set-from-blank, no arrow */
   from?: string;
   to: string;
+  /** complete localized sentence when a consumer translates a field change */
+  displayText?: string;
   /** every field change across merged saves; absent/length-1 ⇒ no chevron */
   history?: FieldChange[];
 }
