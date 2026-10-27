@@ -92,4 +92,32 @@ test.describe("Control Float", () => {
 			}
 		}
 	});
+
+	test("accepts Persian and Arabic-Indic digits at numeric input boundaries", async ({ page, desk }) => {
+		await page.goto("/desk/website");
+		await desk.ready();
+		await desk.dialog({
+			title: "Localized Numeric Input",
+			animate: false,
+			fields: [
+				{ fieldname: "float_number", fieldtype: "Float", label: "Float", precision: 3 },
+				{ fieldname: "int_number", fieldtype: "Int", label: "Integer" },
+			],
+		});
+
+		await page.evaluate(() => {
+			frappe.boot.lang = "fa";
+			frappe.boot.sysdefaults.number_format = "#,###.##";
+		});
+
+		const floatInput = desk.get_field("float_number", "Float");
+		await floatInput.fill("۱۲۳۴.۵");
+		await floatInput.blur();
+		await expect(floatInput).toHaveValue("1,234.500");
+
+		const intInput = desk.get_field("int_number", "Int");
+		await intInput.fill("١٢٣٤");
+		await intInput.blur();
+		await expect(intInput).toHaveValue("1,234");
+	});
 });

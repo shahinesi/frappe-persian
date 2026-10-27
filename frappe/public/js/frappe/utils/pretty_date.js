@@ -4,7 +4,7 @@ function prettyDate(date, mini) {
 	const formatCount = (count) => {
 		const lang = (frappe.boot?.lang || "en").replace(/_/g, "-");
 		return lang.toLowerCase().startsWith("fa")
-			? new Intl.NumberFormat(lang).format(count)
+			? new Intl.NumberFormat(lang, { numberingSystem: "latn" }).format(count)
 			: count;
 	};
 

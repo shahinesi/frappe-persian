@@ -8,6 +8,11 @@ body {
 	font-variation-settings: "opsz" 24;
 }
 
+html:lang(fa) {
+	--font-stack: "Vazirmatn", "InterVariable", "Inter", sans-serif;
+	font-feature-settings: "ss01";
+}
+
 /* checkbox */
 .checkbox {
 	label {

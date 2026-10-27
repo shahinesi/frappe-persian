@@ -2,28 +2,18 @@
 // MIT License. See license.txt
 
 import "./datatype";
+import { digitsArToFa, digitsFaToEn } from "@persian-tools/persian-tools";
 
 if (!window.frappe) window.frappe = {};
 
 function convert_to_english_digits(value) {
-	return String(value).replace(/[\u0660-\u0669\u06f0-\u06f9]/g, (digit) => {
-		const code = digit.charCodeAt(0);
-		return String(code - (code >= 0x06f0 ? 0x06f0 : 0x0660));
-	});
-}
-
-function convert_to_user_digits(value) {
-	const lang = (frappe.boot?.lang || "en").replace(/_/g, "-");
-	if (!lang.toLowerCase().startsWith("fa")) return value;
-	return String(value).replace(/[0-9]/g, (digit) => String.fromCharCode(0x06f0 + Number(digit)));
+	return digitsFaToEn(digitsArToFa(String(value)));
 }
 
 function flt(v, decimals, number_format, rounding_method) {
 	if (v == null || v == "") return 0;
 
 	if (typeof v !== "number") {
-		v = convert_to_english_digits(v + "");
-
 		// strip currency symbol if exists
 		if (v.indexOf(" ") != -1) {
 			// using slice(1).join(" ") because space could also be a group separator
@@ -152,7 +142,7 @@ window.format_number = function (v, format, decimals) {
 	part[1] = part[1] && info.decimal_str ? info.decimal_str + part[1] : "";
 
 	// join
-	return convert_to_user_digits((is_negative ? "-" : "") + part[0] + part[1]);
+	return (is_negative ? "-" : "") + part[0] + part[1];
 };
 
 function format_currency(v, currency, decimals) {

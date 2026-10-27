@@ -1262,7 +1262,9 @@ Object.assign(frappe.utils, {
 		const language = (frappe.boot?.lang || "en").replace(/_/g, "-");
 		const is_persian = language.toLowerCase().startsWith("fa");
 		const format_count = (count) =>
-			is_persian ? new Intl.NumberFormat(language).format(count) : count;
+			is_persian
+				? new Intl.NumberFormat(language, { numberingSystem: "latn" }).format(count)
+				: count;
 		const unit_separator = is_persian ? " " : "";
 		if (!duration_options) {
 			duration_options = {

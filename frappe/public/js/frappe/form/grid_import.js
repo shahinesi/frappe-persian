@@ -40,12 +40,12 @@ const VALUE_FORMATTERS = {
 			: frappe.datetime.user_to_str(val);
 	},
 	Time: (val) => to_system_time(val),
-	Int: (val) => cint(val),
+	Int: (val) => cint(convert_to_english_digits(val)),
 	Check: (val) => cint(frappe.utils.string_to_boolean(cstr(val))),
-	Float: (val) => flt(val),
-	Currency: (val) => flt(val),
-	Percent: (val) => flt(val),
-	Rating: (val) => flt(val),
+	Float: (val) => flt(convert_to_english_digits(val)),
+	Currency: (val) => flt(convert_to_english_digits(val)),
+	Percent: (val) => flt(convert_to_english_digits(val)),
+	Rating: (val) => flt(convert_to_english_digits(val)),
 	Duration: (val) => to_seconds(val),
 	Phone: (val) => cstr(val).trim().replace(PHONE_ISD_PREFIX, "$1-"),
 };

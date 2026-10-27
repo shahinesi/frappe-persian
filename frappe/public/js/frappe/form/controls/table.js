@@ -26,10 +26,10 @@ frappe.ui.form.ControlTable = class ControlTable extends frappe.ui.form.Control 
 			const in_grid_form = $(e.target).closest(".form-in-grid").length;
 			const value_formatter_map = {
 				Date: (val) => (val ? frappe.datetime.user_to_str(val) : val),
-				Int: (val) => cint(val),
+				Int: (val) => cint(convert_to_english_digits(val)),
 				Check: (val) => cint(val),
-				Float: (val) => flt(val),
-				Currency: (val) => flt(val),
+				Float: (val) => flt(convert_to_english_digits(val)),
+				Currency: (val) => flt(convert_to_english_digits(val)),
 			};
 
 			let pasted_data = frappe.utils.get_clipboard_data(e);

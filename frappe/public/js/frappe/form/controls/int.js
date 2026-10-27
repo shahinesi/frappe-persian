@@ -21,6 +21,7 @@ frappe.ui.form.ControlInt = class ControlInt extends frappe.ui.form.ControlData 
 			: value;
 	}
 	parse(value) {
+		if (typeof value === "string") value = convert_to_english_digits(value);
 		return cint(this.eval_expression(value), null);
 	}
 };
