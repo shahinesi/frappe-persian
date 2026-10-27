@@ -7,4 +7,9 @@ import interactionPlugin from "@fullcalendar/interaction";
 
 frappe.FullCalendar = FullCalendar;
 frappe.FullCalendar.Plugins = [listPlugin, dayGridPlugin, timeGridPlugin, interactionPlugin];
-frappe.FullCalendar.Locales = [persianLocale];
+const persianLocaleGregorianLatin = {
+	...persianLocale,
+	code: "fa-IR-u-ca-gregory-nu-latn",
+};
+frappe.FullCalendar.Locales = [persianLocaleGregorianLatin];
+frappe.FullCalendar.PersianLocaleCode = persianLocaleGregorianLatin.code;

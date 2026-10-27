@@ -1,6 +1,8 @@
 // Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
 // MIT License. See license.txt
 
+import { getJalaliMonthGridRange, shiftJalaliMonth } from "./persian_calendar.js";
+
 frappe.provide("frappe.views.calendar");
 frappe.provide("frappe.views.calendars");
 
@@ -207,6 +209,8 @@ frappe.views.Calendar = class Calendar {
 	// Month/Week/Day is a radio group (you are always in exactly one);
 	// Today is an action, so it's a plain button
 	make_toolbar() {
+		const is_persian = /^fa(?:[-_]|$)/i.test(frappe.boot.lang || "");
+		const month_view = is_persian ? "jalaliMonth" : "dayGridMonth";
 		// the label is filled by the datesSet callback on first render
 		this.$toolbar_title = frappe.ui.button({
 			label: __("Calendar"),
@@ -222,14 +226,17 @@ frappe.views.Calendar = class Calendar {
 		this.view_button_group = new frappe.ui.TabButtons({
 			label: __("Calendar View"),
 			options: [
-				{ label: __("Month"), value: "dayGridMonth" },
+				{ label: __("Month"), value: month_view },
 				{ label: __("Week"), value: "timeGridWeek" },
 				{ label: __("Day"), value: "timeGridDay" },
 			],
 			value: this.cal_options.initialView,
 			on_change: (value) => {
 				this.fullCalendar.changeView(value);
-				this.set_localStorage_option("cal_initialView", value);
+				this.set_localStorage_option(
+					"cal_initialView",
+					value === "jalaliMonth" ? "dayGridMonth" : value
+				);
 			},
 		});
 
@@ -238,14 +245,14 @@ frappe.views.Calendar = class Calendar {
 				icon: "chevron-left",
 				variant: "ghost",
 				title: __("Previous"),
-				onclick: () => this.fullCalendar.prev(),
+				onclick: () => this.navigate_calendar(-1),
 			}),
 			this.$toolbar_title,
 			frappe.ui.button({
 				icon: "chevron-right",
 				variant: "ghost",
 				title: __("Next"),
-				onclick: () => this.fullCalendar.next(),
+				onclick: () => this.navigate_calendar(1),
 			}),
 			$('<div class="grow"></div>'),
 			(this.today_button = frappe.ui.button({
@@ -255,6 +262,15 @@ frappe.views.Calendar = class Calendar {
 			this.view_button_group.$el
 		);
 		this.$wrapper.append(this.$toolbar);
+	}
+	navigate_calendar(offset) {
+		if (this.fullCalendar.view.type === "jalaliMonth") {
+			const date = shiftJalaliMonth(this.fullCalendar.getDate(), offset);
+			if (date) this.fullCalendar.gotoDate(date);
+			return;
+		}
+		if (offset < 0) this.fullCalendar.prev();
+		else this.fullCalendar.next();
 	}
 
 	// inline air-datepicker (the desk-standard picker) inside the title
@@ -266,7 +282,7 @@ frappe.views.Calendar = class Calendar {
 
 		// match the picker to the view: month view jumps by month,
 		// week/day views by day
-		const month_only = this.fullCalendar.view.type === "dayGridMonth";
+		const month_only = ["dayGridMonth", "jalaliMonth"].includes(this.fullCalendar.view.type);
 
 		let ready = false;
 		$(wrapper).datepicker({
@@ -315,16 +331,49 @@ frappe.views.Calendar = class Calendar {
 	}
 	setup_options(defaults) {
 		var me = this;
+		const is_persian = /^fa(?:[-_]|$)/i.test(frappe.boot.lang || "");
 		defaults.meridiem = "false";
+		const requested_initial_view = defaults.initialView || "dayGridMonth";
 		this.cal_options = {
 			plugins: frappe.FullCalendar.Plugins,
 			locales: frappe.FullCalendar.Locales,
-			initialView: defaults.initialView || "dayGridMonth",
-			locale: /^fa(?:[-_]|$)/i.test(frappe.boot.lang || "") ? "fa" : frappe.boot.lang,
+			initialView:
+				is_persian && requested_initial_view === "dayGridMonth"
+					? "jalaliMonth"
+					: requested_initial_view,
+			locale: is_persian ? frappe.FullCalendar.PersianLocaleCode : frappe.boot.lang,
+			...(is_persian
+				? {
+						views: {
+							jalaliMonth: {
+								type: "dayGrid",
+								visibleRange: (currentDate) =>
+									getJalaliMonthGridRange(
+										currentDate,
+										frappe.datetime.get_first_day_of_the_week_index()
+									),
+							},
+						},
+						dayCellContent: (arg) =>
+							frappe.datetime.format_persian_calendar(arg.date, "D") ||
+							arg.dayNumberText,
+						dayHeaderContent: (arg) => {
+							const format =
+								this.fullCalendar?.view.type === "jalaliMonth" ? "ddd" : "ddd D";
+							return (
+								frappe.datetime.format_persian_calendar(arg.date, format) ||
+								arg.text
+							);
+						},
+						dayPopoverFormat: (date) =>
+							frappe.datetime.format_persian_calendar(date, "dddd، D MMMM YYYY"),
+				  }
+				: {}),
 			eventTimeFormat: {
 				hour: "numeric",
 				minute: "2-digit",
 				hour12: true,
+				...(is_persian ? { numberingSystem: "latn" } : {}),
 			},
 			firstDay: frappe.datetime.get_first_day_of_the_week_index(),
 			eventDisplay: "block",
@@ -347,7 +396,9 @@ frappe.views.Calendar = class Calendar {
 			datesSet: (info) => {
 				// the title is an es-button now — swap only its label text
 				this.$toolbar_title &&
-					this.$toolbar_title.find(".es-button__label").text(info.view.title);
+					this.$toolbar_title
+						.find(".es-button__label")
+						.text(this.get_calendar_title(info.view));
 				if (this.today_button) {
 					// no-op when the visible range already contains today
 					// (activeEnd is exclusive)
@@ -403,7 +454,7 @@ frappe.views.Calendar = class Calendar {
 				const seconds = info.end - info.start;
 				const allDay = seconds === 86400000;
 
-				if (info.view.type === "dayGridMonth" && allDay) {
+				if (["dayGridMonth", "jalaliMonth"].includes(info.view.type) && allDay) {
 					// detect single day click in month view
 					return;
 				}
@@ -424,10 +475,8 @@ frappe.views.Calendar = class Calendar {
 				frappe.set_route("Form", me.doctype, event.name);
 			},
 			dateClick: function (info) {
-				if (info.view.type === "dayGridMonth") {
-					const $date_cell = $(
-						"td[data-date=" + info.date.toISOString().slice(0, 10) + "]"
-					);
+				if (["dayGridMonth", "jalaliMonth"].includes(info.view.type)) {
+					const $date_cell = $("td[data-date=" + info.dateStr.slice(0, 10) + "]");
 
 					if ($date_cell.hasClass("date-clicked")) {
 						me.fullCalendar.changeView("timeGridDay", info.date);
@@ -449,6 +498,22 @@ frappe.views.Calendar = class Calendar {
 		if (this.options) {
 			$.extend(this.cal_options, this.options);
 		}
+		if (is_persian && this.cal_options.initialView === "dayGridMonth") {
+			this.cal_options.initialView = "jalaliMonth";
+		}
+	}
+	get_calendar_title(view) {
+		if (!/^fa(?:[-_]|$)/i.test(frappe.boot.lang || "")) return view.title;
+		const format = (date, pattern) => frappe.datetime.format_persian_calendar(date, pattern);
+		if (view.type === "jalaliMonth") {
+			return format(this.fullCalendar.getDate(), "MMMM YYYY");
+		}
+		if (view.type === "timeGridWeek") {
+			const end = new Date(view.currentEnd);
+			end.setDate(end.getDate() - 1);
+			return `${format(view.currentStart, "D MMMM")} – ${format(end, "D MMMM YYYY")}`;
+		}
+		return format(this.fullCalendar.getDate(), "dddd، D MMMM YYYY");
 	}
 	get_args(start, end) {
 		const fields = this.fields && [

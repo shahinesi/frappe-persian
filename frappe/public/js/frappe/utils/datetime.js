@@ -34,15 +34,7 @@ const PERSIAN_MONTHS_SHORT = [
 	"بهم",
 	"اسف",
 ];
-const PERSIAN_WEEKDAYS = [
-	"یکشنبه",
-	"دوشنبه",
-	"سه‌شنبه",
-	"چهارشنبه",
-	"پنجشنبه",
-	"جمعه",
-	"شنبه",
-];
+const PERSIAN_WEEKDAYS = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
 const PERSIAN_WEEKDAYS_SHORT = ["ی", "د", "س", "چ", "پ", "ج", "ش"];
 
 function format_in_persian_calendar(date_obj, format) {
@@ -67,10 +59,7 @@ function format_in_persian_calendar(date_obj, format) {
 		d: String(date_obj.day()),
 	};
 	const tokens = /YYYY|YY|MMMM|MMM|MM|M|DD|D|dddd|ddd|dd|d|HH|H|hh|h|mm|m|ss|s|A|a/g;
-	return format.replace(
-		tokens,
-		(token) => values[token] ?? date_obj.locale("en").format(token)
-	);
+	return format.replace(tokens, (token) => values[token] ?? date_obj.locale("en").format(token));
 }
 
 frappe.defaultDateFormat = "YYYY-MM-DD";
@@ -144,6 +133,10 @@ $.extend(frappe.datetime, {
 		const date_obj = moment(d);
 		const format = frappe.datetime.get_user_date_fmt().toUpperCase();
 		return format_in_persian_calendar(date_obj, format) || date_obj.format(format);
+	},
+
+	format_persian_calendar: function (date, format) {
+		return format_in_persian_calendar(moment(date), format);
 	},
 
 	get_diff: function (d1, d2) {

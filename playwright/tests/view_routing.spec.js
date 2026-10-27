@@ -67,7 +67,10 @@ test.describe("View", () => {
 		await expect_list_view(page, "Calendar");
 	});
 
-	test("Persian Calendar view uses FullCalendar's RTL and Saturday-first locale", async ({ page, desk }) => {
+	test("Persian Calendar view uses Jalali dates, canonical digits and an RTL Saturday-first locale", async ({
+		page,
+		desk,
+	}) => {
 		await page.goto("/desk/todo/view/calendar");
 		await desk.ready();
 
@@ -75,14 +78,59 @@ test.describe("View", () => {
 			const previousLanguage = frappe.boot.lang;
 			frappe.boot.lang = "fa-IR";
 			try {
-				const view = Object.create(frappe.views.CalendarView.prototype);
+				const view = Object.create(frappe.views.Calendar.prototype);
 				view.setup_options({ initialView: "dayGridMonth", weekends: true });
-				const persian = frappe.FullCalendar.Locales.find((locale) => locale.code === "fa");
+				view.fullCalendar = {
+					view: { type: "jalaliMonth" },
+					getDate: () => new Date(2026, 2, 21),
+				};
+				const persian = frappe.FullCalendar.Locales.find(
+					(locale) => locale.code === frappe.FullCalendar.PersianLocaleCode
+				);
+				const range = view.cal_options.views.jalaliMonth.visibleRange(
+					new Date(2026, 2, 21)
+				);
+				const localDate = (date) =>
+					`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
+						2,
+						"0"
+					)}-${String(date.getDate()).padStart(2, "0")}`;
 				return {
 					calendarLocale: view.cal_options.locale,
 					localeCode: persian?.code,
 					direction: persian?.direction,
 					firstDay: persian?.week?.dow,
+					initialView: view.cal_options.initialView,
+					monthRange: [localDate(range.start), localDate(range.end)],
+					monthTitle: view.get_calendar_title({ type: "jalaliMonth", title: "unused" }),
+					dayText: view.cal_options.dayCellContent({
+						date: new Date(2026, 2, 21),
+						dayNumberText: "۲۱",
+					}),
+					monthHeader: view.cal_options.dayHeaderContent({
+						date: new Date(2026, 2, 21),
+						text: "Sat",
+					}),
+					weekHeader: (() => {
+						view.fullCalendar.view.type = "timeGridWeek";
+						return view.cal_options.dayHeaderContent({
+							date: new Date(2026, 2, 21),
+							text: "Sat 21",
+						});
+					})(),
+					popoverDate: view.cal_options.dayPopoverFormat(new Date(2026, 2, 21)),
+					eventNumbering: view.cal_options.eventTimeFormat.numberingSystem,
+					english: (() => {
+						frappe.boot.lang = "en-US";
+						const english = Object.create(frappe.views.Calendar.prototype);
+						english.setup_options({ initialView: "dayGridMonth", weekends: true });
+						return {
+							locale: english.cal_options.locale,
+							initialView: english.cal_options.initialView,
+							numbering:
+								english.cal_options.eventTimeFormat.numberingSystem || "default",
+						};
+					})(),
 				};
 			} finally {
 				frappe.boot.lang = previousLanguage;
@@ -90,10 +138,23 @@ test.describe("View", () => {
 		});
 
 		expect(options).toEqual({
-			calendarLocale: "fa",
-			localeCode: "fa",
+			calendarLocale: "fa-IR-u-ca-gregory-nu-latn",
+			localeCode: "fa-IR-u-ca-gregory-nu-latn",
 			direction: "rtl",
 			firstDay: 6,
+			initialView: "jalaliMonth",
+			monthRange: ["2026-03-21", "2026-04-25"],
+			monthTitle: "فروردین 1405",
+			dayText: "1",
+			monthHeader: "ش",
+			weekHeader: "ش 1",
+			popoverDate: "شنبه، 1 فروردین 1405",
+			eventNumbering: "latn",
+			english: {
+				locale: "en-US",
+				initialView: "dayGridMonth",
+				numbering: "default",
+			},
 		});
 	});
 
