@@ -26665,7 +26665,7 @@ msgstr "لاگ اطلاعات خام"
 #: frappe/public/js/layout_builder/components/FieldRow.vue:81
 #: frappe/public/js/layout_builder/components/FieldRow.vue:108
 msgid "RO"
-msgstr ""
+msgstr "فقط‌خواندنی"
 
 #. Name of a DocType
 #. Label of a Sidebar Item
@@ -28070,7 +28070,7 @@ msgstr "نشان دهنده وضعیت های مجاز در یک سند و نق�
 #: frappe/public/js/layout_builder/components/FieldRow.vue:75
 #: frappe/public/js/layout_builder/components/FieldRow.vue:100
 msgid "Req"
-msgstr ""
+msgstr "اجباری"
 
 #: frappe/integrations/doctype/webhook/webhook.js:101
 msgid "Request Body"
@@ -28402,7 +28402,7 @@ msgstr "محدود کردن IP"
 #. Description of the 'Tenant ID' (Data) field in DocType 'Social Login Key'
 #: frappe/integrations/doctype/social_login_key/social_login_key.json
 msgid "Restrict Office 365 sign-in to this Entra tenant ID. Required unless \"Trust Any Tenant\" is checked."
-msgstr ""
+msgstr "ورود Office 365 را به شناسهٔ این مستأجر Entra محدود کنید. مگر اینکه گزینهٔ «اعتماد به همهٔ مستأجرها» فعال باشد، واردکردن این شناسه الزامی است."
 
 #. Label of the restrict_removal (Check) field in DocType 'Desktop Icon'
 #: frappe/desk/doctype/desktop_icon/desktop_icon.json
