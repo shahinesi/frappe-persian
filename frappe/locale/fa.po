@@ -7161,7 +7161,7 @@ msgstr "اسکریپت زمینه"
 #: frappe/public/js/frappe/widgets/onboarding_widget.js:535
 #: frappe/www/login.html:46
 msgid "Continue"
-msgstr "ادامه هید"
+msgstr "ادامه"
 
 #. Label of the contributed (Check) field in DocType 'Translation'
 #: frappe/core/doctype/translation/translation.json
