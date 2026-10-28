@@ -3,6 +3,7 @@
 
 import { digitsArToFa, digitsFaToEn } from "@persian-tools/persian-tools";
 import { isValidJalaaliDate, toGregorian, toJalaali } from "jalaali-js";
+import { localizeMarkedDates } from "./localize_marked_dates.mjs";
 
 frappe.provide("frappe.datetime");
 
@@ -70,6 +71,15 @@ moment.defaultFormat = frappe.defaultDateFormat;
 frappe.provide("frappe.datetime");
 
 $.extend(frappe.datetime, {
+	/** Localize canonical dates marked in server-rendered website templates. */
+	localize_dates_in_root: function (root = document) {
+		localizeMarkedDates(
+			root,
+			frappe.boot?.lang,
+			(value, only_date) => frappe.datetime.str_to_user(value, false, only_date),
+		);
+	},
+
 	convert_to_user_tz: function (date, format) {
 		// format defaults to true
 		// Converts the datetime string to system time zone first since the database only stores datetime in

@@ -65,6 +65,57 @@ test.describe("Utils", () => {
 		});
 	});
 
+	test("localizes marked website dates with canonical Gregorian values", async ({ page }) => {
+		const values = await page.evaluate(() => {
+			const previousLanguage = frappe.boot.lang;
+			const previousTimeZone = frappe.boot.time_zone;
+			const previousDateFormat = frappe.sys_defaults.date_format;
+			const previousTimeFormat = frappe.sys_defaults.time_format;
+			frappe.boot.lang = "fa-IR";
+			frappe.boot.time_zone = { system: "UTC", user: "Asia/Tehran" };
+			frappe.sys_defaults.date_format = "yyyy-mm-dd";
+			frappe.sys_defaults.time_format = "HH:mm:ss";
+
+			try {
+				const root = document.createElement("div");
+				root.innerHTML = `
+					<time data-frappe-date="2026-03-21" data-frappe-date-type="date">2026-03-21</time>
+					<time data-frappe-date="2026-03-21 20:30:00" data-frappe-date-type="datetime">2026-03-21 20:30:00</time>
+					<span data-frappe-date-title="2026-03-21 20:30:00" title="March 21, 2026 20:30:00"></span>
+				`;
+				frappe.datetime.localize_dates_in_root(root);
+				const result = {
+					date: root.querySelectorAll("[data-frappe-date]")[0].textContent,
+					datetime: root.querySelectorAll("[data-frappe-date]")[1].textContent,
+					title: root.querySelector("[data-frappe-date-title]").getAttribute("title"),
+					canonicalDate: root.querySelectorAll("[data-frappe-date]")[0].getAttribute("data-frappe-date"),
+				};
+
+				frappe.boot.lang = "en";
+				const english = document.createElement("time");
+				english.dataset.frappeDate = "2026-03-21";
+				english.textContent = "March 21, 2026";
+				root.appendChild(english);
+				frappe.datetime.localize_dates_in_root(root);
+				result.englishDate = english.textContent;
+				return result;
+			} finally {
+				frappe.boot.lang = previousLanguage;
+				frappe.boot.time_zone = previousTimeZone;
+				frappe.sys_defaults.date_format = previousDateFormat;
+				frappe.sys_defaults.time_format = previousTimeFormat;
+			}
+		});
+
+		expect(values).toEqual({
+			date: "1 فروردین 1405",
+			datetime: "2 فروردین 1405 00:00:00",
+			title: "2 فروردین 1405 00:00:00",
+			canonicalDate: "2026-03-21",
+			englishDate: "March 21, 2026",
+		});
+	});
+
 	test("normalizes Persian digits only on input and keeps displayed numbers canonical", async ({ page }) => {
 		const values = await page.evaluate(() => {
 			const previousLanguage = frappe.boot.lang;

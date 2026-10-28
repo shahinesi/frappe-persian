@@ -520,6 +520,7 @@ $(document).ready(function () {
 });
 
 $(document).on("page-change", function () {
+	frappe.datetime.localize_dates_in_root();
 	$(document).trigger("apply_permissions");
 	$(".dropdown-toggle").dropdown();
 
@@ -546,6 +547,7 @@ $(document).on("page-change", function () {
 });
 
 frappe.ready(function () {
+	frappe.datetime.localize_dates_in_root();
 	frappe.show_language_picker();
 	frappe.setup_videos();
 	frappe.realtime.init(window.socketio_port, true); // lazy connection
