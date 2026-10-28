@@ -178,15 +178,15 @@ msgid "0 - too guessable: risky password.\n"
 "3 - safely unguessable: moderate protection from offline slow-hash scenario.\n"
 "<br>\n"
 "4 - very unguessable: strong protection from offline slow-hash scenario."
-msgstr "۰ - خیلی زیاد قابل حدس: گذرواژه پرخطر.\n"
+msgstr "0 - خیلی زیاد قابل حدس: گذرواژه پرخطر.\n"
 "<br>\n"
-"۱ - خیلی قابل حدس: محافظت در برابر حملات آنلاین با محدودیت سرعت. \n"
+"1 - خیلی قابل حدس: محافظت در برابر حملات آنلاین با محدودیت سرعت. \n"
 "<br>\n"
-"۲ - تا حدودی قابل حدس: محافظت در برابر حملات آنلاین بدون محدودیت سرعت.\n"
+"2 - تا حدودی قابل حدس: محافظت در برابر حملات آنلاین بدون محدودیت سرعت.\n"
 "<br>\n"
-"۳ - به طور ایمن غیرقابل حدس: محافظت متوسط در برابر سناریوی درهم‌ریزی آهسته آفلاین.\n"
+"3 - به طور ایمن غیرقابل حدس: محافظت متوسط در برابر سناریوی درهم‌ریزی آهسته آفلاین.\n"
 "<br>\n"
-"۴ - خیلی غیرقابل حدس: محافظت قوی در برابر سناریوی درهم‌ریزی آهسته آفلاین."
+"4 - خیلی غیرقابل حدس: محافظت قوی در برابر سناریوی درهم‌ریزی آهسته آفلاین."
 
 #. Description of the 'Priority' (Int) field in DocType 'Web Page'
 #: frappe/website/doctype/web_page/web_page.json
@@ -267,12 +267,12 @@ msgstr "1 ردیف"
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:323
 msgctxt "User removed row from child table"
 msgid "1 row from {0}"
-msgstr "۱ ردیف از {0}"
+msgstr "1 ردیف از {0}"
 
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:278
 msgctxt "User added row to child table"
 msgid "1 row to {0}"
-msgstr "۱ ردیف به {0}"
+msgstr "1 ردیف به {0}"
 
 #: frappe/tests/test_utils.py:1108
 msgid "1 second ago"
@@ -2268,7 +2268,7 @@ msgstr "تمامی فیلدها برای ارسال نظر ضروری است."
 #. Description of the 'Document States' (Table) field in DocType 'Workflow'
 #: frappe/workflow/doctype/workflow/workflow.json
 msgid "All possible Workflow States and roles of the workflow. Docstatus Options: 0 is \"Saved\", 1 is \"Submitted\" and 2 is \"Cancelled\""
-msgstr "تمام وضعیت‌ها و نقش‌های ممکن گردش کار. گزینه‌های وضعیت اسناد: ۰ به معنای «ذخیره شده»، ۱ به معنای «ارسال شده» و ۲ به معنای «لغو شده» است"
+msgstr "تمام وضعیت‌ها و نقش‌های ممکن گردش کار. گزینه‌های وضعیت اسناد: 0 به معنای «ذخیره شده»، 1 به معنای «ارسال شده» و 2 به معنای «لغو شده» است"
 
 #: frappe/utils/password_strength.py:183
 msgid "All-uppercase is almost as easy to guess as all-lowercase."
@@ -4340,7 +4340,7 @@ msgstr "صف کارهای پس‌زمینه"
 
 #: frappe/public/js/frappe/list/bulk_operations.js:87
 msgid "Background Print (required for >25 documents)"
-msgstr "چاپ پس‌زمینه (برای بیش از ۲۵ سند الزامی است)"
+msgstr "چاپ پس‌زمینه (برای بیش از 25 سند الزامی است)"
 
 #. Name of a DocType
 #. Label of a Sidebar Item
@@ -5492,7 +5492,7 @@ msgstr "نمی‌توان چندین چاپگر را به یک قالب چاپ �
 
 #: frappe/public/js/frappe/form/grid.js:1682
 msgid "Cannot import table with more than 5000 rows."
-msgstr "نمی‌توان جدولی با بیش از ۵۰۰۰ ردیف را درون‌بُرد کرد."
+msgstr "نمی‌توان جدولی با بیش از 5000 ردیف را درون‌بُرد کرد."
 
 #: frappe/model/document.py:1669
 msgid "Cannot link cancelled document: {0}"
@@ -16069,7 +16069,7 @@ msgstr "در صورت فعال بودن، اعلان در منوی کشویی ا
 #. Settings'
 #: frappe/core/doctype/system_settings/system_settings.json
 msgid "If enabled, the password strength will be enforced based on the Minimum Password Score value. A value of 1 being very weak and 4 being very strong."
-msgstr "در صورت فعال بودن، قدرت گذرواژه بر اساس مقدار حداقل امتیاز گذرواژه اعمال می‌شود. مقدار ۱ برای بسیار ضعیف و ۴ برای بسیار قوی است."
+msgstr "در صورت فعال بودن، قدرت گذرواژه بر اساس مقدار حداقل امتیاز گذرواژه اعمال می‌شود. مقدار 1 برای بسیار ضعیف و 4 برای بسیار قوی است."
 
 #. Description of the 'Key required' (Check) field in DocType 'Web Form'
 #: frappe/website/doctype/web_form/web_form.json
@@ -18576,23 +18576,23 @@ msgstr "آخرین 10 کاربر فعال"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:751
 msgid "Last 14 Days"
-msgstr "۱۴ روز گذشته"
+msgstr "14 روز گذشته"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:755
 msgid "Last 30 Days"
-msgstr "۳۰ روز گذشته"
+msgstr "30 روز گذشته"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:775
 msgid "Last 6 Months"
-msgstr "۶ ماه گذشته"
+msgstr "6 ماه گذشته"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:747
 msgid "Last 7 Days"
-msgstr "۷ روز گذشته"
+msgstr "7 روز گذشته"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:759
 msgid "Last 90 Days"
-msgstr "۹۰ روز گذشته"
+msgstr "90 روز گذشته"
 
 #. Label of the last_active (Datetime) field in DocType 'User'
 #: frappe/core/doctype/user/user.json
@@ -21689,19 +21689,19 @@ msgstr "بعدی"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:807
 msgid "Next 14 Days"
-msgstr "۱۴ روز آینده"
+msgstr "14 روز آینده"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:811
 msgid "Next 30 Days"
-msgstr "۳۰ روز آینده"
+msgstr "30 روز آینده"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:827
 msgid "Next 6 Months"
-msgstr "۶ ماه آینده‌"
+msgstr "6 ماه آینده‌"
 
 #: frappe/public/js/frappe/ui/filters/filter.js:803
 msgid "Next 7 Days"
-msgstr "۷ روز آینده"
+msgstr "7 روز آینده"
 
 #. Label of the next_action_email_template (Link) field in DocType 'Workflow
 #. Document State'
@@ -30311,7 +30311,7 @@ msgstr "ارسال"
 #. Description of the 'Minutes Offset' (Int) field in DocType 'Notification'
 #: frappe/email/doctype/notification/notification.json
 msgid "Send <b>at the earliest</b> this number of minutes before or after the reference datetime. The actual sending may be delayed by up to 5 minutes due to the scheduler's trigger cadence."
-msgstr "ارسال <b>حداقل</b> این تعداد دقیقه قبل یا پس از تاریخ و زمان مرجع. ارسال واقعی ممکن است تا ۵ دقیقه به دلیل چرخه فعال‌سازی زمان‌بند با تأخیر انجام شود."
+msgstr "ارسال <b>حداقل</b> این تعداد دقیقه قبل یا پس از تاریخ و زمان مرجع. ارسال واقعی ممکن است تا 5 دقیقه به دلیل چرخه فعال‌سازی زمان‌بند با تأخیر انجام شود."
 
 #. Label of the send_acknowledgement_email (Check) field in DocType 'Contact Us
 #. Settings'
@@ -32094,7 +32094,7 @@ msgstr "کوچکترین مقدار کسری ارز"
 #. DocType 'Currency'
 #: frappe/geo/doctype/currency/currency.json
 msgid "Smallest circulating fraction unit (coin). For e.g. 1 cent for USD and it should be entered as 0.01"
-msgstr "کوچکترین واحد کسری در گردش (سکه). به عنوان مثال ۱ سنت برای USD و باید به صورت 0.01 وارد شود"
+msgstr "کوچکترین واحد کسری در گردش (سکه). به عنوان مثال 1 سنت برای USD و باید به صورت 0.01 وارد شود"
 
 #. Label of the snapshot_report (Check) field in DocType 'Report'
 #: frappe/core/doctype/report/report.json
@@ -35776,7 +35776,7 @@ msgstr "کل ورکرهای پس‌زمینه"
 #. Label of the total_errors (Int) field in DocType 'System Health Report'
 #: frappe/desk/doctype/system_health_report/system_health_report.json
 msgid "Total Errors (last 1 day)"
-msgstr "کل خطاها (۱ روز گذشته)"
+msgstr "کل خطاها (1 روز گذشته)"
 
 #: frappe/public/js/frappe/ui/capture.js:267
 msgid "Total Images"
@@ -35869,7 +35869,7 @@ msgid "Track if your email has been opened by the recipient.\n"
 "Note: If you're sending to multiple recipients, even if 1 recipient reads the email, it'll be considered \"Opened\""
 msgstr "ردیابی اینکه آیا ایمیل شما توسط گیرنده باز شده است.\n"
 "<br>\n"
-"توجه: اگر به چندین گیرنده ارسال می‌کنید، حتی اگر ۱ گیرنده ایمیل را بخواند، به عنوان \"باز شده\" در نظر گرفته می‌شود"
+"توجه: اگر به چندین گیرنده ارسال می‌کنید، حتی اگر 1 گیرنده ایمیل را بخواند، به عنوان \"باز شده\" در نظر گرفته می‌شود"
 
 #. Description of a DocType
 #: frappe/automation/doctype/milestone_tracker/milestone_tracker.json
@@ -39143,11 +39143,11 @@ msgstr "سال"
 
 #: frappe/public/js/frappe/ui/naming_series.js:107
 msgid "Year in 2 digits"
-msgstr "سال به صورت ۲ رقمی"
+msgstr "سال به صورت 2 رقمی"
 
 #: frappe/public/js/frappe/ui/naming_series.js:106
 msgid "Year in 4 digits"
-msgstr "سال به صورت ۴ رقمی"
+msgstr "سال به صورت 4 رقمی"
 
 #. Option for the 'Frequency' (Select) field in DocType 'Auto Repeat'
 #. Option for the 'Frequency' (Select) field in DocType 'Scheduled Job Type'
@@ -39233,7 +39233,7 @@ msgstr "دوست داشتی"
 
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:269
 msgid "You added 1 row to {0}"
-msgstr "شما ۱ ردیف به {0} اضافه کردید"
+msgstr "شما 1 ردیف به {0} اضافه کردید"
 
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:247
 msgid "You added {0} rows to {1}"
@@ -39818,7 +39818,7 @@ msgstr "برای واکشی مقادیر از {1} {2} به مجوز {0} نیاز
 
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:314
 msgid "You removed 1 row from {0}"
-msgstr "شما ۱ ردیف از {0} حذف کردید"
+msgstr "شما 1 ردیف از {0} حذف کردید"
 
 #: frappe/public/js/frappe/form/footer/form_timeline.js:424
 msgctxt "Form timeline"
@@ -41149,7 +41149,7 @@ msgstr "{0} اضافه شد"
 
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:271
 msgid "{0} added 1 row to {1}"
-msgstr "{0} ۱ ردیف به {1} اضافه کرد"
+msgstr "{0} 1 ردیف به {1} اضافه کرد"
 
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:249
 msgid "{0} added {1} rows to {2}"
@@ -41839,7 +41839,7 @@ msgstr ""
 
 #: frappe/core/page/component_explorer/component_explorer.js:840
 msgid "{0} of 120 files"
-msgstr "{0} از ۱۲۰ فایل"
+msgstr "{0} از 120 فایل"
 
 #: frappe/public/js/frappe/ui/sidebar/dock_manager.js:278
 msgid "{0} of this app's modules are on no tier at all"
@@ -41893,7 +41893,7 @@ msgstr "{0} رکورد برون‌بُرد خواهد شد"
 
 #: frappe/public/js/frappe/form/footer/version_timeline_content_builder.js:316
 msgid "{0} removed 1 row from {1}"
-msgstr "{0} ۱ ردیف از {1} حذف کرد"
+msgstr "{0} 1 ردیف از {1} حذف کرد"
 
 #: frappe/public/js/frappe/form/footer/form_timeline.js:425
 msgctxt "Form timeline"
