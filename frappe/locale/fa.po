@@ -42407,3 +42407,1571 @@ msgstr "{} در PATH یافت نشد! این مورد برای تهیه نسخه
 msgid "← Back to upload files"
 msgstr "← بازگشت به آپلود فایل ها"
 
+
+
+#: frappe/core/doctype/data_import/importer.py:1916
+msgid "\"{0}\" does not match any field. Map it in the Preview step, otherwise it will be ignored."
+msgstr "«{0}» با هیچ فیلدی مطابقت ندارد. آن را در مرحلهٔ پیش‌نمایش نگاشت کنید؛ در غیر این صورت نادیده گرفته می‌شود."
+
+#: frappe/public/js/frappe/views/communication.js:1059
+msgid "+{0} more"
+msgstr "+{0} مورد دیگر"
+
+#: frappe/core/doctype/data_import/data_import.js:2656
+msgid "-"
+msgstr "-"
+
+#: frappe/core/doctype/data_import/data_import.js:917
+msgid ".csv, .xlsx"
+msgstr ".csv, .xlsx"
+
+#: frappe/core/doctype/data_import/data_import.js:917
+#: frappe/public/js/data_import_wizard.bundle.js:86
+msgid ".csv, .xlsx up to {0} MB"
+msgstr ".csv, .xlsx (حداکثر {0} مگابایت)"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:138
+msgid "1 warning found."
+msgstr "1 هشدار پیدا شد."
+
+#. Content of the 'Condition description' (HTML) field in DocType 'Web Form'
+#: frappe/website/doctype/web_form/web_form.json
+msgid "<p>Filter the records this web form shows (e.g., <b>year = 2023</b> for a yearly feedback form).</p>"
+msgstr "<p>رکوردهایی را که این فرم وب نشان می‌دهد فیلتر کنید (برای نمونه، <b>year = 2023</b> برای فرم بازخورد سالانه).</p>"
+
+#: frappe/website/doctype/web_form/web_form.js:672
+msgid "A Web Form cannot show this {0} field. Unselect to remove it."
+msgstr "فرم وب نمی‌تواند فیلد {0} را نشان دهد. برای حذف آن، انتخابش را بردارید."
+
+#: frappe/desk/doctype/kanban_board/kanban_board.py:73
+msgid "A standard Kanban Board cannot be private"
+msgstr "تخته‌کانبان استاندارد نمی‌تواند خصوصی باشد"
+
+#: frappe/desk/doctype/kanban_board/kanban_board.py:116
+msgid "A standard Kanban Board cannot be renamed"
+msgstr "نام تخته‌کانبان استاندارد را نمی‌توان تغییر داد"
+
+#: frappe/desk/doctype/kanban_board/kanban_board.py:77
+msgid "A standard Kanban Board must use Kanban v2"
+msgstr "تخته‌کانبان استاندارد باید از نسخهٔ 2 استفاده کند"
+
+#: frappe/desk/doctype/list_filter/list_filter.py:81
+msgid "A standard list layout cannot belong to a user"
+msgstr "چیدمان فهرست استاندارد نمی‌تواند به کاربر تعلق داشته باشد"
+
+#. Label of the actions_snapshot (JSON) field in DocType 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Actions Snapshot"
+msgstr "گزارش اجرای عملیات"
+
+#: frappe/public/js/frappe/ui/slides.js:37
+msgid "Add More"
+msgstr "افزودن موارد بیشتر"
+
+#: frappe/public/js/frappe/views/kanban_v2/core/kanban_core.js:478
+msgid "Add card"
+msgstr "افزودن کارت"
+
+#: frappe/public/js/frappe/views/communication.js:434
+msgid "Add new attachments"
+msgstr "افزودن پیوست‌های جدید"
+
+#: frappe/public/js/form_builder/store.js:312
+msgid "Add new page"
+msgstr "افزودن صفحهٔ جدید"
+
+#: frappe/public/js/form_builder/store.js:311
+msgid "Add page"
+msgstr "افزودن صفحه"
+
+#: frappe/public/js/frappe/views/treeview.js:831
+msgctxt "Primary action in tree view"
+msgid "Add {0}"
+msgstr "افزودن {0}"
+
+#: frappe/public/js/frappe/ui/group_by/group_by.html:27
+msgid "Aggregate Function"
+msgstr "تابع تجمیع"
+
+#: frappe/public/js/frappe/ui/group_by/group_by.html:34
+msgid "Aggregate On"
+msgstr "تجمیع بر اساس"
+
+#: frappe/core/doctype/data_import/data_import.js:2889
+msgid "All ({0})"
+msgstr "همه ({0})"
+
+#: frappe/public/js/frappe/ui/toolbar/search.js:438
+msgid "All Results"
+msgstr "همهٔ نتایج"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:370
+msgid "All set! Opening your workspace"
+msgstr "همه‌چیز آماده است! فضای کاری شما باز می‌شود"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.py:68
+msgid "Almost done"
+msgstr "تقریباً تمام شد"
+
+#: frappe/core/doctype/data_import/importer.py:292
+msgid "Already imported row {0}"
+msgstr "ردیف {0} قبلاً وارد شده است"
+
+#: frappe/public/js/form_builder/components/Tabs.vue:124
+msgctxt "Confirmation dialog message"
+msgid "Are you sure you want to delete the page? All the sections along with fields in the page will be moved to the next page."
+msgstr "از حذف صفحه مطمئن هستید؟ همهٔ بخش‌ها و فیلدهای آن به صفحهٔ بعد منتقل می‌شوند."
+
+#: frappe/public/js/form_builder/store.js:317
+msgctxt "Confirmation dialog message"
+msgid "Are you sure you want to delete the page? All the sections along with fields in the page will be moved to the previous page."
+msgstr "از حذف صفحه مطمئن هستید؟ همهٔ بخش‌ها و فیلدهای آن به صفحهٔ قبل منتقل می‌شوند."
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:164
+msgid "Attach Image field for card thumbnail."
+msgstr "فیلد تصویر را برای تصویر بندانگشتی کارت پیوست کنید."
+
+#. Description of the 'Image Field' (Autocomplete) field in DocType 'Kanban
+#. Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Attach Image field shown as a thumbnail before the card title."
+msgstr "فیلد تصویر به‌صورت تصویر بندانگشتی پیش از عنوان کارت نمایش داده می‌شود."
+
+#: frappe/public/js/data_import_wizard.bundle.js:988
+msgid "Attach an import file to validate rows and mappings."
+msgstr "برای اعتبارسنجی ردیف‌ها و نگاشت‌ها، یک فایل واردسازی پیوست کنید."
+
+#: frappe/public/js/frappe/views/communication.js:397
+msgid "Attach document print"
+msgstr "پیوست چاپ سند"
+
+#: frappe/public/js/frappe/views/communication.js:425
+msgid "Attach files"
+msgstr "پیوست‌ها"
+
+#. Label of the automation_title (Data) field in DocType 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Automation Flow Title"
+msgstr "عنوان جریان خودکارسازی"
+
+#. Name of a DocType
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Automation Run"
+msgstr "اجرای خودکارسازی"
+
+#. Name of a DocType
+#: frappe/automation/doctype/automation_run_step/automation_run_step.json
+msgid "Automation Run Step"
+msgstr "مرحلهٔ اجرای خودکارسازی"
+
+#: frappe/public/js/frappe/ui/slides.js:371
+msgctxt "Go to previous slide"
+msgid "Back"
+msgstr "بازگشت"
+
+#: frappe/core/page/component_explorer/component_explorer.js:815
+msgid "Basic (active + completed states)"
+msgstr "پایه (حالت‌های فعال و تکمیل‌شده)"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:135
+msgid "Board Name"
+msgstr "نام تخته‌کانبان"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:51
+msgid "Board Settings"
+msgstr "تنظیمات تخته‌کانبان"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:415
+msgid "Board settings saved"
+msgstr "تنظیمات تخته ذخیره شد"
+
+#. Label of the card_fields (Table) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:252
+msgid "Card Fields"
+msgstr "فیلدهای کارت"
+
+#. Label of the section_break_new_kanban_fields (Section Break) field in
+#. DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Card and Preview Fields"
+msgstr "فیلدهای کارت و پیش‌نمایش"
+
+#: frappe/public/js/frappe/views/kanban_v2/core/kanban_core.js:294
+msgid "Card title…"
+msgstr "عنوان کارت…"
+
+#: frappe/core/page/component_explorer/component_explorer.js:1098
+msgid "Centre value + legend"
+msgstr "مقدار مرکزی و راهنما"
+
+#: frappe/public/js/frappe/views/communication.js:357
+msgid "Change print settings"
+msgstr "تغییر تنظیمات چاپ"
+
+#: frappe/public/js/data_import_wizard.bundle.js:973
+msgid "Checking import file for issues..."
+msgstr "در حال بررسی فایل واردسازی برای یافتن مشکل…"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:166
+msgid "Clear selection"
+msgstr "پاک کردن انتخاب"
+
+#: frappe/core/page/component_explorer/component_explorer.js:843
+msgid "Click to navigate"
+msgstr "برای رفتن کلیک کنید"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:76
+msgid "Collapse all"
+msgstr "جمع‌کردن همه"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:196
+msgid "Column Field"
+msgstr "فیلد ستون"
+
+#: frappe/core/doctype/data_import/data_import.js:2475
+msgid "Column warnings"
+msgstr "هشدارهای ستون"
+
+#: frappe/public/js/data_import_wizard.bundle.js:1033
+msgid "Columns matched"
+msgstr "ستون‌ها تطبیق داده شدند"
+
+#: frappe/core/page/component_explorer/component_explorer.js:885
+msgid "Compact (narrow layouts)"
+msgstr "فشرده (چیدمان‌های باریک)"
+
+#. Option for the 'Action' (Select) field in DocType 'Onboarding Step'
+#: frappe/desk/doctype/onboarding_step/onboarding_step.json
+msgid "Complete Onboarding"
+msgstr "تکمیل راه‌اندازی"
+
+#: frappe/public/js/data_import_wizard.bundle.js:1196
+msgid "Complete the earlier steps before continuing."
+msgstr "برای ادامه، مراحل قبلی را کامل کنید."
+
+#. Label of the condition_values (JSON) field in DocType 'Automation Run Step'
+#: frappe/automation/doctype/automation_run_step/automation_run_step.json
+msgid "Condition Values"
+msgstr "مقادیر شرط"
+
+#: frappe/public/js/frappe/ui/slides.js:384
+msgctxt "Go to next slide"
+msgid "Continue"
+msgstr "ادامه"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:806
+msgid "Copy this board to change its setup"
+msgstr "برای تغییر تنظیمات، یک نسخه از این تخته بسازید"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1115
+msgid "Could not load groups."
+msgstr "بارگیری گروه‌ها ممکن نشد."
+
+#: frappe/core/doctype/data_import/data_import.js:515
+msgid "Could not load import file"
+msgstr "بارگیری فایل واردسازی ممکن نشد"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1057
+msgid "Could not move {0}"
+msgstr "انتقال {0} ممکن نشد"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1056
+msgid "Could not move {0} cards"
+msgstr "انتقال {0} کارت ممکن نشد"
+
+#: frappe/desk/doctype/onboarding_step/onboarding_step.py:155
+msgid "Create a {0} to finish this step."
+msgstr "برای تکمیل این مرحله، یک {0} ایجاد کنید."
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:616
+msgid "Create your account"
+msgstr "حساب کاربری خود را ایجاد کنید"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1305
+msgid "Created {0}"
+msgstr "ایجاد شد: {0}"
+
+#. Option for the 'Footer Date' (Select) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Creation"
+msgstr "ایجاد"
+
+#: frappe/core/page/component_explorer/component_explorer.js:1111
+msgid "Custom colours + format"
+msgstr "رنگ‌ها و قالب‌بندی سفارشی"
+
+#: frappe/public/js/frappe/views/communication.js:727
+msgid "Default template: {0}"
+msgstr "قالب پیش‌فرض: {0}"
+
+#: frappe/public/js/form_builder/store.js:314
+msgctxt "Title of confirmation dialog"
+msgid "Delete Page"
+msgstr "حذف صفحه"
+
+#: frappe/public/js/form_builder/store.js:316
+msgctxt "Button text"
+msgid "Delete entire page with fields"
+msgstr "حذف کامل صفحه و فیلدهای آن"
+
+#: frappe/public/js/form_builder/store.js:315
+msgctxt "Button text"
+msgid "Delete page"
+msgstr "حذف صفحه"
+
+#. Description of the 'Automation Flow Title' (Data) field in DocType
+#. 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Denormalized so the run survives deletion of its Automation Flow."
+msgstr "داده‌ها به‌صورت غیرنرمال ذخیره می‌شوند تا اجرا پس از حذف جریان خودکارسازی آن باقی بماند."
+
+#. Label of the detail (Long Text) field in DocType 'Automation Run Step'
+#: frappe/automation/doctype/automation_run_step/automation_run_step.json
+msgid "Detail"
+msgstr "جزئیات"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:410
+msgid "Done: {0}"
+msgstr "انجام شد: {0}"
+
+#: frappe/core/doctype/data_import/data_import.js:2815
+msgid "Download Failed Rows"
+msgstr "دانلود ردیف‌های ناموفق"
+
+#: frappe/public/js/form_builder/store.js:322
+msgid "Drag & Drop a section here from another page"
+msgstr "یک بخش را از صفحه‌ای دیگر بکشید و اینجا رها کنید"
+
+#: frappe/public/js/data_import_wizard.bundle.js:714
+msgid "Drag a CSV or Excel file here, or click to browse"
+msgstr "یک فایل CSV یا Excel را اینجا بکشید یا برای مرور کلیک کنید"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:998
+msgid "Duplicate Kanban Board"
+msgstr "تکثیر تخته‌کانبان"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:296
+msgid "Edited"
+msgstr "ویرایش‌شده"
+
+
+#: frappe/core/page/component_explorer/component_explorer.js:1089
+#: frappe/core/page/component_explorer/component_explorer.js:1129
+msgid "Empty"
+msgstr "خالی"
+
+#: frappe/website/doctype/web_form/web_form.py:155
+msgid "Empty Page"
+msgstr "صفحهٔ خالی"
+
+#. Label of the empty_state_message (Small Text) field in DocType 'Dashboard
+#. Chart'
+#: frappe/desk/doctype/dashboard_chart/dashboard_chart.json
+msgid "Empty State Message"
+msgstr "پیامِ حالت خالی"
+
+#. Label of the error_summary (Small Text) field in DocType 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Error Summary"
+msgstr "خلاصهٔ خطا"
+
+#: frappe/public/js/frappe/views/communication.js:91
+msgid "Exit full screen"
+msgstr "خروج از حالت تمام‌صفحه"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:71
+msgid "Expand all"
+msgstr "بازکردن همه"
+
+#: frappe/public/js/frappe/list/list_filter/layout_dialog.js:50
+msgid "Exported to the module and shipped with its app"
+msgstr "به ماژول صادر و همراه برنامه منتشر شده است"
+
+#: frappe/core/doctype/data_import/data_import.js:2897
+msgid "Failed ({0})"
+msgstr "ناموفق ({0})"
+
+#: frappe/core/doctype/data_import/data_import.js:496
+#: frappe/core/doctype/data_import/data_import.js:1925
+#: frappe/core/doctype/data_import/data_import.js:2018
+msgid "Failed to load import file"
+msgstr "بارگیری فایل واردسازی ناموفق بود"
+
+#: frappe/core/doctype/data_import/data_import.js:1105
+msgid "Failed to load the import wizard bundle."
+msgstr "بارگیری بستهٔ راهنمای واردسازی ناموفق بود."
+
+#: frappe/core/doctype/data_import/data_import.js:1081
+msgid "Failed to load the import wizard. Please hard-refresh and try again."
+msgstr "بارگیری راهنمای واردسازی ممکن نشد. صفحه را به‌طور کامل بازخوانی کنید و دوباره تلاش کنید."
+
+#: frappe/core/doctype/data_import/data_import.js:1008
+msgid "Fetching latest status..."
+msgstr "در حال دریافت آخرین وضعیت…"
+
+#. Description of the 'Field' (Autocomplete) field in DocType 'Kanban Board
+#. Field'
+#: frappe/desk/doctype/kanban_board_field/kanban_board_field.json
+msgid "Field of the board's reference doctype to show on the card."
+msgstr "فیلدِ نوع سند مرجعِ تخته که روی کارت نمایش داده می‌شود."
+
+#. Description of the 'Title Field' (Autocomplete) field in DocType 'Kanban
+#. Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Field shown as the card title: ID or a text field."
+msgstr "فیلدی که عنوان کارت را نشان می‌دهد: شناسه یا یک فیلد متنی."
+
+#. Description of the 'Preview Fields' (Table) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Fields shown in the card hover preview, in order. Icon and Label behave the same as Card Fields. Leave empty to use the doctype's preview fields, then card fields."
+msgstr "فیلدهای پیش‌نمایشِ هنگام اشاره روی کارت، به‌ترتیب. «نماد» و «برچسب» مانند فیلدهای کارت عمل می‌کنند. برای استفاده از فیلدهای پیش‌نمایش نوع سند و سپس فیلدهای کارت، این بخش را خالی بگذارید."
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:247
+msgid "Fields shown on cards and in the hover preview."
+msgstr "فیلدهای نمایش‌داده‌شده روی کارت و در پیش‌نمایشِ هنگام اشاره."
+
+#. Description of the 'Card Fields' (Table) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Fields shown on each card, in order. Set an Icon to show it on the card (label on hover); leave Icon empty to show the Label text. Leave the table empty to auto-pick."
+msgstr "فیلدهای هر کارت، به‌ترتیب. برای نمایش نماد روی کارت و برچسب هنگام اشاره، نماد تعیین کنید؛ اگر نماد خالی باشد، متن برچسب نمایش داده می‌شود. برای انتخاب خودکار، جدول را خالی بگذارید."
+
+#. Description of the 'Swimlanes' (Table) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Fields the board can group cards by (swimlanes). New boards are pre-filled with the doctype's Select fields (except the column field). Add Link fields to offer more groupings; leave empty to hide the Group button."
+msgstr "فیلدهایی که تخته می‌تواند کارت‌ها را بر اساس آن‌ها در مسیرهای شناور گروه‌بندی کند. تخته‌های جدید به‌طور پیش‌فرض با فیلدهای انتخابی نوع سند (به‌جز فیلد ستون) پر می‌شوند. برای ارائهٔ گروه‌بندی‌های بیشتر، فیلدهای پیوندی اضافه کنید؛ برای پنهان‌کردن دکمهٔ گروه‌بندی، این بخش را خالی بگذارید."
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:288
+msgid "Fields the board can group cards into swimlanes by."
+msgstr "فیلدهایی که کارت‌های تخته بر اساس آن‌ها در مسیرهای شناور گروه‌بندی می‌شوند."
+
+#: frappe/public/js/data_import_wizard.bundle.js:509
+msgid "File upload"
+msgstr "بارگذاری فایل"
+
+#: frappe/desk/doctype/list_filter/list_filter.py:85
+msgid "Filter Name, Reference Document Type and Module are required for a standard list layout"
+msgstr "برای چیدمان فهرست استاندارد، نام فیلتر، نوع سند مرجع و ماژول الزامی هستند"
+
+#: frappe/core/doctype/data_import/data_import.js:2885
+msgid "Filter import log"
+msgstr "فیلتر گزارش واردسازی"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:55
+msgid "Filter nodes"
+msgstr "فیلتر گره‌ها"
+
+#: frappe/desk/doctype/onboarding_step/onboarding_step.py:146
+msgid "Finish {0} to finish this step."
+msgstr "برای تکمیل این مرحله، مرحلهٔ {0} را به پایان برسانید."
+
+#: frappe/core/doctype/data_import/data_import.js:865
+msgid "Finishing up..."
+msgstr "در حال تکمیل…"
+
+#: frappe/public/js/data_import_wizard.bundle.js:6
+msgid "Fix issues"
+msgstr "رفع مشکل‌ها"
+
+#: frappe/public/js/data_import_wizard.bundle.js:1030
+msgid "Fix issues summary"
+msgstr "خلاصهٔ مشکل‌ها"
+
+#. Option for the 'Dock' (Select) field in DocType 'User'
+#: frappe/core/doctype/user/user.json
+#: frappe/public/js/frappe/ui/user_settings_dialog.js:421
+msgid "Floating"
+msgstr "شناور"
+
+#. Label of the footer_date_field (Select) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:143
+msgid "Footer Date"
+msgstr "تاریخ پایین کارت"
+
+#. Description of the 'Custom CSS' (Code) field in DocType 'Web Form'
+#: frappe/website/doctype/web_form/web_form.json
+msgid "For help see <a href=\"https://docs.frappe.io/framework/user/en/web-form/customization#custom-css\" target=\"_blank\" rel=\"noopener noreferrer\">Web Form Custom CSS</a>"
+msgstr "برای راهنمایی، <a href=\"https://docs.frappe.io/framework/user/en/web-form/customization#custom-css\" target=\"_blank\" rel=\"noopener noreferrer\">CSS سفارشی فرم وب</a> را ببینید."
+
+#: frappe/public/js/form_builder/store.js:520
+msgid "Form Builder could not apply the layout: {0}. The save was cancelled, so your changes are not lost. See the browser console for details."
+msgstr "سازندهٔ فرم نتوانست چیدمان را اعمال کند: {0}. ذخیره لغو شد و تغییرات شما حفظ شده‌اند. برای جزئیات، کنسول مرورگر را ببینید."
+
+#: frappe/core/page/component_explorer/component_explorer.js:1061
+msgid "Formatted, coloured, values on hover"
+msgstr "مقدارهای قالب‌بندی‌شده و رنگی که هنگام اشاره نمایش داده می‌شوند"
+
+#: frappe/public/js/frappe/views/communication.js:382
+msgid "Formatting options"
+msgstr "گزینه‌های قالب‌بندی"
+
+#: frappe/public/js/frappe/views/communication.js:91
+msgid "Full screen"
+msgstr "تمام‌صفحه"
+
+#: frappe/website/doctype/web_form/web_form.js:466
+msgid "Get Fields from {0}"
+msgstr "دریافت فیلدها از {0}"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:143
+msgid "Get Started"
+msgstr "شروع کنید"
+
+#: frappe/public/js/frappe/ui/user_settings_dialog.js:308
+msgid "Get notified when a recipient opens an email you send."
+msgstr "وقتی گیرنده ایمیلی را که فرستاده‌اید باز کرد، به شما اطلاع داده می‌شود."
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:359
+#: frappe/desk/page/setup_wizard/setup_wizard.js:484
+msgid "Getting started"
+msgstr "شروع به کار"
+
+#: frappe/core/doctype/data_import/data_import.js:2788
+msgid "Go to list"
+msgstr "رفتن به فهرست"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:60
+msgid "Good afternoon"
+msgstr "ظهر بخیر"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:60
+msgid "Good afternoon, {0}"
+msgstr "ظهر بخیر، {0}"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:62
+msgid "Good evening"
+msgstr "عصر بخیر"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:62
+msgid "Good evening, {0}"
+msgstr "عصر بخیر، {0}"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:58
+msgid "Good morning"
+msgstr "صبح بخیر"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:58
+msgid "Good morning, {0}"
+msgstr "صبح بخیر، {0}"
+
+#: frappe/public/js/data_import_wizard.bundle.js:514
+msgid "Google Sheet"
+msgstr "صفحه‌گستردهٔ Google"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:530
+msgid "Hi {0}, let's get the basics right"
+msgstr "سلام {0}، بیایید مقدمات را آماده کنیم"
+
+#: frappe/website/doctype/web_form/web_form.js:668
+msgid "Hidden in {0}. If you unselect it, Get Fields cannot add it back."
+msgstr "در {0} پنهان است. اگر انتخابش را بردارید، «دریافت فیلدها» نمی‌تواند دوباره آن را اضافه کند."
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:129
+msgid "How cards look in the new Kanban experience."
+msgstr "ظاهر کارت‌ها در تجربهٔ جدید تخته‌کانبان."
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:155
+msgid "ID or a text field."
+msgstr "شناسه یا فیلد متنی."
+
+#. Description of the 'Is standard' (Check) field in DocType 'Web Form'
+#: frappe/website/doctype/web_form/web_form.json
+msgid "If enabled, Frappe exports the form to the module folder."
+msgstr "اگر فعال باشد، فرم به پوشهٔ ماژول صادر می‌شود."
+
+#: frappe/core/doctype/data_import/data_import.js:2672
+#: frappe/core/doctype/data_import/data_import.js:2678
+msgid "Import failed"
+msgstr "واردسازی ناموفق بود"
+
+#: frappe/core/doctype/data_import/data_import.js:1007
+#: frappe/core/doctype/data_import/data_import.js:2975
+msgid "Import is running. Progress updates will appear shortly."
+msgstr "واردسازی در حال اجراست. به‌زودی به‌روزرسانی پیشرفت نمایش داده می‌شود."
+
+#: frappe/core/doctype/data_import/data_import.js:3168
+msgid "Import log"
+msgstr "گزارش واردسازی"
+
+#: frappe/public/js/data_import_wizard.bundle.js:438
+msgid "Import settings"
+msgstr "تنظیمات واردسازی"
+
+
+#: frappe/public/js/data_import_wizard.bundle.js:363
+#: frappe/public/js/data_import_wizard.bundle.js:389
+msgid "Import steps"
+msgstr "مراحل واردسازی"
+
+#: frappe/public/js/frappe/data_import/data_import_dialog.js:33
+msgid "Import {0}"
+msgstr "واردسازی {0}"
+
+#: frappe/core/doctype/data_import/importer.py:504
+msgid "Imported"
+msgstr "واردشده"
+
+#: frappe/core/doctype/data_import/data_import.js:2984
+msgid "Importing row {0} of {1}"
+msgstr "در حال واردسازی ردیف {0} از {1}"
+
+#: frappe/core/doctype/data_import/data_import.js:855
+#: frappe/core/doctype/data_import/data_import.js:1002
+#: frappe/core/doctype/data_import/data_import.js:1336
+#: frappe/core/doctype/data_import/data_import.js:2967
+msgid "Importing your data"
+msgstr "در حال واردسازی داده‌های شما"
+
+#: frappe/core/doctype/data_import/data_import.js:2824
+#: frappe/core/doctype/data_import/data_import.js:3006
+#: frappe/core/doctype/data_import/importer.py:500
+msgid "Inserted"
+msgstr "درج‌شده"
+
+#: frappe/website/doctype/website_theme/website_theme.py:113
+#: frappe/website/doctype/website_theme/website_theme.py:123
+msgid "Invalid Website Theme Name"
+msgstr "نام پوستهٔ وب‌سایت نامعتبر است"
+
+#: frappe/desk/doctype/kanban_board/kanban_board.py:437
+#: frappe/desk/doctype/kanban_board/kanban_board.py:442
+msgid "Invalid group field"
+msgstr "فیلد گروه نامعتبر است"
+
+#. Label of the is_optional (Check) field in DocType 'Onboarding Step Map'
+#: frappe/desk/doctype/onboarding_step_map/onboarding_step_map.json
+msgid "Is Optional"
+msgstr "اختیاری است"
+
+#: frappe/core/doctype/data_import/data_import.js:2479
+msgid "Issues"
+msgstr "مشکل‌ها"
+
+#: frappe/printing/doctype/print_format/print_format_list.js:78
+msgid "JS renders in the browser. Jinja renders on the server."
+msgstr "JS در مرورگر اجرا می‌شود؛ Jinja در سرور اجرا می‌شود."
+
+#: frappe/core/doctype/data_import/data_import.js:1487
+#: frappe/core/doctype/data_import/data_import.py:283
+msgid "Job was not running; status updated."
+msgstr "کار در حال اجرا نبود؛ وضعیت به‌روز شد."
+
+#. Name of a DocType
+#: frappe/desk/doctype/kanban_board_field/kanban_board_field.json
+msgid "Kanban Board Field"
+msgstr "فیلد تخته‌کانبان"
+
+#. Name of a DocType
+#: frappe/desk/doctype/kanban_board_group_field/kanban_board_group_field.json
+msgid "Kanban Board Group Field"
+msgstr "فیلد گروه‌بندی تخته‌کانبان"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:337
+msgid "Kanban Board {0} not found."
+msgstr "تخته‌کانبان {0} پیدا نشد."
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:108
+msgid "Kanban Settings"
+msgstr "تنظیمات تخته‌کانبان"
+
+#: frappe/core/doctype/data_import/data_import.js:2426
+msgid "Keep Row {0}, Skip Rest"
+msgstr "ردیف {0} را نگه دار و بقیه را رد کن"
+
+#: frappe/public/js/frappe/ui/user_settings_dialog.js:365
+msgid "Keep the app dock beside the sidebar, or let it slide in from the left edge."
+msgstr "داک برنامه را کنار نوار کناری نگه دارید یا بگذارید از لبهٔ چپ وارد شود."
+
+#: frappe/core/page/component_explorer/component_explorer.js:869
+msgid "Label position"
+msgstr "جایگاه برچسب"
+
+#: frappe/core/doctype/data_import/data_import.js:2841
+msgid "Last modified by"
+msgstr "آخرین تغییر توسط"
+
+#: frappe/core/doctype/data_import/data_import.js:2842
+msgid "Last modified on"
+msgstr "آخرین تغییر در"
+
+#. Label of the layout_order (Int) field in DocType 'List Filter'
+#: frappe/desk/doctype/list_filter/list_filter.json
+msgid "Layout Order"
+msgstr "ترتیب چیدمان"
+
+#. Description of the 'New Kanban' (Section Break) field in DocType 'Kanban
+#. Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Layout and fields used by the new Kanban experience for this board."
+msgstr "چیدمان و فیلدهای تجربهٔ جدید تخته‌کانبان برای این تخته."
+
+#: frappe/public/js/frappe/list/list_filter/manage_layouts_dialog.js:39
+msgid "Layouts you create will show up here."
+msgstr "چیدمان‌هایی که ایجاد می‌کنید اینجا نمایش داده می‌شوند."
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:531
+msgid "Let's get the basics right"
+msgstr "بیایید مقدمات را آماده کنیم"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:129
+msgid "Let's get your workspace ready. It only takes a few minutes."
+msgstr "فضای کاری‌تان را آماده کنیم. فقط چند دقیقه زمان می‌برد."
+
+#: frappe/core/page/component_explorer/component_explorer.js:900
+msgid "Live (next / previous on the first stepper above)"
+msgstr "زنده (مرحلهٔ بعد یا قبل در راهنمای گام‌به‌گام بالا)"
+
+#: frappe/core/doctype/data_import/data_import.js:3069
+msgid "Live activity updates will appear here."
+msgstr "به‌روزرسانی‌های زندهٔ فعالیت اینجا نمایش داده می‌شوند."
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1099
+msgid "Loading groups…"
+msgstr "در حال بارگیری گروه‌ها…"
+
+#: frappe/core/doctype/data_import/data_import.js:621
+msgid "Loading import log"
+msgstr "در حال بارگیری گزارش واردسازی"
+
+#: frappe/core/doctype/data_import/data_import.js:650
+msgid "Loading import preview..."
+msgstr "در حال بارگیری پیش‌نمایش واردسازی…"
+
+#: frappe/core/doctype/data_import/data_import.js:665
+msgid "Loading tree preview..."
+msgstr "در حال بارگیری پیش‌نمایش درخت…"
+
+#: frappe/core/page/component_explorer/component_explorer.js:829
+msgid "Locked steps"
+msgstr "مراحل قفل‌شده"
+
+#: frappe/public/js/frappe/data_import/import_preview.js:757
+msgid "Map each file column to a field. Save to apply changes."
+msgstr "هر ستون فایل را به یک فیلد نگاشت کنید. برای اعمال تغییرات ذخیره کنید."
+
+#: frappe/core/doctype/data_import/data_import.js:2471
+msgid "Mapping warnings"
+msgstr "هشدارهای نگاشت"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:504
+msgid "Mark as group"
+msgstr "علامت‌گذاری به‌عنوان گروه"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:511
+msgid "Mark as leaf"
+msgstr "علامت‌گذاری به‌عنوان برگ"
+
+#. Option for the 'Footer Date' (Select) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Modified"
+msgstr "تغییریافته"
+
+#: frappe/desk/doctype/kanban_board/kanban_board.py:70
+msgid "Module is required for a standard Kanban Board"
+msgstr "برای تخته‌کانبان استاندارد، تعیین ماژول الزامی است"
+
+#: frappe/public/js/frappe/list/list_filter/layout_dialog.js:271
+msgid "Module is required for a standard layout"
+msgstr "برای چیدمان استاندارد، تعیین ماژول الزامی است"
+
+#: frappe/public/js/frappe/views/communication.js:157
+#: frappe/public/js/frappe/views/communication.js:473
+msgid "More options"
+msgstr "گزینه‌های بیشتر"
+
+#: frappe/public/js/frappe/views/communication.js:236
+msgid "More send options"
+msgstr "گزینه‌های بیشترِ ارسال"
+
+#: frappe/public/js/form_builder/store.js:324
+msgid "Move current and all subsequent sections to a new page"
+msgstr "بخش جاری و همهٔ بخش‌های بعدی را به صفحه‌ای جدید منتقل کنید"
+
+#: frappe/public/js/form_builder/store.js:323
+msgid "Move sections to new page"
+msgstr "انتقال بخش‌ها به صفحهٔ جدید"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:497
+msgid "Move to…"
+msgstr "انتقال به…"
+
+#. Label of the section_break_new_kanban (Section Break) field in DocType
+#. 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "New Kanban"
+msgstr "تخته‌کانبان جدید"
+
+#: frappe/core/page/component_explorer/component_explorer.js:903
+msgid "Next step"
+msgstr "مرحلهٔ بعد"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:322
+msgid "No Kanban Board specified."
+msgstr "تخته‌کانبانی مشخص نشده است."
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:524
+msgid "No actions available"
+msgstr "عملیاتی در دسترس نیست"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:554
+msgid "No available parents"
+msgstr "والدِ در دسترسی وجود ندارد"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1131
+msgid "No cards to group."
+msgstr "کارتی برای گروه‌بندی وجود ندارد."
+
+#: frappe/public/js/frappe/ui/components/stat_card.js:70
+msgid "No data"
+msgstr "داده‌ای وجود ندارد"
+
+#: frappe/public/js/frappe/ui/components/bar_list.js:51
+#: frappe/public/js/frappe/ui/components/donut.js:51
+msgid "No data to show"
+msgstr "داده‌ای برای نمایش وجود ندارد"
+
+#: frappe/public/js/frappe/widgets/chart_widget.js:804
+msgid "No data yet"
+msgstr "هنوز داده‌ای وجود ندارد"
+
+#: frappe/core/doctype/data_import/data_import.js:1514
+msgid "No error log found for this import."
+msgstr "برای این واردسازی گزارش خطایی پیدا نشد."
+
+
+#: frappe/core/doctype/data_import/data_import.js:2756
+msgid "No failed log entries"
+msgstr "مورد ناموفقی در گزارش وجود ندارد"
+
+#: frappe/website/doctype/web_form/web_form.js:458
+msgid "No fields are available from {0}."
+msgstr "هیچ فیلدی از {0} در دسترس نیست."
+
+#: frappe/public/js/data_import_wizard.bundle.js:1012
+msgid "No issues to fix"
+msgstr "موردی برای اصلاح وجود ندارد"
+
+#: frappe/core/doctype/data_import/data_import.js:129
+msgid "No preview data for this row"
+msgstr "برای این ردیف داده‌ای جهت پیش‌نمایش وجود ندارد"
+
+#: frappe/core/page/component_explorer/component_explorer.js:1020
+msgid "No reading vs zero"
+msgstr "نبود دادهٔ خوانده‌شده با مقدار صفر تفاوت دارد"
+
+#: frappe/core/doctype/data_import/data_import.js:2759
+msgid "No rows were imported"
+msgstr "هیچ ردیفی وارد نشد"
+
+#: frappe/public/js/frappe/list/list_filter/manage_layouts_dialog.js:38
+msgid "No saved layouts yet"
+msgstr "هنوز چیدمان ذخیره‌شده‌ای وجود ندارد"
+
+#: frappe/core/doctype/data_import/data_import.js:2758
+msgid "No successful log entries"
+msgstr "مورد موفقی در گزارش وجود ندارد"
+
+#: frappe/public/js/frappe/views/communication.js:497
+msgid "No templates"
+msgstr "قالبی وجود ندارد"
+
+#: frappe/public/js/data_import_wizard.bundle.js:994
+msgid "No warnings or mapping issues were found. You can continue to import."
+msgstr "هیچ هشداری یا مشکل نگاشتی پیدا نشد. می‌توانید واردسازی را ادامه دهید."
+
+#: frappe/website/doctype/web_form/web_form.js:665
+msgid "Not a field in {0}. Unselect to remove it."
+msgstr "فیلدی در {0} نیست. برای حذف آن، انتخابش را بردارید."
+
+#: frappe/public/js/frappe/data_import/import_preview.js:379
+msgid "Not imported:"
+msgstr "وارد نشده‌اند:"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1125
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1150
+msgid "Not set"
+msgstr "تنظیم نشده"
+
+#: frappe/desk/doctype/kanban_board/kanban_board.py:67
+msgid "Only a new Kanban Board can be made standard"
+msgstr "فقط تخته‌کانبان جدید را می‌توان استاندارد کرد"
+
+#: frappe/desk/doctype/list_filter/list_filter.py:78
+msgid "Only a new list layout can be made standard"
+msgstr "فقط چیدمان فهرست جدید را می‌توان استاندارد کرد"
+
+#. Description of the 'Use Kanban v2 (New Experience)' (Check) field in DocType
+#. 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Open this board in the new Kanban experience. When off, the classic Kanban is used. Same List / Kanban route either way."
+msgstr "این تخته را در تجربهٔ جدید تخته‌کانبان باز کنید. اگر خاموش باشد، تخته‌کانبان کلاسیک استفاده می‌شود؛ در هر دو حالت مسیر فهرست/تخته‌کانبان یکسان است."
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:96
+msgid "Optional"
+msgstr "اختیاری"
+
+#. Description of the 'Icon' (Icon) field in DocType 'Kanban Board Field'
+#: frappe/desk/doctype/kanban_board_field/kanban_board_field.json
+msgid "Optional. When set, the card shows this icon and the label on hover; when empty, the label is shown directly."
+msgstr "اختیاری. در صورت تنظیم، نماد و برچسب روی کارت و هنگام اشاره نمایش داده می‌شوند؛ اگر خالی باشد، برچسب مستقیماً نمایش داده می‌شود."
+
+#: frappe/core/doctype/data_import/data_import.js:217
+msgid "Or skip rows instead"
+msgstr "یا به‌جای آن، ردیف‌ها را رد کنید"
+
+#. Option for the 'Status' (Select) field in DocType 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Partially Failed"
+msgstr "تا حدی ناموفق"
+
+#: frappe/public/js/frappe/data_import/data_import_dialog.js:15
+msgid "Pass either an existing {0} name or a {1} to import into."
+msgstr "برای واردسازی، نام موجود {0} یا یک {1} را وارد کنید."
+
+#. Description of the 'Tree Parent Overrides' (Code) field in DocType 'Data
+#. Import'
+#: frappe/core/doctype/data_import/data_import.json
+msgid "Per-row parent / is_group overrides for tree DocType imports, keyed by sheet row number. Applied at import time."
+msgstr "مقدارهای جایگزین parent / is_group برای هر ردیفِ واردسازی DocType درختی، با کلید شمارهٔ ردیف صفحه‌گسترده. هنگام واردسازی اعمال می‌شوند."
+
+#. Description of the 'Dock' (Select) field in DocType 'User'
+#: frappe/core/doctype/user/user.json
+msgid "Pinned sits beside the sidebar. Floating slides in from the left edge."
+msgstr "«سنجاق‌شده» کنار نوار کناری می‌ماند؛ «شناور» از لبهٔ چپ وارد می‌شود."
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:237
+msgid "Play video"
+msgstr "پخش ویدئو"
+
+#: frappe/core/doctype/data_import/data_import.js:1243
+#: frappe/core/doctype/data_import/data_import.js:1250
+msgid "Please attach an import file or provide a Google Sheets URL."
+msgstr "یک فایل واردسازی پیوست کنید یا نشانی Google Sheets را وارد کنید."
+
+#: frappe/core/doctype/data_import/data_import.js:1236
+msgid "Please select Document Type and Import Type."
+msgstr "نوع سند و نوع واردسازی را انتخاب کنید."
+
+#: frappe/core/doctype/data_import/data_import.js:1342
+msgid "Preparing import..."
+msgstr "در حال آماده‌سازی واردسازی…"
+
+#. Label of the preview_fields (Table) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:263
+msgid "Preview Fields"
+msgstr "فیلدهای پیش‌نمایش"
+
+#: frappe/core/page/component_explorer/component_explorer.js:913
+msgid "Previous step"
+msgstr "مرحلهٔ قبل"
+
+#: frappe/utils/print_format.py:533
+msgid "Print Format {0} has no HTML body"
+msgstr "قالب چاپ {0} بدنهٔ HTML ندارد"
+
+#: frappe/utils/print_format.py:531
+msgid "Print Format {0} is not a Jinja format"
+msgstr "قالب چاپ {0} از نوع Jinja نیست"
+
+#: frappe/public/js/frappe/views/reports/query_report.js:1765
+msgid "Print Format {0} not available; using default"
+msgstr "قالب چاپ {0} در دسترس نیست؛ از قالب پیش‌فرض استفاده می‌شود"
+
+#: frappe/public/js/frappe/views/communication.js:1365
+msgid "Print format"
+msgstr "قالب چاپ"
+
+#: frappe/core/doctype/data_import/data_import.js:3084
+msgid "Progress summary"
+msgstr "خلاصهٔ پیشرفت"
+
+#. Label of the published_by (Link) field in DocType 'Print Format'
+#: frappe/printing/doctype/print_format/print_format.json
+msgid "Published By"
+msgstr "منتشرشده توسط"
+
+#. Label of the published_on (Datetime) field in DocType 'Print Format'
+#: frappe/printing/doctype/print_format/print_format.json
+msgid "Published On"
+msgstr "تاریخ انتشار"
+
+#: frappe/www/qrcode.html:62
+msgid "QR code to scan with your authenticator app"
+msgstr "کد QR را با برنامهٔ احراز هویت خود اسکن کنید"
+
+#: frappe/core/doctype/data_import/data_import.js:3091
+msgid "Recent activity"
+msgstr "فعالیت اخیر"
+
+#. Label of the relationships (JSON) field in DocType 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Relationships Snapshot"
+msgstr "نمای کلی ارتباط‌ها"
+
+#: frappe/public/js/form_builder/store.js:313
+msgid "Remove page"
+msgstr "حذف صفحه"
+
+#: frappe/public/js/frappe/ui/user_settings_dialog.js:307
+msgid "Request read receipts for outgoing emails"
+msgstr "درخواست رسیدِ خوانده‌شدن برای ایمیل‌های ارسالی"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:63
+msgid "Reset all"
+msgstr "بازنشانی همه"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:518
+msgid "Reset node"
+msgstr "بازنشانی گره"
+
+#: frappe/public/js/data_import_wizard.bundle.js:582
+msgid "Review pending imports"
+msgstr "بازبینی واردسازی‌های در انتظار"
+
+#: frappe/core/page/component_explorer/component_explorer.js:855
+msgid "Revisiting a finished flow (factual completion)"
+msgstr "بازبینی دوبارهٔ جریان تکمیل‌شده (تکمیل واقعی)"
+
+#: frappe/core/doctype/data_import/data_import.js:2467
+msgid "Row errors"
+msgstr "خطاهای ردیف"
+
+#: frappe/core/doctype/data_import/importer.py:525
+msgid "Row validation failed"
+msgstr "اعتبارسنجی ردیف ناموفق بود"
+
+#: frappe/core/doctype/data_import/importer.py:525
+msgid "Row {0} failed"
+msgstr "ردیف {0} ناموفق بود"
+
+#: frappe/public/js/data_import_wizard.bundle.js:1032
+msgid "Rows checked"
+msgstr "ردیف‌های بررسی‌شده"
+
+#: frappe/public/js/data_import_wizard.bundle.js:1034
+msgid "Rows skipped"
+msgstr "ردیف‌های ردشده"
+
+#. Label of the run_state (JSON) field in DocType 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Run State"
+msgstr "وضعیت اجرا"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:583
+msgid "Save Filters"
+msgstr "ذخیرهٔ فیلترها"
+
+#: frappe/core/doctype/data_import/data_import.js:1310
+#: frappe/public/js/data_import_wizard.bundle.js:1262
+msgid "Save your changes before importing."
+msgstr "پیش از واردسازی، تغییرات خود را ذخیره کنید."
+
+#: frappe/desk/page/setup_wizard/setup_wizard.py:48
+msgid "Saving your language and region"
+msgstr "در حال ذخیرهٔ زبان و منطقه"
+
+#: frappe/public/js/frappe/views/communication.js:256
+msgid "Schedule Send"
+msgstr "زمان‌بندی ارسال"
+
+
+#: frappe/public/js/frappe/views/communication.js:241
+msgid "Schedule email"
+msgstr "زمان‌بندی ایمیل"
+
+#: frappe/public/js/form_builder/components/AddFieldButton.vue:20
+msgid "Search fields..."
+msgstr "جست‌وجوی فیلدها…"
+
+#: frappe/public/js/data_import_wizard.bundle.js:480
+msgid "Select a Document Type to upload a file or Google Sheet."
+msgstr "برای بارگذاری فایل یا صفحه‌گستردهٔ Google، یک نوع سند انتخاب کنید."
+
+#: frappe/public/js/frappe/views/communication.js:428
+#: frappe/public/js/frappe/views/communication.js:1547
+msgid "Select attachments"
+msgstr "انتخاب پیوست‌ها"
+
+#: frappe/public/js/frappe/data_import/import_preview.js:711
+#: frappe/public/js/frappe/data_import/import_preview.js:735
+msgid "Select date format"
+msgstr "انتخاب قالب تاریخ"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:200
+msgid "Select field whose options become the board columns."
+msgstr "فیلدی را انتخاب کنید که گزینه‌های آن به ستون‌های تخته تبدیل می‌شوند."
+
+#: frappe/public/js/frappe/data_import/import_preview.js:705
+msgid "Select format"
+msgstr "انتخاب قالب"
+
+#. Description of the 'Field' (Autocomplete) field in DocType 'Kanban Board
+#. Group Field'
+#: frappe/desk/doctype/kanban_board_group_field/kanban_board_group_field.json
+msgid "Select or Link field of the board's reference doctype to group cards by (swimlanes)."
+msgstr "فیلد انتخابی یا پیوندی از نوع سند مرجع تخته را انتخاب کنید تا کارت‌ها بر اساس آن گروه‌بندی شوند (مسیرهای شناور)."
+
+#: frappe/public/js/frappe/views/communication.js:163
+msgid "Send read receipt"
+msgstr "ارسال رسید خواندن"
+
+#. Description of the 'Email Template' (Link) field in DocType 'Notification'
+#: frappe/email/doctype/notification/notification.json
+msgid "Send this notification's content from an Email Template instead of Subject/Message."
+msgstr "به‌جای موضوع/پیام، محتوای این اعلان را از یک الگوی ایمیل ارسال کنید."
+
+#: frappe/core/page/component_explorer/component_explorer.js:1031
+msgid "Series dot + clickable"
+msgstr "نقطه‌های سری و قابل‌کلیک"
+
+#. Description of the 'Layout Order' (Int) field in DocType 'List Filter'
+#: frappe/desk/doctype/list_filter/list_filter.json
+msgid "Set this to decide which position a layout appears in the dropdown"
+msgstr "این مقدار تعیین می‌کند چیدمان در چه جایگاهی از فهرست کشویی نمایش داده شود."
+
+#: frappe/desk/doctype/onboarding_step/onboarding_step.py:151
+msgid "Set {0} in {1} to finish this step."
+msgstr "برای تکمیل این مرحله، {0} را در {1} تنظیم کنید."
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1375
+msgid "Set {0}…"
+msgstr "تنظیم {0}…"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:447
+msgid "Setting things up"
+msgstr "در حال آماده‌سازی"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.py:328
+msgid "Setting up your apps"
+msgstr "در حال راه‌اندازی برنامه‌های شما"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:566
+msgid "Share usage data to help us improve"
+msgstr "برای کمک به بهبود، داده‌های استفاده را به‌اشتراک بگذارید"
+
+#. Label of the show_assigned_to (Check) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:170
+msgid "Show Assigned To"
+msgstr "نمایش مسئول"
+
+#. Label of the show_tags_on_card (Check) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:177
+msgid "Show Tags on Cards"
+msgstr "نمایش برچسب‌ها روی کارت‌ها"
+
+#. Description of the 'Show Tags on Cards' (Check) field in DocType 'Kanban
+#. Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Show document tags on cards (left of footer date), using the standard colored tag style."
+msgstr "نمایش برچسب‌های سند روی کارت‌ها (در سمت چپ تاریخ پایین کارت) با سبک رنگی استاندارد برچسب‌ها."
+
+#. Description of the 'Show Assigned To' (Check) field in DocType 'Kanban
+#. Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Show the assignee stack and Assign control on cards and in the hover preview."
+msgstr "نمایش فهرست مسئولان و کنترل «تخصیص» روی کارت‌ها و در پیش‌نمایشِ هنگام اشاره."
+
+#: frappe/public/js/frappe/data_import/import_preview.js:491
+msgid "Showing first {0} rows of {1}"
+msgstr "نمایش {0} ردیف نخست از {1}"
+
+#. Description of the 'Label' (Data) field in DocType 'Kanban Board Field'
+#: frappe/desk/doctype/kanban_board_field/kanban_board_field.json
+msgid "Shown as the field label, or as the icon tooltip when an icon is set. Auto-filled from the field; edit to override."
+msgstr "به‌عنوان برچسب فیلد یا، در صورت تعیین نماد، توضیح راهنمای نماد نمایش داده می‌شود. مقدار اولیه از فیلد گرفته می‌شود و می‌توانید آن را تغییر دهید."
+
+#. Description of the 'Label' (Data) field in DocType 'Kanban Board Group
+#. Field'
+#: frappe/desk/doctype/kanban_board_group_field/kanban_board_group_field.json
+msgid "Shown as the group option's name. Auto-filled from the field; edit to override."
+msgstr "به‌عنوان نام گزینهٔ گروه نمایش داده می‌شود. مقدار اولیه از فیلد گرفته می‌شود و می‌توانید آن را تغییر دهید."
+
+#: frappe/core/doctype/data_import/data_import.js:218
+msgid "Skip every row that has one of these values. Skipped rows are not imported."
+msgstr "هر ردیفی را که یکی از این مقدارها را دارد رد کنید. ردیف‌های ردشده وارد نمی‌شوند."
+
+#: frappe/core/doctype/data_import/importer.py:280
+msgid "Skipped row {0}"
+msgstr "ردیف {0} رد شد"
+
+#: frappe/templates/includes/slideshow.html:19
+#: frappe/website/web_template/slideshow/slideshow.html:24
+msgid "Slide {0}"
+msgstr "اسلاید {0}"
+
+#. Description of the 'Output' (JSON) field in DocType 'Automation Run Step'
+#: frappe/automation/doctype/automation_run_step/automation_run_step.json
+msgid "Small structured result returned by the action."
+msgstr "نتیجهٔ ساخت‌یافتهٔ کوچکی که عملیات برمی‌گرداند."
+
+#. Label of the snapshot_section (Section Break) field in DocType 'Automation
+#. Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Snapshot"
+msgstr "تصویر لحظه‌ای"
+
+#: frappe/public/js/frappe/views/kanban_v2/core/kanban_core.js:1003
+msgid "Some cards were saved in another column"
+msgstr "برخی کارت‌ها در ستون دیگری ذخیره شده‌اند"
+
+#: frappe/core/doctype/data_import/data_import.js:2377
+msgid "Some columns have invalid values. Map them to valid values below, or skip the rows that have them. Affected columns: {0}."
+msgstr "برخی ستون‌ها مقدار نامعتبر دارند. آن‌ها را به مقدارهای معتبر زیر نگاشت کنید یا ردیف‌های دارای آن‌ها را رد کنید. ستون‌های مربوط: {0}."
+
+#: frappe/desk/doctype/kanban_board/kanban_board.py:60
+msgid "Standard Kanban Boards can only be changed in developer mode"
+msgstr "تخته‌های کانبان استاندارد را فقط در حالت توسعه‌دهنده می‌توان تغییر داد"
+
+#: frappe/desk/doctype/kanban_board/kanban_board.py:103
+msgid "Standard Kanban Boards can only be deleted in developer mode"
+msgstr "تخته‌های کانبان استاندارد را فقط در حالت توسعه‌دهنده می‌توان حذف کرد"
+
+#: frappe/desk/doctype/list_filter/list_filter.py:101
+msgid "Standard list layout {0} already exists with a similar name"
+msgstr "چیدمان فهرست استاندارد {0} با نامی مشابه از قبل وجود دارد"
+
+#: frappe/desk/doctype/list_filter/list_filter.py:71
+msgid "Standard list layouts can only be changed in developer mode"
+msgstr "چیدمان‌های فهرست استاندارد را فقط در حالت توسعه‌دهنده می‌توان تغییر داد"
+
+#: frappe/desk/doctype/list_filter/list_filter.py:146
+msgid "Standard list layouts can only be deleted in developer mode"
+msgstr "چیدمان‌های فهرست استاندارد را فقط در حالت توسعه‌دهنده می‌توان حذف کرد"
+
+#: frappe/core/doctype/data_import/data_import.js:1288
+#: frappe/public/js/data_import_wizard.bundle.js:1195
+msgid "Start the import before opening the Import step."
+msgstr "پیش از بازکردن مرحلهٔ واردسازی، واردسازی را آغاز کنید."
+
+#: frappe/public/js/frappe/ui/toolbar/search.js:149
+msgid "Start with # to search by tag"
+msgstr "برای جست‌وجو بر اساس برچسب، عبارت را با # شروع کنید"
+
+#: frappe/core/doctype/data_import/data_import.js:2839
+msgid "Started by"
+msgstr "آغازکننده"
+
+#: frappe/core/doctype/data_import/data_import.js:2840
+msgid "Started on"
+msgstr "زمان آغاز"
+
+#: frappe/core/doctype/data_import/data_import.js:1341
+#: frappe/core/doctype/data_import/data_import.js:1347
+msgid "Starting import..."
+msgstr "در حال آغاز واردسازی…"
+
+#. Description of the 'Run State' (JSON) field in DocType 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Step outputs, record aliases and branch choices a resumed run picks up."
+msgstr "خروجی مراحل، نام‌های جایگزین رکوردها و انتخاب‌های شاخه‌ای که اجرای ازسرگرفته‌شده ادامه می‌دهد."
+
+#: frappe/public/js/frappe/ui/components/stepper.js:192
+#: frappe/public/js/frappe/ui/slides.js:350
+msgid "Step {0} of {1}"
+msgstr "مرحلهٔ {0} از {1}"
+
+#: frappe/desk/doctype/onboarding_step/onboarding_step.py:153
+msgid "Submit a {0} to finish this step."
+msgstr "برای تکمیل این مرحله، یک {0} ثبت کنید."
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:359
+msgid "Submit it to finish this step."
+msgstr "برای تکمیل این مرحله، آن را ثبت کنید."
+
+#: frappe/core/doctype/data_import/data_import.js:2893
+msgid "Success ({0})"
+msgstr "موفق ({0})"
+
+#. Label of the group_by_fields (Table) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:285
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:287
+msgid "Swimlanes"
+msgstr "مسیرهای شناور"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:294
+msgid "Swimlanes (Group By)"
+msgstr "مسیرهای شناور (گروه‌بندی بر اساس)"
+
+#: frappe/printing/doctype/print_format/print_format_list.js:72
+msgid "Templating"
+msgstr "قالب‌بندی"
+
+#: frappe/public/js/frappe/views/kanban_v2/core/kanban_core.js:877
+msgid "The card was saved in another column"
+msgstr "کارت در ستون دیگری ذخیره شده است"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:190
+msgid "The field cards are grouped into columns by, and the column list."
+msgstr "فیلدی که کارت‌ها بر اساس آن در ستون‌ها گروه‌بندی می‌شوند و فهرست ستون‌ها."
+
+#. Description of the 'Actions Snapshot' (JSON) field in DocType 'Automation
+#. Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "The flow's steps as they were when the run started. A resumed run executes these, not the current flow."
+msgstr "مراحل جریان در زمان آغاز اجرا. اجرای ازسرگرفته‌شده همین مراحل را اجرا می‌کند، نه جریان فعلی را."
+
+#: frappe/website/doctype/web_form/web_form.py:154
+msgid "The rest of the form is saved."
+msgstr "بقیهٔ فرم ذخیره شده است."
+
+#. Description of the 'Condition' (Code) field in DocType 'Automation Run Step'
+#: frappe/automation/doctype/automation_run_step/automation_run_step.json
+msgid "The step condition that skipped this step."
+msgstr "شرط مرحله که باعث ردشدن آن شد."
+
+#: frappe/website/doctype/web_form/web_form.py:149
+msgid "The web form skips these pages, because they have no visible fields: {0}"
+msgstr "فرم وب از این صفحه‌ها می‌گذرد، چون فیلد قابل‌نمایشی ندارند: {0}"
+
+
+#: frappe/website/doctype/website_theme/website_theme.py:112
+#: frappe/website/doctype/website_theme/website_theme.py:122
+msgid "Theme name cannot contain '/' or path separators"
+msgstr "نام پوسته نمی‌تواند نویسهٔ «/» یا جداکنندهٔ مسیر داشته باشد"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:532
+msgid "These set how dates, numbers and money look across the app."
+msgstr "این تنظیمات ظاهر تاریخ‌ها، عددها و مبالغ را در سراسر برنامه تعیین می‌کنند."
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:448
+msgid "This can take a minute. Please keep this page open."
+msgstr "ممکن است یک دقیقه طول بکشد. لطفاً این صفحه را باز نگه دارید."
+
+#: frappe/public/js/frappe/widgets/chart_widget.js:713
+msgid "This chart couldn't load"
+msgstr "بارگیری این نمودار ممکن نشد"
+
+#: frappe/public/js/data_import_wizard.bundle.js:990
+msgid "This import is complete. There are no pending warnings or mapping issues."
+msgstr "این واردسازی کامل شده است. هشدار یا مشکل نگاشتِ حل‌نشده‌ای وجود ندارد."
+
+#. Label of the timing_section (Section Break) field in DocType 'Automation
+#. Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Timing"
+msgstr "زمان‌بندی"
+
+#: frappe/public/js/frappe/ui/slides.js:70
+msgid "Toggle Theme"
+msgstr "تغییر پوسته"
+
+#: frappe/public/js/frappe/ui/sidebar/sidebar_item.js:286
+#: frappe/public/js/frappe/ui/sidebar/sidebar_item.js:296
+msgid "Toggle {0}"
+msgstr "تغییر وضعیت {0}"
+
+#: frappe/website/doctype/web_form/web_form.js:740
+msgid "Too Many Pages"
+msgstr "تعداد صفحه‌ها بیش از حد است"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:548
+msgid "Top level"
+msgstr "سطح بالا"
+
+#: frappe/core/doctype/data_import/data_import.js:2821
+msgid "Total rows"
+msgstr "تعداد کل ردیف‌ها"
+
+#. Label of the tree_parent_overrides (Code) field in DocType 'Data Import'
+#: frappe/core/doctype/data_import/data_import.json
+msgid "Tree Parent Overrides"
+msgstr "جایگزینی‌های والد در درخت"
+
+#: frappe/core/page/component_explorer/component_explorer.js:1000
+msgid "Trend delta"
+msgstr "تغییر روند"
+
+#. Label of the queue_row (Data) field in DocType 'Automation Run'
+#: frappe/automation/doctype/automation_run/automation_run.json
+msgid "Trigger Queue Row"
+msgstr "ردیف صفِ راه‌انداز"
+
+#. Description of the 'Detail' (Long Text) field in DocType 'Automation Run
+#. Step'
+#: frappe/automation/doctype/automation_run_step/automation_run_step.json
+msgid "Truncated to 5k characters."
+msgstr "به 5,000 نویسه کوتاه شد."
+
+#: frappe/core/doctype/data_import/data_import.js:2425
+msgid "Undo Skip Duplicates"
+msgstr "بازگرداندن ردکردن موارد تکراری"
+
+#: frappe/core/doctype/data_import/data_import.js:198
+msgid "Undo skip"
+msgstr "بازگرداندن ردکردن"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:1306
+msgid "Updated {0}"
+msgstr "به‌روزرسانی شد: {0}"
+
+#: frappe/core/doctype/data_import/data_import.js:1452
+msgid "Use 'Download Failed Rows' on the Failed metric, fix the errors and import again."
+msgstr "در معیار ناموفق، «دانلود ردیف‌های ناموفق» را انتخاب کنید، خطاها را اصلاح کنید و دوباره واردسازی را انجام دهید."
+
+#: frappe/core/doctype/data_import/data_import.js:1460
+msgid "Use 'Download Skipped Rows' on the Skipped metric to export the skipped rows."
+msgstr "در معیار ردشده، «دانلود ردیف‌های ردشده» را انتخاب کنید تا ردیف‌های ردشده را صادر کنید."
+
+#: frappe/public/js/frappe/views/communication.js:595
+msgid "Use HTML editor"
+msgstr "استفاده از ویرایشگر HTML"
+
+#. Label of the use_kanban_v2 (Check) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+msgid "Use Kanban v2 (New Experience)"
+msgstr "استفاده از تخته‌کانبان نسخهٔ 2 (تجربهٔ جدید)"
+
+#: frappe/public/js/frappe/views/communication.js:492
+msgid "Use template"
+msgstr "استفاده از الگو"
+
+#: frappe/core/page/component_explorer/component_explorer.js:993
+msgid "Value + caption"
+msgstr "مقدار و عنوان"
+
+#: frappe/public/js/frappe/views/communication.js:1506
+#: frappe/website/js/website.js:431
+#: frappe/website/web_template/section_with_videos/section_with_videos.html:13
+msgid "Video"
+msgstr "ویدئو"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:391
+#: frappe/desk/page/setup_wizard/setup_wizard.py:69
+#: frappe/desk/page/setup_wizard/setup_wizard.py:74
+#: frappe/desk/page/setup_wizard/setup_wizard.py:205
+msgid "We couldn't finish setting things up"
+msgstr "نتوانستیم راه‌اندازی را کامل کنیم"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.py:329
+#: frappe/desk/page/setup_wizard/setup_wizard.py:334
+msgid "We couldn't finish setting up your apps"
+msgstr "نتوانستیم برنامه‌های شما را راه‌اندازی کنیم"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.py:49
+#: frappe/desk/page/setup_wizard/setup_wizard.py:54
+msgid "We couldn't save your language and region"
+msgstr "نتوانستیم زبان و منطقهٔ شما را ذخیره کنیم."
+
+#. Description of the 'Message' (Small Text) field in DocType 'Automation Run
+#. Step'
+#: frappe/automation/doctype/automation_run_step/automation_run_step.json
+msgid "What the action threw as a message, if it failed."
+msgstr "پیامی که عملیات در صورت ناموفق‌بودن برگرداند."
+
+#. Description of the 'Footer Date' (Select) field in DocType 'Kanban Board'
+#: frappe/desk/doctype/kanban_board/kanban_board.json
+#: frappe/public/js/frappe/views/kanban_v2/kanban_settings.bundle.js:146
+msgid "Which timestamp to show in the card footer."
+msgstr "مُهر زمانیِ نمایش‌داده‌شده در پایین کارت."
+
+#: frappe/core/page/component_explorer/component_explorer.js:1076
+msgid "Wide labels + clickable rows"
+msgstr "برچسب‌های عریض و ردیف‌های قابل‌کلیک"
+
+#: frappe/desk/doctype/onboarding_step/onboarding_step.py:171
+msgid "You are not allowed to see this onboarding step"
+msgstr "اجازهٔ مشاهدهٔ این مرحلهٔ راه‌اندازی را ندارید"
+
+#: frappe/desk/desktop.py:732
+msgid "You are not allowed to update this onboarding step"
+msgstr "اجازهٔ به‌روزرسانی این مرحلهٔ راه‌اندازی را ندارید"
+
+#: frappe/core/doctype/data_import/data_import.js:856
+#: frappe/core/doctype/data_import/data_import.js:1003
+#: frappe/core/doctype/data_import/data_import.js:1337
+#: frappe/core/doctype/data_import/data_import.js:2970
+msgid "You can continue other work while this runs. Progress updates will appear here."
+msgstr "هنگام اجرای این فرایند می‌توانید به کارهای دیگر ادامه دهید. به‌روزرسانی پیشرفت همین‌جا نمایش داده می‌شود."
+
+#: frappe/public/js/data_import_wizard.bundle.js:576
+msgid "You have 1 pending {0} import with a file attached."
+msgstr "یک واردسازی {0} در انتظار دارید که فایلی به آن پیوست شده است."
+
+#: frappe/public/js/data_import_wizard.bundle.js:577
+msgid "You have {0} pending {1} imports with files attached."
+msgstr "{0} واردسازی {1} در انتظار دارید که فایل‌هایی به آن‌ها پیوست شده‌اند."
+
+#: frappe/public/js/frappe/views/communication.js:293
+msgid "You will receive a copy of this email"
+msgstr "یک رونوشت از این ایمیل دریافت می‌کنید"
+
+#: frappe/public/js/frappe/views/communication.js:291
+msgid "You will receive a copy of this email and a read receipt"
+msgstr "یک رونوشت از این ایمیل و رسید خواندن دریافت می‌کنید"
+
+#: frappe/public/js/frappe/views/communication.js:295
+msgid "You will receive a read receipt"
+msgstr "رسید خواندن دریافت می‌کنید"
+
+#: frappe/desk/page/setup_wizard/setup_wizard.js:617
+msgid "You'll use these details to sign in."
+msgstr "از این اطلاعات برای ورود استفاده خواهید کرد."
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:448
+msgid "You're all set."
+msgstr "همه‌چیز آماده است."
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:255
+msgid "YouTube video player"
+msgstr "پخش‌کنندهٔ ویدیوی YouTube"
+
+#: frappe/email/doctype/email_account/email_account.js:126
+#: frappe/email/doctype/email_account/email_account.js:139
+msgid "here"
+msgstr "اینجا"
+
+#: frappe/desk/doctype/sidebar/sidebar.js:37
+msgid "its app"
+msgstr "برنامهٔ آن"
+
+#: frappe/apps.py:75
+msgid "setup_wizard_text"
+msgstr "setup_wizard_text"
+
+#: frappe/public/js/frappe/form/link_selector.js:24
+#: frappe/public/js/frappe/form/multi_select_dialog.js:81
+msgid "value"
+msgstr "مقدار"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:984
+msgid "{0} (Copy)"
+msgstr "{0} (نسخهٔ کپی)"
+
+#: frappe/public/js/frappe/data_import/import_preview.js:737
+msgid "{0} (detected)"
+msgstr "{0} (شناسایی‌شده)"
+
+#: frappe/public/js/frappe/form/templates/set_sharing.html:35
+#: frappe/public/js/frappe/form/templates/set_sharing.html:53
+msgid "{0} for {1}"
+msgstr "{0} برای {1}"
+
+#: frappe/public/js/frappe/views/kanban_v2/core/kanban_core.js:982
+msgid "{0} of {1} cards could not be moved"
+msgstr "جابجایی {0} کارت از {1} کارت ممکن نشد"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:82
+msgid "{0} of {1} done · {2} skipped"
+msgstr "{0} از {1} انجام شد · {2} رد شد"
+
+#: frappe/public/js/frappe/widgets/onboarding_widget.js:83
+msgid "{0} of {1} steps done"
+msgstr "{0} از {1} مرحله انجام شد"
+
+#: frappe/core/doctype/data_import/data_import.js:196
+#: frappe/public/js/data_import_wizard.bundle.js:124
+msgid "{0} rows"
+msgstr "{0} ردیف"
+
+#: frappe/public/js/frappe/views/kanban_v2/kanban_page.js:274
+msgid "{0} selected"
+msgstr "{0} انتخاب‌شده"
+
+#: frappe/public/js/frappe/data_import/import_tree_preview.js:139
+msgid "{0} warnings found."
+msgstr "{0} هشدار پیدا شد."
