@@ -683,6 +683,21 @@ const NAME_TOKENS = {
 };
 
 export function format_date_tokens(date, fmt, lang) {
+	if (/^fa(?:[-_]|$)/i.test(lang || "") && frappe.datetime.format_persian_calendar) {
+		const moment_format = fmt.replace(/yyyy|MMMM|MMM|EEEE|EEE|mm|dd|d/g, (token) => ({
+			yyyy: "YYYY",
+			MMMM: "MMMM",
+			MMM: "MMM",
+			EEEE: "dddd",
+			EEE: "ddd",
+			mm: "MM",
+			dd: "DD",
+			d: "D",
+		})[token]);
+		const persian_date = frappe.datetime.format_persian_calendar(date, moment_format);
+		if (persian_date) return persian_date;
+	}
+
 	const pad = (n) => String(n).padStart(2, "0");
 	const name = (token) => {
 		const [part, style] = NAME_TOKENS[token];
