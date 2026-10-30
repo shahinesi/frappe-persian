@@ -47,6 +47,9 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 			this.datepicker.selectDate(date);
 			this._suppress_change = false;
 			this.datepicker.date = date;
+			if (this.jalali_calendar && date instanceof Date && !Number.isNaN(date.getTime())) {
+				this.$input.val(this.format_for_input(moment(date).format("YYYY-MM-DD")));
+			}
 		}
 	}
 	set_date_options() {
