@@ -1,3 +1,5 @@
+import { getJalaliMonthGridRange, shiftJalaliMonth } from "../../views/calendar/persian_calendar.js";
+
 frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlData {
 	static trigger_change_on_input_event = false;
 	make_input() {
@@ -51,8 +53,8 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 		// webformTODO:
 		let sysdefaults = frappe.boot.sysdefaults;
 
-		let lang = "en";
-		frappe.boot.user && (lang = frappe.boot.user.language);
+		let lang = frappe.boot.user?.language || frappe.boot.lang || "en";
+		this.jalali_calendar = /^fa(?:[-_]|$)/i.test(lang);
 		if (!$.fn.datepicker.language[lang]) {
 			lang = "en";
 		}
@@ -64,6 +66,9 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 		this.date_format = frappe.defaultDateFormat;
 		this.datepicker_options = {
 			language: lang,
+			// Air Datepicker renders Gregorian months. In Persian, use the
+			// shared Jalali FullCalendar view instead of exposing that grid.
+			...(this.jalali_calendar ? { showEvent: "frappe-jalali-picker-open" } : {}),
 			autoClose: true,
 			todayButton: true,
 			dateFormat: date_format,
@@ -72,8 +77,16 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 			minDate: this.df.min_date,
 			maxDate: this.df.max_date,
 			firstDay: frappe.datetime.get_first_day_of_the_week_index(),
-			onSelect: () => {
+			onSelect: (formattedDate, selectedDate) => {
 				if (!this._suppress_change) {
+					if (this.jalali_calendar && selectedDate instanceof Date) {
+						const canonicalFormat = this.datepicker_options.timepicker
+							? "YYYY-MM-DD HH:mm:ss"
+							: "YYYY-MM-DD";
+						this.$input.val(
+							this.format_for_input(moment(selectedDate).format(canonicalFormat))
+						);
+					}
 					this.$input.trigger("change");
 				}
 			},
@@ -106,6 +119,12 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 	set_datepicker() {
 		this.$input.datepicker(this.datepicker_options);
 		this.datepicker = this.$input.data("datepicker");
+		if (this.jalali_calendar) {
+			this.$input.on("focus.frappe-jalali-datepicker", () => this.show_jalali_datepicker());
+			this.$input.on("keydown.frappe-jalali-datepicker", (event) => {
+				if (event.key === "Escape") this.hide_jalali_datepicker();
+			});
+		}
 
 		// today button didn't work as expected,
 		// so explicitly bind the event
@@ -113,6 +132,226 @@ frappe.ui.form.ControlDate = class ControlDate extends frappe.ui.form.ControlDat
 			this.datepicker.selectDate(this.get_now_date());
 			this.datepicker.hide();
 		});
+	}
+	show_jalali_datepicker() {
+		if (!this.jalali_calendar || this.jalali_picker_loading || this.jalali_picker) return;
+		this.jalali_picker_loading = frappe
+			.require("calendar.bundle.js")
+			.then(() => {
+				this.jalali_picker_loading = null;
+				if (!this.$input || !document.contains(this.$input.get(0))) return;
+				this.make_jalali_datepicker();
+			})
+			.catch((error) => {
+				this.jalali_picker_loading = null;
+				console.error("Failed to load the Jalali date picker", error);
+			});
+	}
+	make_jalali_datepicker() {
+		if (this.jalali_calendar_range) {
+			let selectedDates = this.datepicker.selectedDates || [];
+			if (selectedDates.length < 2 && Array.isArray(this.value)) {
+				selectedDates = this.value.map((value) => frappe.datetime.str_to_obj(value));
+			}
+			this.jalali_range_start = selectedDates[0] ? new Date(selectedDates[0]) : null;
+			this.jalali_range_end = selectedDates[1] ? new Date(selectedDates[1]) : null;
+		}
+		const wrapper = document.createElement("div");
+		wrapper.className = "frappe-jalali-date-picker";
+		wrapper.setAttribute("role", "dialog");
+		wrapper.setAttribute("aria-label", __("Select date"));
+
+		const toolbar = document.createElement("div");
+		toolbar.className = "frappe-jalali-date-picker__toolbar";
+		const previous = this.make_jalali_picker_button("Previous");
+		const title = document.createElement("span");
+		title.className = "frappe-jalali-date-picker__title";
+		title.setAttribute("aria-live", "polite");
+		const next = this.make_jalali_picker_button("Next");
+		const today = this.make_jalali_picker_button("Today");
+		today.classList.add("frappe-jalali-date-picker__today");
+		const apply = this.jalali_calendar_range
+			? this.make_jalali_picker_button("Apply")
+			: null;
+		if (apply) {
+			apply.disabled = true;
+			apply.classList.add("frappe-jalali-date-picker__apply");
+		}
+		toolbar.append(previous, title, next, today);
+		if (apply) toolbar.append(apply);
+
+		const calendarElement = document.createElement("div");
+		calendarElement.className = "frappe-jalali-date-picker__calendar";
+		wrapper.append(toolbar, calendarElement);
+		wrapper.addEventListener("keydown", (event) => {
+			if (event.key === "Escape") this.hide_jalali_datepicker();
+		});
+		document.body.appendChild(wrapper);
+
+		const selectedDate = this.datepicker.selectedDates[0] || this.get_start_date();
+		const initialDate =
+			selectedDate instanceof Date ? selectedDate : frappe.datetime.str_to_obj(selectedDate);
+		const validRange = {};
+		if (this.df.min_date) validRange.start = this.df.min_date;
+		if (this.df.max_date) {
+			const maxDate = frappe.datetime.str_to_obj(this.df.max_date);
+			maxDate.setDate(maxDate.getDate() + 1);
+			validRange.end = maxDate;
+		}
+
+		const calendar = new frappe.FullCalendar(calendarElement, {
+			plugins: frappe.FullCalendar.Plugins,
+			locales: frappe.FullCalendar.Locales,
+			locale: frappe.FullCalendar.PersianLocaleCode,
+			initialView: "jalaliMonth",
+			initialDate,
+			firstDay: frappe.datetime.get_first_day_of_the_week_index(),
+			views: {
+				jalaliMonth: {
+					type: "dayGrid",
+					visibleRange: (currentDate) =>
+						getJalaliMonthGridRange(
+							currentDate,
+							frappe.datetime.get_first_day_of_the_week_index()
+						),
+				},
+			},
+			headerToolbar: false,
+			validRange: Object.keys(validRange).length ? validRange : undefined,
+			dayCellContent: (arg) =>
+				frappe.datetime.format_persian_calendar(arg.date, "D") || arg.dayNumberText,
+			dayHeaderContent: (arg) =>
+				frappe.datetime.format_persian_calendar(arg.date, "ddd") || arg.text,
+			dayCellDidMount: (arg) => {
+				if (this.df.disabled_dates?.includes(moment(arg.date).format("YYYY-MM-DD"))) {
+					arg.el.classList.add("fc-day-disabled");
+					arg.el.setAttribute("aria-disabled", "true");
+				}
+			},
+			dateClick: (info) => {
+				if (this.df.disabled_dates?.includes(moment(info.date).format("YYYY-MM-DD"))) return;
+				const date = new Date(
+					info.date.getFullYear(),
+					info.date.getMonth(),
+					info.date.getDate()
+				);
+				if (this.jalali_calendar_range) {
+					if (!this.jalali_range_start || this.jalali_range_end) {
+						this.jalali_range_start = date;
+						this.jalali_range_end = null;
+						apply.disabled = true;
+					} else if (date < this.jalali_range_start) {
+						this.jalali_range_end = this.jalali_range_start;
+						this.jalali_range_start = date;
+						apply.disabled = false;
+					} else {
+						this.jalali_range_end = date;
+						apply.disabled = false;
+					}
+					const end = new Date(this.jalali_range_end || this.jalali_range_start);
+					end.setDate(end.getDate() + 1);
+					calendar.select({ start: this.jalali_range_start, end });
+					return;
+				}
+				if (this.datepicker.timepicker) {
+					const current = this.datepicker.selectedDates[0] || this.get_now_date();
+					date.setHours(current.getHours(), current.getMinutes(), current.getSeconds(), 0);
+				}
+				this.datepicker.selectDate(date);
+				this.hide_jalali_datepicker();
+			},
+			datesSet: () => {
+				title.textContent =
+					frappe.datetime.format_persian_calendar(calendar.getDate(), "MMMM YYYY") || "";
+			},
+		});
+		this.jalali_picker = { calendar, wrapper };
+
+		previous.addEventListener("click", () => {
+			const date = shiftJalaliMonth(calendar.getDate(), -1);
+			if (date) calendar.gotoDate(date);
+		});
+		next.addEventListener("click", () => {
+			const date = shiftJalaliMonth(calendar.getDate(), 1);
+			if (date) calendar.gotoDate(date);
+		});
+		today.addEventListener("click", () => {
+			if (this.jalali_calendar_range) {
+				this.jalali_range_start = null;
+				this.jalali_range_end = null;
+				apply.disabled = true;
+				calendar.unselect();
+				calendar.gotoDate(this.get_now_date());
+				return;
+			}
+			this.datepicker.selectDate(this.get_now_date());
+			this.hide_jalali_datepicker();
+		});
+		if (apply) {
+			apply.addEventListener("click", () => {
+				if (!this.jalali_range_start) return;
+				this.datepicker.selectDate([
+					this.jalali_range_start,
+					this.jalali_range_end || this.jalali_range_start,
+				]);
+				this.hide_jalali_datepicker();
+			});
+		}
+
+		this.position_jalali_datepicker();
+		calendar.render();
+		if (apply && this.jalali_range_start && this.jalali_range_end) {
+			const end = new Date(this.jalali_range_end);
+			end.setDate(end.getDate() + 1);
+			calendar.select({ start: this.jalali_range_start, end });
+			apply.disabled = false;
+		}
+		this.position_jalali_datepicker();
+		this.jalali_picker_outside_listener = (event) => {
+			if (
+				!wrapper.contains(event.target) &&
+				!this.$input.get(0).contains(event.target)
+			) {
+				this.hide_jalali_datepicker();
+			}
+		};
+		document.addEventListener("mousedown", this.jalali_picker_outside_listener);
+		this.jalali_picker_position_listener = () => this.position_jalali_datepicker();
+		window.addEventListener("resize", this.jalali_picker_position_listener);
+		window.addEventListener("scroll", this.jalali_picker_position_listener, true);
+	}
+	make_jalali_picker_button(label) {
+		const button = document.createElement("button");
+		button.type = "button";
+		button.className = "btn btn-xs btn-default";
+		button.textContent = __(label);
+		button.setAttribute("aria-label", __(label));
+		return button;
+	}
+	position_jalali_datepicker() {
+		if (!this.jalali_picker) return;
+		const rect = this.$input.get(0).getBoundingClientRect();
+		const wrapper = this.jalali_picker.wrapper;
+		const left = Math.min(
+			window.scrollX + rect.left,
+			window.scrollX + window.innerWidth - wrapper.offsetWidth - 8
+		);
+		const below = rect.bottom + 6;
+		const top =
+			below + wrapper.offsetHeight > window.innerHeight && rect.top > wrapper.offsetHeight + 6
+				? rect.top - wrapper.offsetHeight - 6
+				: below;
+		wrapper.style.left = `${Math.max(8, left)}px`;
+		wrapper.style.top = `${window.scrollY + top}px`;
+	}
+	hide_jalali_datepicker() {
+		if (!this.jalali_picker) return;
+		document.removeEventListener("mousedown", this.jalali_picker_outside_listener);
+		window.removeEventListener("resize", this.jalali_picker_position_listener);
+		window.removeEventListener("scroll", this.jalali_picker_position_listener, true);
+		this.jalali_picker.calendar.destroy();
+		this.jalali_picker.wrapper.remove();
+		this.jalali_picker = null;
 	}
 	update_datepicker_position() {
 		// show datepicker above or below the input

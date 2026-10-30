@@ -1,7 +1,6 @@
-frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.ControlData {
+frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.ControlDate {
 	make_input() {
 		super.make_input();
-		this.make_picker();
 		this.refresh();
 	}
 
@@ -13,9 +12,12 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 	set_date_options() {
 		var me = this;
 
-		let lang = frappe.boot?.user?.language;
+		let lang = frappe.boot?.user?.language || frappe.boot?.lang || "en";
+		this.jalali_calendar = /^fa(?:[-_]|$)/i.test(lang);
+		this.jalali_calendar_range = this.jalali_calendar;
 		this.datepicker_options = {
 			language: $.fn.datepicker.language[lang] ? lang : "en",
+			...(this.jalali_calendar ? { showEvent: "frappe-jalali-picker-open" } : {}),
 			range: true,
 			autoClose: true,
 			toggleSelected: false,
@@ -24,13 +26,24 @@ frappe.ui.form.ControlDateRange = class ControlDateRange extends frappe.ui.form.
 			firstDay: frappe.datetime.get_first_day_of_the_week_index(),
 		};
 		this.datepicker_options.dateFormat = frappe.boot.sysdefaults.date_format || "yyyy-mm-dd";
-		this.datepicker_options.onSelect = function () {
+		this.datepicker_options.onSelect = (formattedDate, selectedDates) => {
+			if (this.jalali_calendar && selectedDates?.length === 2) {
+				const from = moment(selectedDates[0]).format("YYYY-MM-DD");
+				const to = moment(selectedDates[1]).format("YYYY-MM-DD");
+				this.$input.val(this.format_for_input(from, to));
+			}
 			me.$input.trigger("change");
 		};
 	}
 	set_datepicker() {
 		this.$input.datepicker(this.datepicker_options);
 		this.datepicker = this.$input.data("datepicker");
+		if (this.jalali_calendar) {
+			this.$input.on("focus.frappe-jalali-datepicker", () => this.show_jalali_datepicker());
+			this.$input.on("keydown.frappe-jalali-datepicker", (event) => {
+				if (event.key === "Escape") this.hide_jalali_datepicker();
+			});
+		}
 	}
 	set_input(value, value2) {
 		this.last_value = this.value;

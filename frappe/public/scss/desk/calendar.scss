@@ -17,6 +17,52 @@
 	--fc-neutral-bg-color: var(--surface-gray-2);
 }
 
+.frappe-jalali-date-picker {
+	position: absolute;
+	z-index: 1060;
+	width: min(360px, calc(100vw - 16px));
+	padding: 12px;
+	border: 1px solid var(--outline-gray-1);
+	border-radius: var(--radius);
+	background: var(--surface-elevation-1);
+	box-shadow: 0 8px 24px rgb(0 0 0 / 14%);
+	direction: rtl;
+	font-family: var(--font-stack);
+
+	.fc {
+		font-size: var(--text-sm);
+	}
+
+	.fc .fc-scrollgrid {
+		border: 0;
+	}
+
+	.fc th {
+		border-top: 0;
+	}
+
+	.fc .fc-daygrid-day-number {
+		padding: 4px 6px;
+	}
+}
+
+.frappe-jalali-date-picker__toolbar {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 8px;
+
+	button {
+		flex: 0 0 auto;
+	}
+}
+
+.frappe-jalali-date-picker__title {
+	flex: 1 1 auto;
+	text-align: center;
+	font-weight: var(--font-weight-semibold);
+}
+
 .fc-theme-standard {
 	color: var(--ink-gray-8) !important;
 }
